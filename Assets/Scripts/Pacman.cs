@@ -57,5 +57,4 @@ public class Pacman : MonoBehaviour
         deathSequence.spriteRenderer.enabled = true;
         deathSequence.Restart();
     }
-
 }
