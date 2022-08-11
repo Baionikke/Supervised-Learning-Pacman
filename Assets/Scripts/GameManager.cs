@@ -15,16 +15,16 @@ public class GameManager : MonoBehaviour
     public int score { get; private set; }
     public int lives { get; private set; }
 
-    private void Start()
+    public void Start()
     {
         NewGame();
     }
 
     private void Update()
     {
-        if (lives <= 0 && Input.anyKeyDown) {
+        /*if (lives <= 0 && Input.anyKeyDown) {
             NewGame();
-        }
+        }*/
     }
 
     private void NewGame()
@@ -54,15 +54,14 @@ public class GameManager : MonoBehaviour
         pacman.ResetState();
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         gameOverText.enabled = true;
+        
+        //for (int i = 0; i < ghosts.Length; i++) { ghosts[i].gameObject.SetActive(false); }
 
-        for (int i = 0; i < ghosts.Length; i++) {
-            ghosts[i].gameObject.SetActive(false);
-        }
+        // pacman.gameObject.SetActive(false);
 
-        pacman.gameObject.SetActive(false);
     }
 
     private void SetLives(int lives)
@@ -122,7 +121,7 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
     }
 
-    private bool HasRemainingPellets()
+    public bool HasRemainingPellets()
     {
         foreach (Transform pellet in pellets)
         {

@@ -1,0 +1,6 @@
+1. Osservazioni distanza di pacman tra pellet e fantasmi
+2. Zone a densità di pellet
+3. Premi per costanza di movimento
+4. Miglioramenti processi di training
+
+5. Euristiche

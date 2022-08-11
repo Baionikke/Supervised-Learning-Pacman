@@ -1,0 +1,5 @@
+Training:
+mlagents-learn configs/MLA-training.yaml --run-id run1
+
+Per visualizzare risultati:
+tensorboard --logdir results --port 6006
