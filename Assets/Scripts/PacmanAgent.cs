@@ -8,6 +8,7 @@ public class PacmanAgent : Agent
 {
     
     private Pacman pacman { get; set; }
+    private int movementMemory;
 
     private float PelletDistance(Transform pellet)
     {
@@ -67,19 +68,33 @@ public class PacmanAgent : Agent
         //Debug.Log(actionBuffers.DiscreteActions[0]);
         int movementControl = actionBuffers.DiscreteActions[0];
         // Set the new direction based on the current input
-        if (movementControl == 0) {
+        if (movementControl == 0)
+        {
+            bool occ = pacman.movement.Occupied(Vector2.up);
+            if (occ && movementMemory!=0 && movementMemory!=1) AddReward(0.05f);
+            if (!occ && movementMemory==0) AddReward(0.03f);
             pacman.movement.SetDirection(Vector2.up);
         }
         else if (movementControl == 1) {
+            bool occ = pacman.movement.Occupied(Vector2.down);
+            if (occ && movementMemory!=1 && movementMemory!=0) AddReward(0.05f);
+            if (!occ && movementMemory==0) AddReward(0.03f);
             pacman.movement.SetDirection(Vector2.down);
         }
         else if (movementControl == 2) {
+            bool occ = pacman.movement.Occupied(Vector2.left);
+            if (occ && movementMemory!=2 && movementMemory!=3) AddReward(0.05f);
+            if (!occ && movementMemory==0) AddReward(0.03f);
             pacman.movement.SetDirection(Vector2.left);
         }
         else if (movementControl == 3) {
+            bool occ = pacman.movement.Occupied(Vector2.right);
+            if (occ && movementMemory!=3 && movementMemory!=2) AddReward(0.05f);
+            if (!occ && movementMemory==0) AddReward(0.03f);
             pacman.movement.SetDirection(Vector2.right);
         }
-
+        movementMemory = movementControl;
+        
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
@@ -89,7 +104,7 @@ public class PacmanAgent : Agent
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            AddReward(0.05f);
+            AddReward(0.1f);
         }
     }
 
@@ -118,7 +133,8 @@ public class PacmanAgent : Agent
         // Collision with wall
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            AddReward(-0.05f);
+            AddReward(-0.08f);
+            RequestDecision();
         }
         
         // Collision with ghost
@@ -133,10 +149,11 @@ public class PacmanAgent : Agent
                 if (GameManager.instance.lives > 0)
                 {
                     AddReward(-0.25f);
+                    EndEpisode();
                 }
                 else
                 {
-                    AddReward(-1);
+                    AddReward(-0.5f);
                     EndEpisode();
                 }
             }
