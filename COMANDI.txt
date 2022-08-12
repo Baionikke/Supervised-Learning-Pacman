@@ -1,5 +1,5 @@
 Training:
-mlagents-learn configs/MLA-training.yaml --run-id run1
+mlagents-learn configs/MLA-training.yaml --seed 2 --run-id run6
 
 Per visualizzare risultati:
 tensorboard --logdir results --port 6006

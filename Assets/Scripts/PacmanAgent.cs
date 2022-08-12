@@ -9,46 +9,61 @@ public class PacmanAgent : Agent
     
     private Pacman pacman { get; set; }
 
+    private float PelletDistance(Transform pellet)
+    {
+        Vector2 pacmanPos = new Vector2(GameManager.instance.pacman.transform.localPosition.x,
+            GameManager.instance.pacman.transform.localPosition.y);
+        Vector2 pelletPos = new Vector2(pellet.localPosition.x, pellet.localPosition.y);
+        float distance = Vector2.Distance(pacmanPos, pelletPos);
+        return distance;
+    }
+
+    private Vector2 GhostDistance(Vector3 ghostPosition)
+    {
+        float distanceX = (GameManager.instance.pacman.transform.localPosition.x - ghostPosition.x);
+        float distanceY = (GameManager.instance.pacman.transform.localPosition.y - ghostPosition.y); // Volutamente non in val. assoluto
+        Vector2 res = new Vector2(distanceX, distanceY);
+        return res;
+    }
+
     public override void OnEpisodeBegin() // TODO: to understand how the method works
     {
-	    	FindObjectOfType<GameManager>().Start();
+	    	GameManager.instance.Start();
             SetReward(0f);
     }
     
-    public override void CollectObservations(VectorSensor sensor) // -> 265
+    public override void CollectObservations(VectorSensor sensor) // -> 501
     {
         // Position
-        sensor.AddObservation(FindObjectOfType<Pacman>().transform.localPosition);
+        sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition);
         
         // Pellets
-        foreach (Transform pellet in FindObjectOfType<GameManager>().pellets)
+        foreach (Transform pellet in GameManager.instance.pellets)
         {
             //sensor.AddObservation(pellet.localPosition); // Questa forse non serve
             sensor.AddObservation(pellet.gameObject.activeSelf);
+            sensor.AddObservation(PelletDistance(pellet)); // TODO: Pensare al discorso dei 20 più vicini
         }
 
         // Ghost
-        for (int i = 0; i < FindObjectOfType<GameManager>().ghosts.Length; i++)
+        for (int i = 0; i < GameManager.instance.ghosts.Length; i++)
         {
-            if (FindObjectOfType<GameManager>().ghosts[i].gameObject.activeSelf)
-            {
-                sensor.AddObservation(FindObjectOfType<GameManager>().ghosts[i].transform.localPosition);
-            }
+            sensor.AddObservation(GhostDistance(GameManager.instance.ghosts[i].transform.localPosition));
         }
         
         // Ghosts are Frightened
-        sensor.AddObservation(FindObjectOfType<Ghost>().frightened.enabled);
+        sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
         
         // Lives
-        sensor.AddObservation(FindObjectOfType<GameManager>().lives);
+        sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
 
         // Score
-        sensor.AddObservation(FindObjectOfType<GameManager>().score);
+        sensor.AddObservation(GameManager.instance.score); // Forse eliminabile
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        pacman = GetComponent<Pacman>();
+        pacman = GameManager.instance.pacman;
         //Debug.Log(actionBuffers.DiscreteActions[0]);
         int movementControl = actionBuffers.DiscreteActions[0];
         // Set the new direction based on the current input
@@ -70,36 +85,52 @@ public class PacmanAgent : Agent
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionExit2D(Collision2D other) // OnCollisionStay2D non funziona perché pacman tocca sempre i muri laterali
     {
-        // Collision with pellet
-        if (col.gameObject.layer == LayerMask.NameToLayer("Pellet"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            AddReward(0.05f);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        /* TODO:
+        1. Penalizzare se rimane troppo nella stessa zona. -> vettore di posizioni trascorse
+        2. Vicinanza ai fantasmi attiva la routine "scappa!" -> Va sulle euristiche
+        3. Distanza dai fantasmini -> forse sostituire a posizione #FATTO
+        4. 
+        */
+        
+        // Collision with pellet // SPOSTATO IN PELLET
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Pellet"))
         {
             AddReward(0.3f);
+            Debug.Log("preso!");
             if (!FindObjectOfType<GameManager>().HasRemainingPellets())
             {
                 gameObject.SetActive(false);
                 AddReward(1f);
                 EndEpisode();
             }
-        }
-        
-        // Collision with wall
-        /* if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            AddReward(-0.05f);
         }*/
         
-        // Collision with ghost
-        if (col.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        // Collision with wall
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            if (FindObjectOfType<Ghost>().frightened.enabled)
+            AddReward(-0.05f);
+        }
+        
+        // Collision with ghost
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        {
+            if (GameManager.instance.ghosts[0].frightened.enabled)
             {
                 AddReward(0.25f);
             }
             else
             {
-                if (FindObjectOfType<GameManager>().lives > 0)
+                if (GameManager.instance.lives > 0)
                 {
                     AddReward(-0.25f);
                 }

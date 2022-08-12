@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,13 @@ public class GameManager : MonoBehaviour
     public Text gameOverText;
     public Text scoreText;
     public Text livesText;
+
+    public static GameManager instance { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public int ghostMultiplier { get; private set; } = 1;
     public int score { get; private set; }
