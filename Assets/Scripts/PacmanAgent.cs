@@ -37,6 +37,7 @@ public class PacmanAgent : Agent
     {
         // Position
         sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition);
+        sensor.AddObservation(GameManager.instance.pacman.movement.direction);
         
         // Pellets
         foreach (Transform pellet in GameManager.instance.pellets)
@@ -57,10 +58,10 @@ public class PacmanAgent : Agent
         sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
         
         // Lives
-        sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
+        // sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
 
         // Score
-        sensor.AddObservation(GameManager.instance.score); // Forse eliminabile
+        // sensor.AddObservation(GameManager.instance.score); // Forse eliminabile
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -73,25 +74,25 @@ public class PacmanAgent : Agent
         {
             bool occ = pacman.movement.Occupied(Vector2.up);
             if (occ && movementMemory!=0 && movementMemory!=1) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.03f);
+            if (!occ && movementMemory==0) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.up);
         }
         else if (movementControl == 1) {
             bool occ = pacman.movement.Occupied(Vector2.down);
             if (occ && movementMemory!=1 && movementMemory!=0) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.03f);
+            if (!occ && movementMemory==0) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.down);
         }
         else if (movementControl == 2) {
             bool occ = pacman.movement.Occupied(Vector2.left);
             if (occ && movementMemory!=2 && movementMemory!=3) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.03f);
+            if (!occ && movementMemory==0) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.left);
         }
         else if (movementControl == 3) {
             bool occ = pacman.movement.Occupied(Vector2.right);
             if (occ && movementMemory!=3 && movementMemory!=2) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.03f);
+            if (!occ && movementMemory==0) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.right);
         }
         movementMemory = movementControl;
@@ -101,13 +102,14 @@ public class PacmanAgent : Agent
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
 
-    private void OnCollisionExit2D(Collision2D other) // OnCollisionStay2D non funziona perché pacman tocca sempre i muri laterali
-    {
+    /*private void OnCollisionExit2D(Collision2D other) // OnCollisionStay2D non funziona perché pacman tocca sempre i muri laterali
+    {  // Anche questo non funziona sempre perché non becca bene l'uscita dai bivi, ma ne trova anche quando non ha più muri ai lati
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
             AddReward(0.1f);
+            Debug.Log("Exited Collision!");
         }
-    }
+    }*/
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -118,7 +120,7 @@ public class PacmanAgent : Agent
         4. 
         */
         
-        // Collision with pellet // SPOSTATO IN PELLET
+        // Collision with pellet // --> SPOSTATO IN PELLET.CS <--
         /*if (other.gameObject.layer == LayerMask.NameToLayer("Pellet"))
         {
             AddReward(0.3f);
