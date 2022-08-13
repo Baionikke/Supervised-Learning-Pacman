@@ -50,6 +50,7 @@ public class PacmanAgent : Agent
         for (int i = 0; i < GameManager.instance.ghosts.Length; i++)
         {
             sensor.AddObservation(GhostDistance(GameManager.instance.ghosts[i].transform.localPosition));
+            sensor.AddObservation(GameManager.instance.ghosts[i].movement.direction);
         }
         
         // Ghosts are Frightened
@@ -142,7 +143,7 @@ public class PacmanAgent : Agent
         {
             if (GameManager.instance.ghosts[0].frightened.enabled)
             {
-                AddReward(0.25f);
+                AddReward(0.50f);
             }
             else
             {
