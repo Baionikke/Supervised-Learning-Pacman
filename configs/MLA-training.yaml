@@ -3,8 +3,8 @@ behaviors:
   My Behavior:
     trainer_type: ppo
     hyperparameters:
-      batch_size: 1024
-      buffer_size: 10240
+      batch_size: 2048
+      buffer_size: 20480
       learning_rate: 0.0003
       beta: 0.005
       epsilon: 0.2
@@ -29,14 +29,13 @@ behaviors:
       extrinsic:
         gamma: 0.99
         strength: 1.0
+      curiosity:
+        strength: 0.05
+        gamma: 0.9
         network_settings:
-          normalize: false
-          hidden_units: 512
-          num_layers: 3
-          vis_encode_type: simple
-          memory: null
-          goal_conditioning_type: hyper
-          deterministic: false
+          hidden_units: 128
+          num_layers: 2
+          learning_rate: 3e-4
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 500000

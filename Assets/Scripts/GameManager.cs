@@ -66,9 +66,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.enabled = true;
         
-        //for (int i = 0; i < ghosts.Length; i++) { ghosts[i].gameObject.SetActive(false); }
+        for (int i = 0; i < ghosts.Length; i++) { ghosts[i].gameObject.SetActive(false); }
 
-        // pacman.gameObject.SetActive(false);
+        pacman.gameObject.SetActive(false);
 
     }
 
@@ -91,8 +91,11 @@ public class GameManager : MonoBehaviour
         SetLives(lives - 1);
 
         if (lives > 0) {
-            Invoke(nameof(ResetState), 3f);
+            Invoke(nameof(ResetState), 0f);
         } else {
+            //SetLives(3);
+            //SetScore(0);
+            //Invoke(nameof(ResetState), 0f);
             GameOver();
         }
     }
@@ -113,7 +116,10 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellets())
         {
-            pacman.gameObject.SetActive(false);
+            FindObjectOfType<PacmanAgent>().AddReward(20f);
+            Debug.Log("HA VINTO!");
+            FindObjectOfType<PacmanAgent>().EndEpisode();
+            //pacman.gameObject.SetActive(false);
             Invoke(nameof(NewRound), 3f);
         }
     }

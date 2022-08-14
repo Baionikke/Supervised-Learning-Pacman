@@ -31,7 +31,6 @@ public class PacmanAgent : Agent
     public override void OnEpisodeBegin() // TODO: to understand how the method works
     {
 	    	GameManager.instance.Start();
-            SetReward(0f);
     }
     
     public override void CollectObservations(VectorSensor sensor) // -> 501
@@ -71,34 +70,46 @@ public class PacmanAgent : Agent
         //Debug.Log(actionBuffers.DiscreteActions[0]);
         int movementControl = actionBuffers.DiscreteActions[0];
         movementMemory = GameManager.instance.pacman.movement.direction;
-        if ((Vector2)GameManager.instance.pacman.transform.localPosition == positionMemory) AddReward(-0.2f);
-        // Set the new direction based on the current input
-        if (movementControl == 0)
+        if ((Vector2)GameManager.instance.pacman.transform.localPosition == positionMemory)
         {
-            bool occ = pacman.movement.Occupied(Vector2.up);
-            if (occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) AddReward(0.05f);
-            if (!occ && movementMemory==Vector2.up) AddReward(0.05f);
-            pacman.movement.SetDirection(Vector2.up);
+            // Debug.Log("Stuck!");
+            AddReward(-0.1f); // Se fermo nello stesso punto
         }
-        else if (movementControl == 1) {
-            bool occ = pacman.movement.Occupied(Vector2.down);
-            if (occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) AddReward(0.05f);
-            if (!occ && movementMemory==Vector2.down) AddReward(0.05f);
-            pacman.movement.SetDirection(Vector2.down);
+        bool occ;
+        // Set the new direction based on the current input
+        switch (movementControl)
+        {
+            case 0:
+                occ = pacman.movement.Occupied(pacman.movement.direction);
+                if (!occ) AddReward(0.001f); // Se va dritto e non è occupato
+                break;
+            case 1:
+                occ = pacman.movement.Occupied(Vector2.up);
+                if (!occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) AddReward(0.005f); // Se gira correttamente ad un incrocio
+                if (occ) AddReward(-0.01f); // Se gira su un muro
+                pacman.movement.SetDirection(Vector2.up);
+                break;
+            case 2:
+                occ = pacman.movement.Occupied(Vector2.down);
+                if (!occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) AddReward(0.005f); // Se gira correttamente ad un incrocio
+                if (occ) AddReward(-0.01f); // Se gira su un muro
+                pacman.movement.SetDirection(Vector2.down);
+                break;
+            case 3:
+                occ = pacman.movement.Occupied(Vector2.left);
+                if (!occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) AddReward(0.005f); // Se gira correttamente ad un incrocio
+                if (occ) AddReward(-0.01f); // Se gira su un muro
+                pacman.movement.SetDirection(Vector2.left);
+                break;
+            case 4:
+                occ = pacman.movement.Occupied(Vector2.right);
+                if (!occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left) AddReward(0.005f); // Se gira correttamente ad un incrocio
+                if (occ) AddReward(-0.01f); // Se gira su un muro
+                pacman.movement.SetDirection(Vector2.right);
+                break;
         }
-        else if (movementControl == 2) {
-            bool occ = pacman.movement.Occupied(Vector2.left);
-            if (occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) AddReward(0.05f);
-            if (!occ && movementMemory==Vector2.left) AddReward(0.05f);
-            pacman.movement.SetDirection(Vector2.left);
-        }
-        else if (movementControl == 3) {
-            bool occ = pacman.movement.Occupied(Vector2.right);
-            if (occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left) AddReward(0.05f);
-            if (!occ && movementMemory==Vector2.right) AddReward(0.05f);
-            pacman.movement.SetDirection(Vector2.right);
-        }
-        positionMemory = (Vector2)GameManager.instance.transform.localPosition;
+
+        positionMemory = (Vector2)GameManager.instance.pacman.transform.localPosition;
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
@@ -150,18 +161,18 @@ public class PacmanAgent : Agent
             {
                 if (GameManager.instance.lives > 0)
                 {
-                    AddReward(-0.25f);
+                    AddReward(-0.25f); // Se mangiato dal fantasma
                     EndEpisode();
                 }
                 else
                 {
-                    AddReward(-0.5f);
+                    AddReward(-0.5f); // Se mangiato dal fantasma e game over (ha senso solo se non va in EndEpisode quando è soltanto mangiato dal fantasma
                     EndEpisode();
                 }
             }
             else
             {
-                AddReward(0.25f);
+                AddReward(0.1f); // Se mangia un fantasmino
             }
         }
     }

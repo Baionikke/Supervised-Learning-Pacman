@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4470768091747915942, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: MaxStep
-      value: 80000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 4470768091747915943, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_Model
@@ -440,6 +440,14 @@ PrefabInstance:
     - target: {fileID: 4470768091747915943, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_BrainParameters.NumStackedVectorObservations
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470768091747915943, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470768091747915943, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7440151204316884421, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_Name
