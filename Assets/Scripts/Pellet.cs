@@ -13,6 +13,7 @@ public class Pellet : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pacman")) {
             FindObjectOfType<PacmanAgent>().AddReward(0.05f);
+            // Debug.Log("Pellet eaten!");
             Eat();
         }
     }

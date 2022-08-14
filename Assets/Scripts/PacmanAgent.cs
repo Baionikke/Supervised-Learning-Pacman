@@ -8,7 +8,8 @@ public class PacmanAgent : Agent
 {
     
     private Pacman pacman { get; set; }
-    private int movementMemory;
+    private Vector2 movementMemory;
+    private Vector2 positionMemory;
 
     private float PelletDistance(Transform pellet)
     {
@@ -69,34 +70,35 @@ public class PacmanAgent : Agent
         pacman = GameManager.instance.pacman;
         //Debug.Log(actionBuffers.DiscreteActions[0]);
         int movementControl = actionBuffers.DiscreteActions[0];
+        movementMemory = GameManager.instance.pacman.movement.direction;
+        if ((Vector2)GameManager.instance.pacman.transform.localPosition == positionMemory) AddReward(-0.2f);
         // Set the new direction based on the current input
         if (movementControl == 0)
         {
             bool occ = pacman.movement.Occupied(Vector2.up);
-            if (occ && movementMemory!=0 && movementMemory!=1) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.05f);
+            if (occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) AddReward(0.05f);
+            if (!occ && movementMemory==Vector2.up) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.up);
         }
         else if (movementControl == 1) {
             bool occ = pacman.movement.Occupied(Vector2.down);
-            if (occ && movementMemory!=1 && movementMemory!=0) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.05f);
+            if (occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) AddReward(0.05f);
+            if (!occ && movementMemory==Vector2.down) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.down);
         }
         else if (movementControl == 2) {
             bool occ = pacman.movement.Occupied(Vector2.left);
-            if (occ && movementMemory!=2 && movementMemory!=3) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.05f);
+            if (occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) AddReward(0.05f);
+            if (!occ && movementMemory==Vector2.left) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.left);
         }
         else if (movementControl == 3) {
             bool occ = pacman.movement.Occupied(Vector2.right);
-            if (occ && movementMemory!=3 && movementMemory!=2) AddReward(0.05f);
-            if (!occ && movementMemory==0) AddReward(0.05f);
+            if (occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left) AddReward(0.05f);
+            if (!occ && movementMemory==Vector2.right) AddReward(0.05f);
             pacman.movement.SetDirection(Vector2.right);
         }
-        movementMemory = movementControl;
-        
+        positionMemory = (Vector2)GameManager.instance.transform.localPosition;
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
@@ -134,20 +136,17 @@ public class PacmanAgent : Agent
         }*/
         
         // Collision with wall
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) // CORREGGERE non so come, non prende le collisioni giuste
         {
             AddReward(-0.08f);
+            Debug.Log("Wall hit!");
             RequestDecision();
-        }
+        }*/
         
         // Collision with ghost
         if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
         {
-            if (GameManager.instance.ghosts[0].frightened.enabled)
-            {
-                AddReward(0.50f);
-            }
-            else
+            if (!GameManager.instance.ghosts[0].frightened.enabled)
             {
                 if (GameManager.instance.lives > 0)
                 {
@@ -159,6 +158,10 @@ public class PacmanAgent : Agent
                     AddReward(-0.5f);
                     EndEpisode();
                 }
+            }
+            else
+            {
+                AddReward(0.25f);
             }
         }
     }
