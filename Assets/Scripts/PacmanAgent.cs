@@ -2,6 +2,7 @@ using System;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PacmanAgent : Agent
@@ -20,11 +21,12 @@ public class PacmanAgent : Agent
         return distance;
     }
 
-    private Vector2 GhostDistance(Vector3 ghostPosition)
+    private float GhostDistance(Vector3 ghostPosition)
     {
-        float distanceX = (GameManager.instance.pacman.transform.localPosition.x - ghostPosition.x);
-        float distanceY = (GameManager.instance.pacman.transform.localPosition.y - ghostPosition.y); // Volutamente non in val. assoluto
-        Vector2 res = new Vector2(distanceX, distanceY);
+        //float distanceX = (GameManager.instance.pacman.transform.localPosition.x - ghostPosition.x);
+        //float distanceY = (GameManager.instance.pacman.transform.localPosition.y - ghostPosition.y); // Volutamente non in val. assoluto
+        //Vector2 res = new Vector2(distanceX, distanceY);
+        float res = Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
         return res;
     }
 
@@ -58,7 +60,7 @@ public class PacmanAgent : Agent
         sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
         
         // Lives
-        // sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
+        sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
 
         // Score
         // sensor.AddObservation(GameManager.instance.score); // Forse eliminabile
@@ -81,30 +83,63 @@ public class PacmanAgent : Agent
         {
             case 0:
                 occ = pacman.movement.Occupied(pacman.movement.direction);
-                if (!occ) AddReward(0.001f); // Se va dritto e non è occupato
+                if (!occ) AddReward(0.008f); // Se va dritto e non è occupato
                 break;
             case 1:
                 occ = pacman.movement.Occupied(Vector2.up);
-                if (!occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) AddReward(0.005f); // Se gira correttamente ad un incrocio
-                if (occ) AddReward(-0.01f); // Se gira su un muro
+                if (!occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) {
+                    //Debug.Log("Buona svolta");
+                    AddReward(0.012f); // Se gira correttamente ad un incrocio
+                }
+                if (!occ && movementMemory == Vector2.down)
+                {
+                    //Debug.Log("Inversione!");
+                    AddReward(-0.016f);
+                }
+                //if (occ) AddReward(-0.01f); // Se gira su un muro
                 pacman.movement.SetDirection(Vector2.up);
                 break;
             case 2:
                 occ = pacman.movement.Occupied(Vector2.down);
-                if (!occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) AddReward(0.005f); // Se gira correttamente ad un incrocio
-                if (occ) AddReward(-0.01f); // Se gira su un muro
+                if (!occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) {
+                    //Debug.Log("Buona svolta");
+                    AddReward(0.012f); // Se gira correttamente ad un incrocio
+                }
+                if (!occ && movementMemory == Vector2.up)
+                {
+                    //Debug.Log("Inversione!");
+                    AddReward(-0.016f);
+                }
+                //if (occ) AddReward(-0.01f); // Se gira su un muro
                 pacman.movement.SetDirection(Vector2.down);
                 break;
             case 3:
                 occ = pacman.movement.Occupied(Vector2.left);
-                if (!occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) AddReward(0.005f); // Se gira correttamente ad un incrocio
-                if (occ) AddReward(-0.01f); // Se gira su un muro
+                if (!occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) {
+                    //Debug.Log("Buona svolta");
+                    AddReward(0.012f); // Se gira correttamente ad un incrocio
+                }
+                if (!occ && movementMemory == Vector2.right)
+                {
+                    //Debug.Log("Inversione!");
+                    AddReward(-0.016f);
+                }
+                //if (occ) AddReward(-0.01f); // Se gira su un muro
                 pacman.movement.SetDirection(Vector2.left);
                 break;
             case 4:
                 occ = pacman.movement.Occupied(Vector2.right);
-                if (!occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left) AddReward(0.005f); // Se gira correttamente ad un incrocio
-                if (occ) AddReward(-0.01f); // Se gira su un muro
+                if (!occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left)
+                {
+                    //Debug.Log("Buona svolta");
+                    AddReward(0.012f); // Se gira correttamente ad un incrocio
+                }
+                if (!occ && movementMemory == Vector2.left)
+                {
+                    //Debug.Log("Inversione!");
+                    AddReward(-0.016f);
+                }
+                //if (occ) AddReward(-0.01f); // Se gira su un muro
                 pacman.movement.SetDirection(Vector2.right);
                 break;
         }
@@ -130,7 +165,8 @@ public class PacmanAgent : Agent
         1. Penalizzare se rimane troppo nella stessa zona. -> vettore di posizioni trascorse
         2. Vicinanza ai fantasmi attiva la routine "scappa!" -> Va sulle euristiche
         3. Distanza dai fantasmini -> forse sostituire a posizione #FATTO
-        4. 
+        4. Provare con un raycast a capire se dietro "l'angolo" c'è un pellet
+        5. Incrementare rendita dei pellet
         */
         
         // Collision with pellet // --> SPOSTATO IN PELLET.CS <--
@@ -155,7 +191,7 @@ public class PacmanAgent : Agent
         }*/
         
         // Collision with ghost
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ghost"))
+        /*if (other.gameObject.layer == LayerMask.NameToLayer("Ghost")) // SPOSTATO IN GAME MANAGER
         {
             if (!GameManager.instance.ghosts[0].frightened.enabled)
             {
@@ -173,7 +209,7 @@ public class PacmanAgent : Agent
             else
             {
                 AddReward(0.1f); // Se mangia un fantasmino
-            }
+            }*/
         }
     }
-}
+

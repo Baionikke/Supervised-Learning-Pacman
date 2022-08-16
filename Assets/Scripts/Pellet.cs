@@ -12,7 +12,6 @@ public class Pellet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Pacman")) {
-            FindObjectOfType<PacmanAgent>().AddReward(0.08f);
             // Debug.Log("Pellet eaten!");
             Eat();
         }

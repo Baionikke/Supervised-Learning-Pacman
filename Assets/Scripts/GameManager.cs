@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Text livesText;
 
     public static GameManager instance { get; private set; }
+    private int pelletCount;
 
     private void Awake()
     {
@@ -50,6 +51,8 @@ public class GameManager : MonoBehaviour
             pellet.gameObject.SetActive(true);
         }
 
+        pelletCount = 0;
+
         ResetState();
     }
 
@@ -86,17 +89,18 @@ public class GameManager : MonoBehaviour
 
     public void PacmanEaten()
     {
-        pacman.DeathSequence();
+        FindObjectOfType<PacmanAgent>().AddReward(-5f);
+        //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
 
+        pacman.DeathSequence();
         SetLives(lives - 1);
 
         if (lives > 0) {
             Invoke(nameof(ResetState), 0f);
         } else {
-            //SetLives(3);
-            //SetScore(0);
-            //Invoke(nameof(ResetState), 0f);
-            GameOver();
+            FindObjectOfType<PacmanAgent>().AddReward(-5f);
+            FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            //GameOver();
         }
     }
 
@@ -104,6 +108,8 @@ public class GameManager : MonoBehaviour
     {
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
+        
+        FindObjectOfType<PacmanAgent>().AddReward(0.1f);
 
         ghostMultiplier++;
     }
@@ -111,12 +117,14 @@ public class GameManager : MonoBehaviour
     public void PelletEaten(Pellet pellet)
     {
         pellet.gameObject.SetActive(false);
-
+        pelletCount++;
+        double increment = 0.006 * pelletCount;
+        FindObjectOfType<PacmanAgent>().AddReward((float)increment);
         SetScore(score + pellet.points);
 
         if (!HasRemainingPellets())
         {
-            FindObjectOfType<PacmanAgent>().AddReward(20f);
+            FindObjectOfType<PacmanAgent>().AddReward(200f);
             Debug.Log("HA VINTO!");
             FindObjectOfType<PacmanAgent>().EndEpisode();
             //pacman.gameObject.SetActive(false);
