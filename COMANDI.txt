@@ -1,5 +1,8 @@
 Training:
 mlagents-learn configs/MLA-training.yaml --seed 2 --run-id run6
 
+Training a partire da run già chiusa:
+mlagents-learn configs/MLA-training.yaml --seed 2 --run-id run25 --init run23
+
 Per visualizzare risultati:
 tensorboard --logdir results --port 6006

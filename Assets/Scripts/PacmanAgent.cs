@@ -162,11 +162,12 @@ public class PacmanAgent : Agent
     private void OnCollisionEnter2D(Collision2D other)
     {
         /* TODO:
-        1. Penalizzare se rimane troppo nella stessa zona. -> vettore di posizioni trascorse
+        1. Penalizzare se rimane troppo nella stessa zona. -> vettore di posizioni trascorse #FATTO
         2. Vicinanza ai fantasmi attiva la routine "scappa!" -> Va sulle euristiche
         3. Distanza dai fantasmini -> forse sostituire a posizione #FATTO
-        4. Provare con un raycast a capire se dietro "l'angolo" c'è un pellet
-        5. Incrementare rendita dei pellet
+        4. Percezione di densità
+        5. Provare con un raycast a capire se dietro "l'angolo" c'è un pellet
+        6. Incrementare rendita dei pellet #FATTO
         */
         
         // Collision with pellet // --> SPOSTATO IN PELLET.CS <--

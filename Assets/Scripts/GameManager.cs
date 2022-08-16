@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellets())
         {
-            FindObjectOfType<PacmanAgent>().AddReward(200f);
+            FindObjectOfType<PacmanAgent>().AddReward(300f);
             Debug.Log("HA VINTO!");
             FindObjectOfType<PacmanAgent>().EndEpisode();
             //pacman.gameObject.SetActive(false);
