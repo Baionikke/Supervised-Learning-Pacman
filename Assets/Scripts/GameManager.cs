@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     {
         SetScore(0);
         SetLives(3);
+        pelletCount = 0;
         NewRound();
     }
 
@@ -50,9 +51,7 @@ public class GameManager : MonoBehaviour
         foreach (Transform pellet in pellets) {
             pellet.gameObject.SetActive(true);
         }
-
-        pelletCount = 0;
-
+        
         ResetState();
     }
 
@@ -90,7 +89,7 @@ public class GameManager : MonoBehaviour
     public void PacmanEaten()
     {
         FindObjectOfType<PacmanAgent>().AddReward(-5f);
-        //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
+        FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
 
         pacman.DeathSequence();
         SetLives(lives - 1);
@@ -99,7 +98,7 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(ResetState), 0f);
         } else {
             FindObjectOfType<PacmanAgent>().AddReward(-5f);
-            FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
             //GameOver();
         }
     }
@@ -109,7 +108,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
         
-        FindObjectOfType<PacmanAgent>().AddReward(0.1f);
+        FindObjectOfType<PacmanAgent>().AddReward(0.5f);
 
         ghostMultiplier++;
     }
