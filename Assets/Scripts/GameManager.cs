@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
 
         pacman.DeathSequence();
-        SetLives(lives - 1);
+        //SetLives(lives - 1); // PER RUN SU 3 VITE
 
         if (lives > 0) {
             Invoke(nameof(ResetState), 0f);

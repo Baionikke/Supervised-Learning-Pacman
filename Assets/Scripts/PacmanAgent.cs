@@ -46,7 +46,7 @@ public class PacmanAgent : Agent
 	    	GameManager.instance.Start();
     }
     
-    public override void CollectObservations(VectorSensor sensor) // -> 501
+    public override void CollectObservations(VectorSensor sensor) // -> 
     {
         // Position
         sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition);
@@ -70,7 +70,7 @@ public class PacmanAgent : Agent
         
         // Ghosts are Frightened
         sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
-        
+
         // Lives
         sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
 
