@@ -10,21 +10,22 @@ public class PacmanAgent : Agent
     private Pacman pacman { get; set; }
     private Vector2 movementMemory;
     private Vector2 positionMemory;
-    public LayerMask ghostLayer;
+    public LayerMask ghostAndWallLayer;
+    public LayerMask obstacleLayer;
 
     private float PelletDistance(Transform pellet)
     {
         Vector2 pacmanPos = new Vector2(GameManager.instance.pacman.transform.localPosition.x,
             GameManager.instance.pacman.transform.localPosition.y);
         Vector2 pelletPos = new Vector2(pellet.localPosition.x, pellet.localPosition.y);
-        float distance = Vector2.Distance(pacmanPos, pelletPos);
+        float distance = Vector2.Distance(pacmanPos/13.5f, pelletPos/13.5f);
         return distance;
     }
 
     private Vector2 GhostDistanceXY(Vector3 ghostPosition)
     {
-        float distanceX = (GameManager.instance.pacman.transform.localPosition.x - ghostPosition.x);
-        float distanceY = (GameManager.instance.pacman.transform.localPosition.y - ghostPosition.y); // Volutamente non in val. assoluto
+        float distanceX = (GameManager.instance.pacman.transform.localPosition.x/13.5f - ghostPosition.x);
+        float distanceY = (GameManager.instance.pacman.transform.localPosition.y/13.5f - ghostPosition.y); // Volutamente non in val. assoluto
         Vector2 res = new Vector2(distanceX, distanceY);
         //float res = Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
         return res;
@@ -32,39 +33,67 @@ public class PacmanAgent : Agent
 
     private float GhostDistance(Vector3 ghostPosition)
     {
-        return Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
+        return Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition/13.5f);
     }
 
     private bool GhostInSight(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.5f, 0f, direction, 5f, ghostLayer);
-        return hit.collider != null;
+        bool ghostInSight = false;
+        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.3f, 0f, direction, 5f, ghostAndWallLayer);
+        if (hit.collider)
+        {
+            if (hit.collider.CompareTag("Ghosts")) ghostInSight = true;
+        }
+        return ghostInSight;
+    }
+
+    private bool HittingWall(Vector2 direction)
+    {
+        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.3f, 0f, direction, 0.6f, obstacleLayer);
+        return hit.collider;
+    }
+
+    private bool HittingLateralWall(Vector2 directionOfMovement)
+    {
+        Vector2 perpendicularClockwise = new Vector2(-directionOfMovement.y, directionOfMovement.x);
+        Vector2 perpendicularCounterClockwise = new Vector2(directionOfMovement.y, -directionOfMovement.x);
+        RaycastHit2D hit1 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.2f, 0f, perpendicularClockwise, 0.6f, obstacleLayer);
+        RaycastHit2D hit2 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.2f, 0f, perpendicularCounterClockwise, 0.6f, obstacleLayer);
+        return hit1.collider && hit2.collider;
     }
 
     public override void OnEpisodeBegin() // TODO: to understand how the method works
     {
 	    	GameManager.instance.Start();
     }
-    
+
+    public void FixedUpdate()
+    {
+        Vector2 direction = GameManager.instance.pacman.movement.direction;
+        if (HittingWall(direction)) RequestDecision();
+        if (!HittingLateralWall(direction)) RequestDecision();
+        if (GhostInSight(direction)) RequestDecision();
+    }
+
     public override void CollectObservations(VectorSensor sensor) // -> 
     {
         // Position
-        sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition);
+        sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition/13.5f);
         sensor.AddObservation(GameManager.instance.pacman.movement.direction);
         
         // Pellets
-        foreach (Transform pellet in GameManager.instance.pellets)
+        /*foreach (Transform pellet in GameManager.instance.pellets)
         {
             //sensor.AddObservation(pellet.localPosition); // Questa forse non serve
             sensor.AddObservation(pellet.gameObject.activeSelf);
             sensor.AddObservation(PelletDistance(pellet)); // TODO: Pensare al discorso dei 20 più vicini
-        }
-
+        } */
+        
         // Ghost
         for (int i = 0; i < GameManager.instance.ghosts.Length; i++)
         {
-            sensor.AddObservation(GhostDistanceXY(GameManager.instance.ghosts[i].transform.localPosition));
-            sensor.AddObservation(GhostDistance(GameManager.instance.ghosts[i].transform.localPosition));
+            sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[i].transform.localPosition)/13.5f));
+            sensor.AddObservation(GhostDistance((GameManager.instance.ghosts[i].transform.localPosition)/13.5f));
             sensor.AddObservation(GameManager.instance.ghosts[i].movement.direction);
         }
         
