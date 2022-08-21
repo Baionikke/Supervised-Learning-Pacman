@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
         }
 
         PelletEaten(pellet);
+        FindObjectOfType<PacmanAgent>().AddReward(1f);
         CancelInvoke(nameof(ResetGhostMultiplier));
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
     }

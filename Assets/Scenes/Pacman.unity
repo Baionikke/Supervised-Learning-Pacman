@@ -168,7 +168,7 @@ MonoBehaviour:
   m_SensorName: RayPerceptionSensor-Ghosts
   m_DetectableTags:
   - Ghosts
-  m_RaysPerDirection: 4
+  m_RaysPerDirection: 2
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.3
   m_RayLength: 5
@@ -178,6 +178,36 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1184234541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184234517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &1184234542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184234517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 10000
+  DemonstrationName: first
+  DemonstrationDirectory: 
 --- !u!1 &1405367341
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,16 +512,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622850, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908983622850, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_InferenceDevice
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622850, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622850, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_BrainParameters.NumStackedVectorObservations
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622851, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -507,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: MaxStep
-      value: 2000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: obstacleLayer.m_Bits

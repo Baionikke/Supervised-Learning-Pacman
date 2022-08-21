@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -18,14 +20,38 @@ public class PacmanAgent : Agent
         Vector2 pacmanPos = new Vector2(GameManager.instance.pacman.transform.localPosition.x,
             GameManager.instance.pacman.transform.localPosition.y);
         Vector2 pelletPos = new Vector2(pellet.localPosition.x, pellet.localPosition.y);
-        float distance = Vector2.Distance(pacmanPos/13.5f, pelletPos/13.5f);
+        float distance = Vector2.Distance(pacmanPos / 13.5f, pelletPos / 13.5f);
         return distance;
+    }
+
+    private float TwentyDistancesFromPellet(SortedDictionary<float, Vector2> distancesFromPellet,
+        Vector2 pacmanPosition, int cont)
+    {
+        float mean20Pellet = 0;
+        if (cont > 20)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                mean20Pellet += Vector2.Distance(pacmanPosition, distancesFromPellet.ElementAt(j).Value);
+            }
+        }
+        else
+        {
+            for (int j = 0; j < cont; j++)
+            {
+                mean20Pellet += Vector2.Distance(pacmanPosition, distancesFromPellet.ElementAt(j).Value);
+            }
+        }
+
+        return mean20Pellet / cont;
     }
 
     private Vector2 GhostDistanceXY(Vector3 ghostPosition)
     {
-        float distanceX = (GameManager.instance.pacman.transform.localPosition.x/13.5f - ghostPosition.x);
-        float distanceY = (GameManager.instance.pacman.transform.localPosition.y/13.5f - ghostPosition.y); // Volutamente non in val. assoluto
+        float distanceX = (GameManager.instance.pacman.transform.localPosition.x / 13.5f - ghostPosition.x);
+        float distanceY =
+            (GameManager.instance.pacman.transform.localPosition.y / 13.5f -
+             ghostPosition.y); // Volutamente non in val. assoluto
         Vector2 res = new Vector2(distanceX, distanceY);
         //float res = Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
         return res;
@@ -33,23 +59,26 @@ public class PacmanAgent : Agent
 
     private float GhostDistance(Vector3 ghostPosition)
     {
-        return Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition/13.5f);
+        return Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition / 13.5f);
     }
 
     private bool GhostInSight(Vector2 direction)
     {
         bool ghostInSight = false;
-        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.3f, 0f, direction, 5f, ghostAndWallLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
+            Vector2.one * 0.3f, 0f, direction, 5f, ghostAndWallLayer);
         if (hit.collider)
         {
             if (hit.collider.CompareTag("Ghosts")) ghostInSight = true;
         }
+
         return ghostInSight;
     }
 
     private bool HittingWall(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.3f, 0f, direction, 0.6f, obstacleLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
+            Vector2.one * 0.3f, 0f, direction, 0.6f, obstacleLayer);
         return hit.collider;
     }
 
@@ -57,46 +86,65 @@ public class PacmanAgent : Agent
     {
         Vector2 perpendicularClockwise = new Vector2(-directionOfMovement.y, directionOfMovement.x);
         Vector2 perpendicularCounterClockwise = new Vector2(directionOfMovement.y, -directionOfMovement.x);
-        RaycastHit2D hit1 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.2f, 0f, perpendicularClockwise, 0.6f, obstacleLayer);
-        RaycastHit2D hit2 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position, Vector2.one * 0.2f, 0f, perpendicularCounterClockwise, 0.6f, obstacleLayer);
+        RaycastHit2D hit1 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
+            Vector2.one * 0.2f, 0f, perpendicularClockwise, 0.6f, obstacleLayer);
+        RaycastHit2D hit2 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
+            Vector2.one * 0.2f, 0f, perpendicularCounterClockwise, 0.6f, obstacleLayer);
         return hit1.collider && hit2.collider;
     }
 
     public override void OnEpisodeBegin() // TODO: to understand how the method works
     {
-	    	GameManager.instance.Start();
+        GameManager.instance.Start();
     }
 
-    public void FixedUpdate()
+    /*public void FixedUpdate() // Non funziona il controllo manuale poi
     {
         Vector2 direction = GameManager.instance.pacman.movement.direction;
         if (HittingWall(direction)) RequestDecision();
         if (!HittingLateralWall(direction)) RequestDecision();
         if (GhostInSight(direction)) RequestDecision();
-    }
+    }*/
 
     public override void CollectObservations(VectorSensor sensor) // -> 
     {
         // Position
-        sensor.AddObservation((Vector2)GameManager.instance.pacman.transform.localPosition/13.5f);
+        Vector2 pacmanPos = GameManager.instance.pacman.transform.localPosition / 13.5f;
+        sensor.AddObservation(pacmanPos);
         sensor.AddObservation(GameManager.instance.pacman.movement.direction);
-        
+
         // Pellets
-        /*foreach (Transform pellet in GameManager.instance.pellets)
+        SortedDictionary<float, Vector2> distancesFromPellet = new SortedDictionary<float, Vector2>();
+
+        foreach (Transform pellet in GameManager.instance.pellets)
         {
-            //sensor.AddObservation(pellet.localPosition); // Questa forse non serve
-            sensor.AddObservation(pellet.gameObject.activeSelf);
-            sensor.AddObservation(PelletDistance(pellet)); // TODO: Pensare al discorso dei 20 più vicini
-        } */
-        
+            if (pellet.gameObject.activeSelf)
+            {
+                Vector2 pelletsPosition = new Vector2(pellet.localPosition.x / 13.5f, pellet.localPosition.y / 13.5f);
+                if (!distancesFromPellet.ContainsKey(PelletDistance(pellet)))
+                {
+                    distancesFromPellet.Add(PelletDistance(pellet), pelletsPosition);
+                }
+            }
+        }
+
+        if (distancesFromPellet.Count > 0)
+        {
+            sensor.AddObservation(TwentyDistancesFromPellet(distancesFromPellet, pacmanPos, distancesFromPellet.Count));
+        }
+        else
+        {
+            sensor.AddObservation(0f);
+        }
+
         // Ghost
         for (int i = 0; i < GameManager.instance.ghosts.Length; i++)
         {
-            sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[i].transform.localPosition)/13.5f));
-            sensor.AddObservation(GhostDistance((GameManager.instance.ghosts[i].transform.localPosition)/13.5f));
+            sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[i].transform.localPosition) / 13.5f));
+            sensor.AddObservation(GhostDistance((GameManager.instance.ghosts[i].transform.localPosition) / 13.5f));
             sensor.AddObservation(GameManager.instance.ghosts[i].movement.direction);
         }
-        
+
         // Ghosts are Frightened
         sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
 
@@ -120,6 +168,7 @@ public class PacmanAgent : Agent
             // Debug.Log("Stuck!");
             AddReward(-0.1f); // Se fermo nello stesso punto
         }
+
         // Set the new direction based on the current input
         switch (movementControl)
         {
@@ -131,13 +180,16 @@ public class PacmanAgent : Agent
                     AddReward(-0.1f); // Stai andando contro un fantasma
                     //Debug.Log("Ghost in sight");
                 }
+
                 break;
             case 1:
                 occ = pacman.movement.Occupied(Vector2.up);
-                if (!occ && movementMemory!=Vector2.up && movementMemory!=Vector2.down) {
+                if (!occ && movementMemory != Vector2.up && movementMemory != Vector2.down)
+                {
                     //Debug.Log("Buona svolta");
                     AddReward(0.012f); // Se gira correttamente ad un incrocio
                 }
+
                 if (!occ && movementMemory == Vector2.down)
                 {
                     //Debug.Log("Inversione!");
@@ -148,16 +200,18 @@ public class PacmanAgent : Agent
                 {
                     AddReward(-0.1f); // Stai andando contro un fantasma
                     //Debug.Log("Ghost in sight"); 
-                } 
-                
+                }
+
                 pacman.movement.SetDirection(Vector2.up);
                 break;
             case 2:
                 occ = pacman.movement.Occupied(Vector2.down);
-                if (!occ && movementMemory!=Vector2.down && movementMemory!=Vector2.up) {
+                if (!occ && movementMemory != Vector2.down && movementMemory != Vector2.up)
+                {
                     //Debug.Log("Buona svolta");
                     AddReward(0.012f); // Se gira correttamente ad un incrocio
                 }
+
                 if (!occ && movementMemory == Vector2.up)
                 {
                     //Debug.Log("Inversione!");
@@ -168,36 +222,40 @@ public class PacmanAgent : Agent
                 {
                     AddReward(-0.1f); // Stai andando contro un fantasma
                     //Debug.Log("Ghost in sight"); 
-                } 
+                }
 
                 pacman.movement.SetDirection(Vector2.down);
                 break;
             case 3:
                 occ = pacman.movement.Occupied(Vector2.left);
-                if (!occ && movementMemory!=Vector2.left && movementMemory!=Vector2.right) {
+                if (!occ && movementMemory != Vector2.left && movementMemory != Vector2.right)
+                {
                     //Debug.Log("Buona svolta");
                     AddReward(0.012f); // Se gira correttamente ad un incrocio
                 }
+
                 if (!occ && movementMemory == Vector2.right)
                 {
                     //Debug.Log("Inversione!");
                     AddReward(-0.016f);
                 }
-                if (GhostInSight(Vector2.left) && !GameManager.instance.ghosts[0].frightened) 
+
+                if (GhostInSight(Vector2.left) && !GameManager.instance.ghosts[0].frightened)
                 {
                     AddReward(-0.1f); // Stai andando contro un fantasma
                     //Debug.Log("Ghost in sight");
                 }
-                
+
                 pacman.movement.SetDirection(Vector2.left);
                 break;
             case 4:
                 occ = pacman.movement.Occupied(Vector2.right);
-                if (!occ && movementMemory!=Vector2.right && movementMemory!=Vector2.left)
+                if (!occ && movementMemory != Vector2.right && movementMemory != Vector2.left)
                 {
                     //Debug.Log("Buona svolta");
                     AddReward(0.012f); // Se gira correttamente ad un incrocio
                 }
+
                 if (!occ && movementMemory == Vector2.left)
                 {
                     //Debug.Log("Inversione!");
@@ -208,7 +266,7 @@ public class PacmanAgent : Agent
                 {
                     AddReward(-0.1f);
                     //Debug.Log("Ghost in sight"); // Stai andando contro un fantasma
-                } 
+                }
 
                 pacman.movement.SetDirection(Vector2.right);
                 break;
@@ -229,58 +287,30 @@ public class PacmanAgent : Agent
         }
     }*/
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public override void Heuristic(in ActionBuffers actionsOut)
     {
-        /* TODO:
-        1. Penalizzare se rimane troppo nella stessa zona. -> vettore di posizioni trascorse #FATTO
-        2. Vicinanza ai fantasmi attiva la routine "scappa!" -> Va sulle euristiche
-        3. Distanza dai fantasmini -> forse sostituire a posizione #FATTO
-        4. Percezione di densità
-        5. Provare con un raycast a capire se dietro "l'angolo" c'è un pellet
-        6. Incrementare rendita dei pellet #FATTO
-        */
-        
-        // Collision with pellet // --> SPOSTATO IN PELLET.CS <--
-        /*if (other.gameObject.layer == LayerMask.NameToLayer("Pellet"))
+        var discreteActionsOut = actionsOut.DiscreteActions;
+        // Set the new direction based on the current input
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            AddReward(0.3f);
-            Debug.Log("preso!");
-            if (!FindObjectOfType<GameManager>().HasRemainingPellets())
-            {
-                gameObject.SetActive(false);
-                AddReward(1f);
-                EndEpisode();
-            }
-        }*/
-        
-        // Collision with wall
-        /*if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) // CORREGGERE non so come, non prende le collisioni giuste
+            discreteActionsOut[0] = 1;
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            AddReward(-0.08f);
-            Debug.Log("Wall hit!");
-            RequestDecision();
-        }*/
-        
-        // Collision with ghost
-        /*if (other.gameObject.layer == LayerMask.NameToLayer("Ghost")) // SPOSTATO IN GAME MANAGER
+            discreteActionsOut[0] = 2;
+        }
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (!GameManager.instance.ghosts[0].frightened.enabled)
-            {
-                if (GameManager.instance.lives > 0)
-                {
-                    AddReward(-0.25f); // Se mangiato dal fantasma
-                    EndEpisode();
-                }
-                else
-                {
-                    AddReward(-0.5f); // Se mangiato dal fantasma e game over (ha senso solo se non va in EndEpisode quando è soltanto mangiato dal fantasma
-                    EndEpisode();
-                }
-            }
-            else
-            {
-                AddReward(0.1f); // Se mangia un fantasmino
-            }*/
+            discreteActionsOut[0] = 3;
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            discreteActionsOut[0] = 4;
+        }
+        else
+        {
+            discreteActionsOut[0] = 0;
         }
     }
-
+}
+    

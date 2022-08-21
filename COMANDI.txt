@@ -6,3 +6,12 @@ mlagents-learn configs/MLA-training.yaml --seed 2 --run-id run25 --init run23
 
 Per visualizzare risultati:
 tensorboard --logdir results --port 6006
+
+######################################################################
+
+Training del 21 Agosto:
+1° step:
+mlagents-learn configs/MLA-training-IT.yaml --seed 2 --run-id imitation_run3
+
+2° step:
+mlagents-learn configs/MLA-training.yaml --seed 2 --run-id imitation_run3_long --init imitation_run3
