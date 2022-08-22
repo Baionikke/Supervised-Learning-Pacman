@@ -205,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Record: 0
-  NumStepsToRecord: 2000
-  DemonstrationName: first
+  NumStepsToRecord: 10000
+  DemonstrationName: second
   DemonstrationDirectory: 
 --- !u!1 &1405367341
 GameObject:
