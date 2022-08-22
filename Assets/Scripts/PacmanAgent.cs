@@ -138,7 +138,7 @@ public class PacmanAgent : Agent
         }
         else
         {
-            sensor.AddObservation(0f);
+            sensor.AddObservation(Vector2.zero);
         }
 
         // Ghost
