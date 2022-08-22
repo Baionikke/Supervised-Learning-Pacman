@@ -24,26 +24,30 @@ public class PacmanAgent : Agent
         return distance;
     }
 
-    private float TwentyDistancesFromPellet(SortedDictionary<float, Vector2> distancesFromPellet,
+    private Vector2 TwentyDistancesFromPellet(SortedDictionary<float, Vector2> distancesFromPellet,
         Vector2 pacmanPosition, int cont)
     {
-        float mean20Pellet = 0;
+        float mean20PelletX = 0;
+        float mean20PelletY = 0;
         if (cont > 20)
         {
             for (int j = 0; j < 20; j++)
             {
-                mean20Pellet += Vector2.Distance(pacmanPosition, distancesFromPellet.ElementAt(j).Value);
+                //mean20Pellet += Vector2.Distance(pacmanPosition, distancesFromPellet.ElementAt(j).Value);
+                mean20PelletX += distancesFromPellet.ElementAt(j).Value.x - pacmanPosition.x;
+                mean20PelletY += distancesFromPellet.ElementAt(j).Value.y - pacmanPosition.y;
             }
         }
         else
         {
             for (int j = 0; j < cont; j++)
             {
-                mean20Pellet += Vector2.Distance(pacmanPosition, distancesFromPellet.ElementAt(j).Value);
+                mean20PelletX += distancesFromPellet.ElementAt(j).Value.x - pacmanPosition.x;
+                mean20PelletY += distancesFromPellet.ElementAt(j).Value.y - pacmanPosition.y;
             }
         }
-
-        return mean20Pellet / cont;
+        Vector2 mean20Pellet = new Vector2(mean20PelletX/cont, mean20PelletY/cont);
+        return mean20Pellet.normalized;
     }
 
     private Vector2 GhostDistanceXY(Vector3 ghostPosition)
