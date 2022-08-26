@@ -47,7 +47,7 @@ public class PacmanAgent : Agent
             }
         }
         Vector2 mean20Pellet = new Vector2(mean20PelletX/cont, mean20PelletY/cont);
-        return mean20Pellet.normalized;
+        return mean20Pellet/13.5f;
     }
 
     private Vector2 GhostDistanceXY(Vector3 ghostPosition)
@@ -280,6 +280,8 @@ public class PacmanAgent : Agent
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        
+        AddReward(-0.005f); //No win
     }
 
     /*private void OnCollisionExit2D(Collision2D other) // OnCollisionStay2D non funziona perché pacman tocca sempre i muri laterali

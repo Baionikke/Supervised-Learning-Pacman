@@ -128,56 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6609892907236716058, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
   m_PrefabInstance: {fileID: 6609892907564111061}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1184234529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184234517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor-Pellets
-  m_DetectableTags:
-  - Pellets
-  m_RaysPerDirection: 2
-  m_MaxRayDegrees: 180
-  m_SphereCastRadius: 0.3
-  m_RayLength: 2
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294965512
-  m_ObservationStacks: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1184234530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184234517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor-Ghosts
-  m_DetectableTags:
-  - Ghosts
-  m_RaysPerDirection: 2
-  m_MaxRayDegrees: 180
-  m_SphereCastRadius: 0.3
-  m_RayLength: 5
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294965384
-  m_ObservationStacks: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1184234541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,9 +155,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Record: 0
-  NumStepsToRecord: 10000
-  DemonstrationName: second
+  NumStepsToRecord: 4096
+  DemonstrationName: third1ghost
   DemonstrationDirectory: 
+--- !u!114 &1184234544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184234517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor-Ghosts
+  m_DetectableTags:
+  - Ghosts
+  m_RaysPerDirection: 2
+  m_MaxRayDegrees: 180
+  m_SphereCastRadius: 0.25
+  m_RayLength: 5
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294965896
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0.8960533, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1184234545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184234517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor-Pellets
+  m_DetectableTags:
+  - Pellets
+  m_RaysPerDirection: 2
+  m_MaxRayDegrees: 180
+  m_SphereCastRadius: 0.3
+  m_RayLength: 26
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294966024
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0.9227282, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1405367341
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +292,17 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1903833745 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6609892908818643172, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+  m_PrefabInstance: {fileID: 6609892907564111061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90e4b56b62e12c4dab1ac724d70d134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6609892907564111061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -359,6 +370,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6609892907943683026, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892907943683026, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: initialBehavior
+      value: 
+      objectReference: {fileID: 1903833745}
     - target: {fileID: 6609892908239211335, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -383,9 +402,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6609892908443271966, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: duration
+      value: 14000
+      objectReference: {fileID: 0}
     - target: {fileID: 6609892908443271967, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908448883161, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: duration
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908448883165, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -447,6 +474,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6609892908818643174, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908818643175, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: duration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6609892908818643192, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -466,6 +501,10 @@ PrefabInstance:
     - target: {fileID: 6609892908818643195, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908957643687, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: duration
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908957643704, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_IsActive
@@ -541,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: MaxStep
-      value: 0
+      value: 8192
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: obstacleLayer.m_Bits

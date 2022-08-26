@@ -1,0 +1,65 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 199880,
+                "file_path": "results/incrementale4/My Behavior/My Behavior-199880.onnx",
+                "reward": 135.41033413675098,
+                "creation_time": 1661526381.7199755,
+                "auxillary_file_paths": [
+                    "results/incrementale4/My Behavior/My Behavior-199880.pt"
+                ]
+            },
+            {
+                "steps": 299883,
+                "file_path": "results/incrementale4/My Behavior/My Behavior-299883.onnx",
+                "reward": 176.4341166860917,
+                "creation_time": 1661530672.8472543,
+                "auxillary_file_paths": [
+                    "results/incrementale4/My Behavior/My Behavior-299883.pt"
+                ]
+            },
+            {
+                "steps": 399918,
+                "file_path": "results/incrementale4/My Behavior/My Behavior-399918.onnx",
+                "reward": 153.7803146764636,
+                "creation_time": 1661534996.119692,
+                "auxillary_file_paths": [
+                    "results/incrementale4/My Behavior/My Behavior-399918.pt"
+                ]
+            },
+            {
+                "steps": 499972,
+                "file_path": "results/incrementale4/My Behavior/My Behavior-499972.onnx",
+                "reward": 200.68990862369537,
+                "creation_time": 1661539271.1391845,
+                "auxillary_file_paths": [
+                    "results/incrementale4/My Behavior/My Behavior-499972.pt"
+                ]
+            },
+            {
+                "steps": 500100,
+                "file_path": "results/incrementale4/My Behavior/My Behavior-500100.onnx",
+                "reward": 200.68990862369537,
+                "creation_time": 1661539272.287868,
+                "auxillary_file_paths": [
+                    "results/incrementale4/My Behavior/My Behavior-500100.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500100,
+            "file_path": "results/incrementale4/My Behavior.onnx",
+            "reward": 200.68990862369537,
+            "creation_time": 1661539272.287868,
+            "auxillary_file_paths": [
+                "results/incrementale4/My Behavior/My Behavior-500100.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.29.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}

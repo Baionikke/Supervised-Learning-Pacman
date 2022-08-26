@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("HA VINTO!");
             FindObjectOfType<PacmanAgent>().EndEpisode();
             //pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3f);
+            //Invoke(nameof(NewRound), 3f);
         }
     }
 
