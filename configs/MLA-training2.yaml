@@ -15,7 +15,7 @@ behaviors:
       normalize: true
       hidden_units: 256
       num_layers: 3
-      vis_encode_type: simple
+      vis_encode_type: resnet
       use_recurrent: true
       memory:
         sequence_length: 32
