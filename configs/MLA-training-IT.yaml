@@ -44,7 +44,11 @@ behaviors:
     threaded: false
     self_play: null
     behavioral_cloning:
+<<<<<<< Updated upstream
       demo_path: Assets/Demonstrations/third2ghost.demo
+=======
+      demo_path: Assets/Demonstrations/runWithIncGhosts_4.demo
+>>>>>>> Stashed changes
       strength: 0.5
       steps: 500000
       samples_per_update: 2048

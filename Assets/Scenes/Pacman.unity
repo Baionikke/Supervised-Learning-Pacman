@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   m_SensorName: RayPerceptionSensor-Pellets
   m_DetectableTags:
   - Pellets
@@ -208,6 +209,12 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0.9227282, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+=======
+  Record: 0
+  NumStepsToRecord: 5000
+  DemonstrationName: runWithIncGhosts_4
+  DemonstrationDirectory: D:\Univ\Laurea Magistrale\Computer Graphics e Multimedia\Progetto\Supervised-Learning-Pacman\Assets\Demonstrations
+>>>>>>> Stashed changes
 --- !u!1 &1405367341
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,11 +411,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908443271966, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
+<<<<<<< Updated upstream
       value: 14000
+=======
+      value: 16
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908443271967, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 10
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908448883161, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: duration
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908448883161, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
@@ -476,7 +491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908818643174, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_Enabled
+<<<<<<< Updated upstream
       value: 0
+=======
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908818643175, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
@@ -504,7 +523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908957643687, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
+<<<<<<< Updated upstream
       value: 14000
+=======
+      value: 8
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908957643704, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_IsActive
@@ -581,6 +604,14 @@ PrefabInstance:
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: MaxStep
       value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: GhostLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: pelletLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: obstacleLayer.m_Bits

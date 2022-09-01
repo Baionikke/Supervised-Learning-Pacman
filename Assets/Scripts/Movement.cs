@@ -33,6 +33,16 @@ public class Movement : MonoBehaviour
         rigidbody.isKinematic = false;
         enabled = true;
     }
+    
+    /*public void ResetStateGhost()
+    {
+        speedMultiplier = 1f;
+        direction = Vector2.zero;
+        nextDirection = Vector2.zero;
+        transform.position = startingPosition;
+        rigidbody.isKinematic = false;
+        enabled = true;
+    }*/
 
     private void Update()
     {

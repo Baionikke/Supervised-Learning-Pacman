@@ -1,0 +1,56 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 99889,
+                "file_path": "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-99889.onnx",
+                "reward": 131.1838662624359,
+                "creation_time": 1661510036.5488555,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-99889.pt"
+                ]
+            },
+            {
+                "steps": 199967,
+                "file_path": "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-199967.onnx",
+                "reward": 135.87880184650422,
+                "creation_time": 1661513917.7749925,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-199967.pt"
+                ]
+            },
+            {
+                "steps": 299918,
+                "file_path": "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-299918.onnx",
+                "reward": 161.68685836451394,
+                "creation_time": 1661517654.8701835,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-299918.pt"
+                ]
+            },
+            {
+                "steps": 300046,
+                "file_path": "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-300046.onnx",
+                "reward": 161.68685836451394,
+                "creation_time": 1661517655.4759436,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-300046.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 300046,
+            "file_path": "results\\imitationRunWithIncGhosts_3\\My Behavior.onnx",
+            "reward": 161.68685836451394,
+            "creation_time": 1661517655.4759436,
+            "auxillary_file_paths": [
+                "results\\imitationRunWithIncGhosts_3\\My Behavior\\My Behavior-300046.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

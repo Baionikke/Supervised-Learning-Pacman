@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance { get; private set; }
     private int pelletCount;
+    private int tot_games = 0;
+    private int win_games = 0;
 
     private void Awake()
     {
@@ -88,17 +90,18 @@ public class GameManager : MonoBehaviour
 
     public void PacmanEaten()
     {
-        FindObjectOfType<PacmanAgent>().AddReward(-5f);
-        FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
+        FindObjectOfType<PacmanAgent>().AddReward(-7f);
+        //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
 
         pacman.DeathSequence();
-        //SetLives(lives - 1); // PER RUN SU 3 VITE
+        SetLives(lives - 1); // PER RUN SU 3 VITE
 
         if (lives > 0) {
             Invoke(nameof(ResetState), 0f);
         } else {
-            FindObjectOfType<PacmanAgent>().AddReward(-5f);
-            //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            FindObjectOfType<PacmanAgent>().AddReward(-20f);
+            FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            tot_games += 1;
             //GameOver();
         }
     }
@@ -108,7 +111,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
         
-        FindObjectOfType<PacmanAgent>().AddReward(0.5f);
+        FindObjectOfType<PacmanAgent>().AddReward(2f);
 
         ghostMultiplier++;
     }
@@ -123,11 +126,18 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellets())
         {
+            win_games += 1;
             FindObjectOfType<PacmanAgent>().AddReward(300f);
-            Debug.Log("HA VINTO!");
+            //Debug.Log("HA VINTO!");
+            Debug.Log("Win/Tot Games: " + win_games + " / " + tot_games);
             FindObjectOfType<PacmanAgent>().EndEpisode();
+<<<<<<< Updated upstream
             //pacman.gameObject.SetActive(false);
             //Invoke(nameof(NewRound), 3f);
+=======
+            pacman.gameObject.SetActive(false);
+            Invoke(nameof(NewRound), 3f);
+>>>>>>> Stashed changes
         }
     }
 
@@ -138,7 +148,33 @@ public class GameManager : MonoBehaviour
         }
 
         PelletEaten(pellet);
-        FindObjectOfType<PacmanAgent>().AddReward(1f);
+        
+        if (ghosts[0].gameObject.activeSelf)
+        {
+            bool dist = false;
+            for (int i = 0; i < ghosts.Length; i++)
+            {
+                if (FindObjectOfType<PacmanAgent>().GhostDistance(ghosts[i].transform.localPosition / 13.5f) <= 3f)
+                {
+                    FindObjectOfType<PacmanAgent>().AddReward(5f);
+                    dist = true;
+                    break;
+                }
+                if (FindObjectOfType<PacmanAgent>().GhostDistance(ghosts[i].transform.localPosition / 13.5f) > 3f && 
+                    FindObjectOfType<PacmanAgent>().GhostDistance(ghosts[i].transform.localPosition / 13.5f) <= 5f)
+                {
+                    FindObjectOfType<PacmanAgent>().AddReward(3f);
+                    dist = true;
+                    break;
+                }
+            }
+            
+            if (dist == false)
+            {
+                FindObjectOfType<PacmanAgent>().AddReward(-0.1f);
+            }
+        }
+
         CancelInvoke(nameof(ResetGhostMultiplier));
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
     }

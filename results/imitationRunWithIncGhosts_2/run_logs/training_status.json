@@ -1,0 +1,65 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 99881,
+                "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-99881.onnx",
+                "reward": 100.66328527033329,
+                "creation_time": 1661468536.337179,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-99881.pt"
+                ]
+            },
+            {
+                "steps": 121791,
+                "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-121791.onnx",
+                "reward": null,
+                "creation_time": 1661469372.4560401,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-121791.pt"
+                ]
+            },
+            {
+                "steps": 199909,
+                "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-199909.onnx",
+                "reward": 116.50509123368697,
+                "creation_time": 1661499822.7969632,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-199909.pt"
+                ]
+            },
+            {
+                "steps": 299907,
+                "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-299907.onnx",
+                "reward": 121.376997590065,
+                "creation_time": 1661503626.4965448,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-299907.pt"
+                ]
+            },
+            {
+                "steps": 300035,
+                "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-300035.onnx",
+                "reward": 121.376997590065,
+                "creation_time": 1661503627.23751,
+                "auxillary_file_paths": [
+                    "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-300035.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 300035,
+            "file_path": "results\\imitationRunWithIncGhosts_2\\My Behavior.onnx",
+            "reward": 121.376997590065,
+            "creation_time": 1661503627.23751,
+            "auxillary_file_paths": [
+                "results\\imitationRunWithIncGhosts_2\\My Behavior\\My Behavior-300035.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
