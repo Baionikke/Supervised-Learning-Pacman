@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Record: 0
   NumStepsToRecord: 4096
-  DemonstrationName: third1ghost
+  DemonstrationName: third2ghost
   DemonstrationDirectory: 
 --- !u!114 &1184234544
 MonoBehaviour:
@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908448883161, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 8
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908448883165, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -580,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: MaxStep
-      value: 8192
+      value: 20480
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: obstacleLayer.m_Bits
