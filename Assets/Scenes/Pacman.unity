@@ -390,6 +390,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6609892908379924811, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6609892908443271954, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -436,15 +440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908530887675, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908530887675, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.035101
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908530887675, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.204616
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609892908530887675, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -589,6 +593,10 @@ PrefabInstance:
     - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: ghostAndWallLayer.m_Bits
       value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609892908983622861, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: pelletAndWallLayer.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6609892908983622860, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}

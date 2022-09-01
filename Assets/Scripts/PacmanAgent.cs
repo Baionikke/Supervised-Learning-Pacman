@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -12,6 +13,7 @@ public class PacmanAgent : Agent
     private Pacman pacman { get; set; }
     private Vector2 movementMemory;
     private Vector2 positionMemory;
+    private Vector2 suggestedDirection;
     private float distanceBlinky;
     private float distanceInky;
     private float distancePinky;
@@ -146,31 +148,63 @@ public class PacmanAgent : Agent
     {
         bool occ = pacman.movement.Occupied(newDirection);
         Vector2 oppositeDirection = -newDirection;
+        
+        // Se gira in una direzione in cui può andare
         if (!occ && movementMemory != newDirection && movementMemory != oppositeDirection)
         {
             //Debug.Log("Buona svolta");
             AddReward(0.012f); // Se gira correttamente ad un incrocio
         }
-
+        
+        // Se svolta e ci sono pellet
         if (movementMemory != newDirection && PelletInSight(newDirection))
         {
             AddReward(0.5f);
         }
-
+        
+        // Se fa inversione su se stesso
         if (!occ && movementMemory == oppositeDirection)
         {
             //Debug.Log("Inversione!");
             AddReward(-0.016f);
         }
 
+        // Se va nella dritto verso un fantasma
         if (!GameManager.instance.ghosts[0].frightened && GhostInSight(newDirection))
         {
             AddReward(-0.1f); // Stai andando contro un fantasma
             //Debug.Log("Ghost in sight"); 
         }
-
-        FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
-        // pacman.movement.SetDirection(newDirection);
+        
+        // Se si allontana da un fantasma con il fantasma alle sue spalle
+        if (!GameManager.instance.ghosts[0].frightened && GhostInSight(-newDirection))
+        {
+            AddReward(0.2f); // Stai andando via da un fantasma
+            //Debug.Log("Ghost in sight-retro"); 
+        }
+        
+        // Se va nella direzione in cui ci sono più pellet
+        if (Math.Abs(suggestedDirection.x) > Math.Abs(suggestedDirection.y))
+        {
+            if (newDirection.Equals(new Vector2(Math.Sign(suggestedDirection.x), 0f)))
+            {
+                Debug.Log("Direzione giusta");
+                AddReward(0.012f);
+            }
+            else AddReward(-0.004f);
+        }
+        else
+        {
+            if (newDirection.Equals(new Vector2(0f, Math.Sign(suggestedDirection.y))))
+            {
+                Debug.Log("Direzione giusta");
+                AddReward(0.012f);
+            }
+            else AddReward(-0.004f);
+        }
+        
+        // FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
+        pacman.movement.SetDirection(newDirection);
     }
 
     private (int,float) NearestGhost()
@@ -287,12 +321,14 @@ public class PacmanAgent : Agent
 
         if (distancesFromPellet.Count > 0)
         {
-            sensor.AddObservation(PercDistancesFromPellet(distancesFromPellet, pacmanPos, distancesFromPellet.Count));
+            suggestedDirection = PercDistancesFromPellet(distancesFromPellet, pacmanPos, distancesFromPellet.Count);
+            
         }
         else
         {
-            sensor.AddObservation(Vector2.zero);
+            suggestedDirection = Vector2.zero;
         }
+        sensor.AddObservation(suggestedDirection);
 
         // Ghost Blinky
         sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[0].transform.localPosition) / 13.5f));
