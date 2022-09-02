@@ -138,7 +138,29 @@ public class GameManager : MonoBehaviour
         }
 
         PelletEaten(pellet);
-        FindObjectOfType<PacmanAgent>().AddReward(1f);
+        
+        if (ghosts[0].gameObject.activeSelf)
+        {
+            if (FindObjectOfType<PacmanAgent>().distanceBlinky <= 3f
+                || FindObjectOfType<PacmanAgent>().distanceInky <= 3f
+                || FindObjectOfType<PacmanAgent>().distancePinky <= 3f
+                || FindObjectOfType<PacmanAgent>().distanceClyde <= 3f)
+            {
+                FindObjectOfType<PacmanAgent>().AddReward(5f);
+            }
+            else if ((FindObjectOfType<PacmanAgent>().distanceBlinky > 3f && FindObjectOfType<PacmanAgent>().distanceBlinky <= 5f)
+                     || (FindObjectOfType<PacmanAgent>().distanceInky > 3f && FindObjectOfType<PacmanAgent>().distanceInky <= 5f)
+                     || (FindObjectOfType<PacmanAgent>().distancePinky > 3f && FindObjectOfType<PacmanAgent>().distancePinky <= 5f)
+                     || (FindObjectOfType<PacmanAgent>().distanceClyde > 3f && FindObjectOfType<PacmanAgent>().distanceClyde <= 5f))
+            {
+                FindObjectOfType<PacmanAgent>().AddReward(3f);
+            }
+            else 
+            {
+                FindObjectOfType<PacmanAgent>().AddReward(-0.1f);
+            }
+        }
+        
         CancelInvoke(nameof(ResetGhostMultiplier));
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
     }

@@ -14,10 +14,10 @@ public class PacmanAgent : Agent
     private Vector2 movementMemory;
     private Vector2 positionMemory;
     private Vector2 suggestedDirection;
-    private float distanceBlinky;
-    private float distanceInky;
-    private float distancePinky;
-    private float distanceClyde;
+    public float distanceBlinky;
+    public float distanceInky;
+    public float distancePinky;
+    public float distanceClyde;
     public LayerMask ghostAndWallLayer;
     public LayerMask pelletAndWallLayer;
     public LayerMask obstacleLayer;
@@ -105,15 +105,15 @@ public class PacmanAgent : Agent
             {
                 return 0;
             }
-            else if (hit.collider.name == "Ghost_Inky")
+            if (hit.collider.name == "Ghost_Inky")
             {
                 return 1;
             }
-            else if (hit.collider.name == "Ghost_Pinky")
+            if (hit.collider.name == "Ghost_Pinky")
             {
                 return 2;
             }
-            else if (hit.collider.name == "Ghost_Clyde")
+            if (hit.collider.name == "Ghost_Clyde")
             {
                 return 3;
             }
@@ -203,8 +203,8 @@ public class PacmanAgent : Agent
             else AddReward(-0.004f);
         }
         
-        // FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
-        pacman.movement.SetDirection(newDirection);
+        FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
+        //pacman.movement.SetDirection(newDirection);
     }
 
     private (int,float) NearestGhost()
