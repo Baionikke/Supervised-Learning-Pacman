@@ -188,7 +188,7 @@ public class PacmanAgent : Agent
         {
             if (newDirection.Equals(new Vector2(Math.Sign(suggestedDirection.x), 0f)))
             {
-                Debug.Log("Direzione giusta");
+                //Debug.Log("Direzione giusta");
                 AddReward(0.012f);
             }
             else AddReward(-0.004f);
@@ -197,7 +197,7 @@ public class PacmanAgent : Agent
         {
             if (newDirection.Equals(new Vector2(0f, Math.Sign(suggestedDirection.y))))
             {
-                Debug.Log("Direzione giusta");
+                //Debug.Log("Direzione giusta");
                 AddReward(0.012f);
             }
             else AddReward(-0.004f);

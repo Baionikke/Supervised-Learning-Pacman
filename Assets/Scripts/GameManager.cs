@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance { get; private set; }
     private int pelletCount;
+    private int tot_games = 0;
+    private int win_games = 0;
 
     private void Awake()
     {
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         FindObjectOfType<PacmanAgent>().AddReward(-5f);
         FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
+        tot_games += 1; // PER RUN SU SINGOLA VITA
 
         pacman.DeathSequence();
         //SetLives(lives - 1); // PER RUN SU 3 VITE
@@ -99,6 +102,7 @@ public class GameManager : MonoBehaviour
         } else {
             FindObjectOfType<PacmanAgent>().AddReward(-5f);
             //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            //tot_games += 1; // PER RUN SU 3 VITE
             //GameOver();
         }
     }
@@ -123,8 +127,10 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellets())
         {
+            win_games += 1;
             FindObjectOfType<PacmanAgent>().AddReward(300f);
-            Debug.Log("HA VINTO!");
+            //Debug.Log("HA VINTO!");
+            Debug.Log("Win/Tot Games: " + win_games + " / " + tot_games);
             FindObjectOfType<PacmanAgent>().EndEpisode();
             //pacman.gameObject.SetActive(false);
             //Invoke(nameof(NewRound), 3f);
