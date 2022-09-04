@@ -204,7 +204,7 @@ public class PacmanAgent : Agent
         }
         
         FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
-        //pacman.movement.SetDirection(newDirection);
+        // pacman.movement.SetDirection(newDirection);
     }
 
     private (int,float) NearestGhost()
@@ -413,15 +413,6 @@ public class PacmanAgent : Agent
         
         AddReward(-0.005f); //No win
     }
-
-    /*private void OnCollisionExit2D(Collision2D other) // OnCollisionStay2D non funziona perché pacman tocca sempre i muri laterali
-    {  // Anche questo non funziona sempre perché non becca bene l'uscita dai bivi, ma ne trova anche quando non ha più muri ai lati
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-        {
-            AddReward(0.1f);
-            Debug.Log("Exited Collision!");
-        }
-    }*/
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {

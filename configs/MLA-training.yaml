@@ -4,7 +4,7 @@ behaviors:
     trainer_type: ppo
     hyperparameters:
       batch_size: 32
-      buffer_size: 10240
+      buffer_size: 4096
       learning_rate: 1e-4
       beta: 0.01
       epsilon: 0.2
@@ -15,7 +15,7 @@ behaviors:
       epsilon_schedule: linear
     network_settings:
       normalize: false
-      hidden_units: 64
+      hidden_units: 256
       num_layers: 3
       vis_encode_type: resnet
       use_recurrent: true
@@ -29,7 +29,7 @@ behaviors:
         gamma: 0.995
         strength: 1.0
       curiosity:
-        strength: 0.02
+        strength: 0.01
         gamma: 0.99
         network_settings:
           hidden_units: 64
@@ -38,9 +38,9 @@ behaviors:
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 100000
-    max_steps: 1000000
+    max_steps: 5e5
     time_horizon: 128
-    summary_freq: 2000
+    summary_freq: 1000
     threaded: false
     self_play: null
     behavioral_cloning: null
