@@ -91,8 +91,8 @@ public class GameManager : MonoBehaviour
     public void PacmanEaten()
     {
         FindObjectOfType<PacmanAgent>().AddReward(-5f);
-        FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
         tot_games += 1; // PER RUN SU SINGOLA VITA
+        FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
 
         pacman.DeathSequence();
         //SetLives(lives - 1); // PER RUN SU 3 VITE
@@ -101,8 +101,8 @@ public class GameManager : MonoBehaviour
             Invoke(nameof(ResetState), 0f);
         } else {
             FindObjectOfType<PacmanAgent>().AddReward(-5f);
-            //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
             //tot_games += 1; // PER RUN SU 3 VITE
+            //FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
             //GameOver();
         }
     }

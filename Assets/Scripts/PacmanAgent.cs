@@ -11,6 +11,7 @@ using UnityEngine;
 public class PacmanAgent : Agent
 {
     private Pacman pacman { get; set; }
+    public Vector3 positionMemory;
     public LayerMask ghostAndWallLayer;
     public LayerMask pelletAndWallLayer;
     public LayerMask obstacleLayer;
@@ -151,7 +152,7 @@ public class PacmanAgent : Agent
                 return 3;
             }
         }
-        return 4;
+        return 4; // Nessun ghost
     }
 
     private bool HittingWall(Vector2 direction)
@@ -311,44 +312,70 @@ public class PacmanAgent : Agent
 
         return (nearestGhost, minDistance);
     }
-
+    
+    public bool NearActiveGhost()
+    { 
+        return !GameManager.instance.ghosts[0].home.enabled && pastState.distanceBlinky < 4f || !GameManager.instance.ghosts[1].home.enabled && pastState.distanceInky < 4f || !GameManager.instance.ghosts[2].home.enabled && pastState.distancePinky < 4f || !GameManager.instance.ghosts[3].home.enabled && pastState.distanceClyde < 4f;
+    }
+    
     private void FleeFromGhosts(Vector2 newDirection)
     {
         (int, float) nearestGhost = NearestGhost();
         int ghost = nearestGhost.Item1;
         float distance = nearestGhost.Item2;
-        
-        if (!GameManager.instance.ghosts[ghost].frightened.enabled && distance < 3f && SuperGhostInSight(-GameManager.instance.ghosts[ghost].movement.direction)==ghost) // Dovrebbe coprire il caso in cui il fantasmino gli va addosso
+        if (!GameManager.instance.ghosts[ghost].frightened.enabled && distance < 4f)
         {
-            Vector2 direction = GameManager.instance.ghosts[ghost].movement.direction;
-            if (!pacman.movement.Occupied(direction))
+            if (SuperGhostInSight(-GameManager.instance.ghosts[ghost].movement.direction) == ghost) // Dovrebbe coprire il caso in cui il fantasmino gli va addosso
             {
-                pacman.movement.SetDirection(direction);
-            } else if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
-            {
-                pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
+                Vector2 direction = GameManager.instance.ghosts[ghost].movement.direction;
+                if (!pacman.movement.Occupied(direction))
+                {
+                    pacman.movement.SetDirection(direction);
+                }
+                else if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
+                {
+                    pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
 
-            } else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
-            {
-                pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
+                }
+                else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
+                {
+                    pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
 
+                }
             }
-        } else if (!GameManager.instance.ghosts[ghost].frightened.enabled && distance < 3f &&
-                   SuperGhostInSight(newDirection) == ghost)
-        {
-            Vector2 direction = newDirection; 
-            if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
+            else if (SuperGhostInSight(newDirection) == ghost)
             {
-                pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
+                Vector2 direction = newDirection;
+                if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
+                {
+                    pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
 
-            } else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
-            {
-                pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
+                }
+                else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
+                {
+                    pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
 
+                }
+                else
+                {
+                    pacman.movement.SetDirection(-direction);
+                }
             }
-            else
+            else if ((SuperGhostInSight(Vector2.down) == 4 && SuperGhostInSight(Vector2.left) == 4 &&
+                      SuperGhostInSight(Vector2.right) == 4 && SuperGhostInSight(Vector2.up) == 4))
+                // se il fantasmino più vicino non si trova nei 4 assi di pacman ma comunque a distanza < 4f
             {
-                pacman.movement.SetDirection(-direction);
+                Vector2 distanceNearestGhostInSpace = GhostDistanceXY(GameManager.instance.ghosts[ghost].transform.localPosition);
+                Vector2 new1 = new Vector2(-Math.Sign(distanceNearestGhostInSpace.x), 0);
+                if (!pacman.movement.Occupied(new1))
+                {
+                    pacman.movement.SetDirection(new1);
+                }
+                else
+                {
+                    Vector2 new2 = new Vector2(0, -Math.Sign(distanceNearestGhostInSpace.y));
+                    pacman.movement.SetDirection(new2);
+                }
             }
         }
         else
@@ -450,10 +477,15 @@ public class PacmanAgent : Agent
         int movementControl = actionBuffers.DiscreteActions[0];
         bool occ; // Occupied per verificare che la direzione corrente sia occupata dal muro o meno
 
-        if ((Vector2)GameManager.instance.pacman.transform.localPosition == pastState.pacmanPosition)
+        if (GameManager.instance.pacman.transform.localPosition.Equals(positionMemory))
         {
             // Debug.Log("Stuck!");
-            AddReward(-0.1f); // Se fermo nello stesso punto
+            AddReward(-0.8f); // Se fermo nello stesso punto
+        }
+
+        if (NearActiveGhost())
+        {
+            AddReward(-0.2f);
         }
 
         // Set the new direction based on the current input
@@ -486,6 +518,8 @@ public class PacmanAgent : Agent
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+
+        positionMemory = GameManager.instance.pacman.transform.localPosition;
         
         AddReward(-0.005f); //No win
     }
