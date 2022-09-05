@@ -7,3 +7,4 @@ UserSettings/Layouts/default-2021.dwlt
 .vscode/settings.json
 Assets/ML-Agents/Timers/Pacman_timers.json
 Logs/*
+*.pt

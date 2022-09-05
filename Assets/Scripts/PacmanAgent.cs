@@ -157,7 +157,7 @@ public class PacmanAgent : Agent
         }
         
         // Se svolta e ci sono pellet
-        if (movementMemory != newDirection && PelletInSight(newDirection))
+        if (movementMemory != newDirection && movementMemory != oppositeDirection && PelletInSight(newDirection))
         {
             AddReward(0.5f);
         }
@@ -166,23 +166,28 @@ public class PacmanAgent : Agent
         if (!occ && movementMemory == oppositeDirection)
         {
             //Debug.Log("Inversione!");
-            AddReward(-0.016f);
+            AddReward(-0.05f);
         }
 
-        // Se va nella dritto verso un fantasma
+        // Se va dritto verso un fantasma
         if (!GameManager.instance.ghosts[0].frightened && GhostInSight(newDirection))
         {
-            AddReward(-0.1f); // Stai andando contro un fantasma
+            AddReward(-0.2f); // Stai andando contro un fantasma
             //Debug.Log("Ghost in sight"); 
         }
         
         // Se si allontana da un fantasma con il fantasma alle sue spalle
-        if (!GameManager.instance.ghosts[0].frightened && GhostInSight(-newDirection))
+        // oppure
+        // Se il fantasma è spaventato e gli va contro per mangiarlo
+        if (!GameManager.instance.ghosts[0].frightened.enabled && GhostInSight(oppositeDirection))
         {
             AddReward(0.2f); // Stai andando via da un fantasma
             //Debug.Log("Ghost in sight-retro"); 
+        } else if (GameManager.instance.ghosts[0].frightened.enabled && GhostInSight(newDirection))
+        {
+            AddReward(0.2f);
         }
-        
+
         // Se va nella direzione in cui ci sono più pellet
         if (Math.Abs(suggestedDirection.x) > Math.Abs(suggestedDirection.y))
         {
@@ -203,8 +208,8 @@ public class PacmanAgent : Agent
             else AddReward(-0.004f);
         }
         
-        FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
-        // pacman.movement.SetDirection(newDirection);
+        // FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
+        pacman.movement.SetDirection(newDirection);
     }
 
     private (int,float) NearestGhost()
