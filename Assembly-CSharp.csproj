@@ -58,6 +58,7 @@
      <Compile Include="Assets/Scripts/PacmanAgent.cs" />
      <Compile Include="Assets/Scripts/GhostChase.cs" />
      <None Include="Assets/ML-Agents/Timers/Pacman_timers.json" />
+     <None Include="Assets/StreamingAssets/UnityServicesProjectConfiguration.json" />
      <Reference Include="UnityEngine">
      <HintPath>/home/dave/Unity/Hub/Editor/2021.3.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

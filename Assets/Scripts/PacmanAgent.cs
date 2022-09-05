@@ -11,23 +11,60 @@ using UnityEngine;
 public class PacmanAgent : Agent
 {
     private Pacman pacman { get; set; }
-    private Vector2 movementMemory;
-    private Vector2 positionMemory;
-    private Vector2 suggestedDirection;
-    public float distanceBlinky;
-    public float distanceInky;
-    public float distancePinky;
-    public float distanceClyde;
     public LayerMask ghostAndWallLayer;
     public LayerMask pelletAndWallLayer;
     public LayerMask obstacleLayer;
+    
+    public struct State
+    {
+        // Put **normalized** positions here
+        public Vector2 pacmanDirection { get; set; }
+        public Vector2 pacmanPosition { get; set; }
+        public Vector2 suggestedDirection { get; set; }
+        public float distanceBlinky { get; set; }
+        public Vector2 directionBlinky { get; set; }
+        public Vector2 distanceVectorBlinky { get; set; }
+        public float distanceInky { get; set; }
+        public Vector2 directionInky { get; set; }
+        public Vector2 distanceVectorInky { get; set; }
+        public float distancePinky { get; set; }
+        public Vector2 directionPinky { get; set; }
+        public Vector2 distanceVectorPinky { get; set; }
+        public float distanceClyde { get; set; }
+        public Vector2 directionClyde { get; set; }
+        public Vector2 distanceVectorClyde { get; set; }
+        public bool ghostFrightened { get; set; }
+
+        public override string ToString() => $"Pacman Direction: \t\t{pacmanDirection}\n" +
+                                             $"Pacman Position: \t\t{pacmanPosition}\n" +
+                                             $"Suggested Direction: \t\t{suggestedDirection}\n" +
+                                             $"Blinky (red)\n" +
+                                             $"\tDistance: \t\t{distanceBlinky}\n" +
+                                             $"\tDistance (Vectorial): \t{distanceVectorBlinky}\n" +
+                                             $"\tDirection: \t\t{directionBlinky}\n" +
+                                             $"Inky (turquoise)\n" +
+                                             $"\tDistance: \t\t{distanceInky}\n" +
+                                             $"\tDistance (Vectorial): \t{distanceVectorInky}\n" +
+                                             $"\tDirection: \t\t{directionInky}\n" +
+                                             $"Pinky (pink)\n" +
+                                             $"\tDistance: \t\t{distancePinky}\n" +
+                                             $"\tDistance (Vectorial): \t{distanceVectorPinky}\n" +
+                                             $"\tDirection: \t\t{directionPinky}\n" +
+                                             $"Clyde (yellow)\n" +
+                                             $"\tDistance: \t\t{distanceClyde}\n" +
+                                             $"\tDistance (Vectorial): \t{distanceVectorClyde}\n" +
+                                             $"\tDirection: \t\t{directionClyde}\n" +
+                                             $"Ghosts are frightened: \t\t{ghostFrightened}\n";
+    }
+
+    public State pastState;
 
     private float PelletDistance(Transform pellet)
     {
         Vector2 pacmanPos = new Vector2(GameManager.instance.pacman.transform.localPosition.x,
             GameManager.instance.pacman.transform.localPosition.y);
         Vector2 pelletPos = new Vector2(pellet.localPosition.x, pellet.localPosition.y);
-        float distance = Vector2.Distance(pacmanPos / 13.5f, pelletPos / 13.5f);
+        float distance = Vector2.Distance(pacmanPos, pelletPos);
         return distance;
     }
 
@@ -59,24 +96,20 @@ public class PacmanAgent : Agent
             mean20PelletY += distancesFromPellet.ElementAt(j).Value.y - pacmanPosition.y;
         }
         Vector2 mean20Pellet = new Vector2(mean20PelletX/numPellet, mean20PelletY/numPellet);
-        // Debug.Log(mean20Pellet);
-        return mean20Pellet/13.5f;
+        // Debug.Log(mean20Pellet/2f);
+        return mean20Pellet/2f;
     }
 
     private Vector2 GhostDistanceXY(Vector3 ghostPosition)
     {
-        float distanceX = (GameManager.instance.pacman.transform.localPosition.x / 13.5f - ghostPosition.x);
-        float distanceY =
-            (GameManager.instance.pacman.transform.localPosition.y / 13.5f -
-             ghostPosition.y); // Volutamente non in val. assoluto
-        Vector2 res = new Vector2(distanceX, distanceY);
-        //float res = Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
-        return res;
+        float distanceX = (ghostPosition.x)-(GameManager.instance.pacman.transform.localPosition.x);
+        float distanceY = (ghostPosition.y)-(GameManager.instance.pacman.transform.localPosition.y); // Volutamente non in val. assoluto
+        return new Vector2(distanceX, distanceY);
     }
 
-    private float GhostDistance(Vector3 ghostPosition)
+    private float GhostDistance(Vector2 ghostPosition)
     {
-        return Vector2.Distance(ghostPosition, GameManager.instance.pacman.transform.localPosition);
+        return Vector2.Distance((ghostPosition), (GameManager.instance.pacman.transform.localPosition));
     }
 
     public bool GhostInSight(Vector2 direction) // Controlla che non ci siano fantasmi davanti a sé
@@ -139,6 +172,28 @@ public class PacmanAgent : Agent
         return hit1.collider && hit2.collider;
     }
 
+    public void PowerPelletEaten()
+    {
+        if (pastState.distanceBlinky <= 0.22f
+            || pastState.distanceInky <= 0.22
+            || pastState.distancePinky <= 0.22
+            || pastState.distanceClyde <= 0.22)
+        {
+            AddReward(5f);
+        }
+        else if ((pastState.distanceBlinky > 0.22 && pastState.distanceBlinky <= 0.37f)
+                 || (pastState.distanceInky > 0.22 && pastState.distanceInky <= 0.37f)
+                 || (pastState.distancePinky > 0.22 && pastState.distancePinky <= 0.37f)
+                 || (pastState.distanceClyde > 0.22 && pastState.distanceClyde <= 0.37f))
+        {
+            AddReward(3f);
+        }
+        else 
+        {
+            AddReward(-0.1f);
+        }
+    }
+
     public override void OnEpisodeBegin() // TODO: to understand how the method works
     {
         GameManager.instance.Start();
@@ -150,20 +205,20 @@ public class PacmanAgent : Agent
         Vector2 oppositeDirection = -newDirection;
         
         // Se gira in una direzione in cui può andare
-        if (!occ && movementMemory != newDirection && movementMemory != oppositeDirection)
+        if (!occ && pastState.pacmanDirection != newDirection && pastState.pacmanDirection != oppositeDirection)
         {
             //Debug.Log("Buona svolta");
             AddReward(0.012f); // Se gira correttamente ad un incrocio
         }
         
         // Se svolta e ci sono pellet
-        if (movementMemory != newDirection && movementMemory != oppositeDirection && PelletInSight(newDirection))
+        if (pastState.pacmanDirection != newDirection && pastState.pacmanDirection != oppositeDirection && PelletInSight(newDirection))
         {
             AddReward(0.5f);
         }
         
         // Se fa inversione su se stesso
-        if (!occ && movementMemory == oppositeDirection)
+        if (!occ && pastState.pacmanDirection == oppositeDirection)
         {
             //Debug.Log("Inversione!");
             AddReward(-0.05f);
@@ -189,23 +244,23 @@ public class PacmanAgent : Agent
         }
 
         // Se va nella direzione in cui ci sono più pellet
-        if (Math.Abs(suggestedDirection.x) > Math.Abs(suggestedDirection.y))
+        if (Math.Abs(pastState.suggestedDirection.x) > Math.Abs(pastState.suggestedDirection.y))
         {
-            if (newDirection.Equals(new Vector2(Math.Sign(suggestedDirection.x), 0f)))
+            if (newDirection.Equals(new Vector2(Math.Sign(pastState.suggestedDirection.x), 0f)))
             {
                 //Debug.Log("Direzione giusta");
-                AddReward(0.012f);
+                AddReward(0.024f);
             }
-            else AddReward(-0.004f);
+            else AddReward(-0.008f);
         }
         else
         {
-            if (newDirection.Equals(new Vector2(0f, Math.Sign(suggestedDirection.y))))
+            if (newDirection.Equals(new Vector2(0f, Math.Sign(pastState.suggestedDirection.y))))
             {
                 //Debug.Log("Direzione giusta");
-                AddReward(0.012f);
+                AddReward(0.024f);
             }
-            else AddReward(-0.004f);
+            else AddReward(-0.008f);
         }
         
         // FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
@@ -221,26 +276,26 @@ public class PacmanAgent : Agent
         float minDistanceB;
         float minDistance;
 
-        if (distanceBlinky <= distanceInky)
+        if (pastState.distanceBlinky <= pastState.distanceInky)
         {
             nearestGhostA = 0;
-            minDistanceA = distanceBlinky;
+            minDistanceA = pastState.distanceBlinky;
         }
         else
         {
             nearestGhostA = 1;
-            minDistanceA = distanceInky;
+            minDistanceA = pastState.distanceInky;
         }
 
-        if (distancePinky <= distanceClyde)
+        if (pastState.distancePinky <= pastState.distanceClyde)
         {
             nearestGhostB = 2;
-            minDistanceB = distancePinky;
+            minDistanceB = pastState.distancePinky;
         }
         else
         {
             nearestGhostB = 3;
-            minDistanceB = distanceClyde;
+            minDistanceB = pastState.distanceClyde;
         }
 
         if (minDistanceA < minDistanceB)
@@ -305,9 +360,13 @@ public class PacmanAgent : Agent
     public override void CollectObservations(VectorSensor sensor) // -> 
     {
         // Position
-        Vector2 pacmanPos = GameManager.instance.pacman.transform.localPosition / 13.5f;
+        Vector2 pacmanPos = GameManager.instance.pacman.transform.localPosition;
+        Vector2 pacmanDirection = GameManager.instance.pacman.movement.direction;
         sensor.AddObservation(pacmanPos);
-        sensor.AddObservation(GameManager.instance.pacman.movement.direction);
+        sensor.AddObservation(pacmanDirection);
+        pastState.pacmanPosition = pacmanPos;
+        pastState.pacmanDirection = pacmanDirection;
+        
 
         // Pellets
         SortedDictionary<float, Vector2> distancesFromPellet = new SortedDictionary<float, Vector2>();
@@ -316,7 +375,7 @@ public class PacmanAgent : Agent
         {
             if (pellet.gameObject.activeSelf)
             {
-                Vector2 pelletsPosition = new Vector2(pellet.localPosition.x / 13.5f, pellet.localPosition.y / 13.5f);
+                Vector2 pelletsPosition = new Vector2(pellet.localPosition.x, pellet.localPosition.y);
                 if (!distancesFromPellet.ContainsKey(PelletDistance(pellet)))
                 {
                     distancesFromPellet.Add(PelletDistance(pellet), pelletsPosition);
@@ -326,48 +385,62 @@ public class PacmanAgent : Agent
 
         if (distancesFromPellet.Count > 0)
         {
-            suggestedDirection = PercDistancesFromPellet(distancesFromPellet, pacmanPos, distancesFromPellet.Count);
+            pastState.suggestedDirection = PercDistancesFromPellet(distancesFromPellet, pacmanPos, distancesFromPellet.Count);
             
         }
         else
         {
-            suggestedDirection = Vector2.zero;
+            pastState.suggestedDirection = Vector2.zero;
         }
-        sensor.AddObservation(suggestedDirection);
-
+        sensor.AddObservation(pastState.suggestedDirection);
+        
         // Ghost Blinky
-        sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[0].transform.localPosition) / 13.5f));
-        distanceBlinky = GhostDistance(GameManager.instance.ghosts[0].transform.localPosition);
-        sensor.AddObservation(distanceBlinky/27f);
-        sensor.AddObservation(GameManager.instance.ghosts[0].movement.direction);
+        pastState.distanceBlinky = GhostDistance(GameManager.instance.ghosts[0].transform.localPosition);
+        pastState.distanceVectorBlinky =
+            GhostDistanceXY(GameManager.instance.ghosts[0].transform.localPosition);
+        pastState.directionBlinky = GameManager.instance.ghosts[0].movement.direction;
+        sensor.AddObservation(pastState.distanceVectorBlinky);
+        sensor.AddObservation(pastState.distanceBlinky);
+        sensor.AddObservation(pastState.directionBlinky);
         
         // Ghost Inky
-        sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[1].transform.localPosition) / 13.5f));
-        distanceInky = GhostDistance(GameManager.instance.ghosts[1].transform.localPosition);
-        sensor.AddObservation(distanceInky/27f);
-        sensor.AddObservation(GameManager.instance.ghosts[1].movement.direction);
-        
-        // Ghost Pinky
-        sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[2].transform.localPosition) / 13.5f));
-        distancePinky = GhostDistance(GameManager.instance.ghosts[2].transform.localPosition);
-        sensor.AddObservation(distancePinky/27f);
-        sensor.AddObservation(GameManager.instance.ghosts[2].movement.direction);
-        
-        // Ghost Clyde
-        sensor.AddObservation(GhostDistanceXY((GameManager.instance.ghosts[3].transform.localPosition) / 13.5f));
-        distanceClyde = GhostDistance(GameManager.instance.ghosts[3].transform.localPosition);
-        sensor.AddObservation(distanceClyde/27f);
-        sensor.AddObservation(GameManager.instance.ghosts[3].movement.direction);
+        pastState.distanceInky = GhostDistance(GameManager.instance.ghosts[1].transform.localPosition);
+        pastState.distanceVectorInky =
+            GhostDistanceXY(GameManager.instance.ghosts[1].transform.localPosition);
+        pastState.directionInky = GameManager.instance.ghosts[1].movement.direction;
+        sensor.AddObservation(pastState.distanceVectorInky);
+        sensor.AddObservation(pastState.distanceInky);
+        sensor.AddObservation(pastState.directionInky);
 
+        // Ghost Pinky
+        pastState.distancePinky = GhostDistance(GameManager.instance.ghosts[2].transform.localPosition);
+        pastState.distanceVectorPinky =
+            GhostDistanceXY(GameManager.instance.ghosts[2].transform.localPosition);
+        pastState.directionPinky = GameManager.instance.ghosts[2].movement.direction;
+        sensor.AddObservation(pastState.distanceVectorPinky);
+        sensor.AddObservation(pastState.distancePinky);
+        sensor.AddObservation(pastState.directionPinky);
+
+        // Ghost Clyde
+        pastState.distanceClyde = GhostDistance(GameManager.instance.ghosts[3].transform.localPosition);
+        pastState.distanceVectorClyde =
+            GhostDistanceXY(GameManager.instance.ghosts[3].transform.localPosition);
+        pastState.directionClyde = GameManager.instance.ghosts[3].movement.direction;
+        sensor.AddObservation(pastState.distanceVectorClyde);
+        sensor.AddObservation(pastState.distanceClyde);
+        sensor.AddObservation(pastState.directionClyde);
 
         // Ghosts are Frightened
-        sensor.AddObservation(GameManager.instance.ghosts[0].frightened.enabled);
+        pastState.ghostFrightened = GameManager.instance.ghosts[0].frightened.enabled;
+        sensor.AddObservation(pastState.ghostFrightened);
 
         // Lives
         sensor.AddObservation(GameManager.instance.lives); // Forse eliminabile
 
         // Score
         // sensor.AddObservation(GameManager.instance.score); // Forse eliminabile
+        
+        //Debug.Log(pastState);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
@@ -377,7 +450,7 @@ public class PacmanAgent : Agent
         int movementControl = actionBuffers.DiscreteActions[0];
         bool occ; // Occupied per verificare che la direzione corrente sia occupata dal muro o meno
 
-        if ((Vector2)GameManager.instance.pacman.transform.localPosition == positionMemory)
+        if ((Vector2)GameManager.instance.pacman.transform.localPosition == pastState.pacmanPosition)
         {
             // Debug.Log("Stuck!");
             AddReward(-0.1f); // Se fermo nello stesso punto
@@ -410,8 +483,6 @@ public class PacmanAgent : Agent
                 break;
         }
 
-        movementMemory = GameManager.instance.pacman.movement.direction;
-        positionMemory = (Vector2)GameManager.instance.pacman.transform.localPosition;
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(pacman.movement.direction.y, pacman.movement.direction.x);
         transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
