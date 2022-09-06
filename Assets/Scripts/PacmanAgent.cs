@@ -90,7 +90,7 @@ public class PacmanAgent : Agent
         int PERCENTAGE = 10;
         float mean20PelletX = 0;
         float mean20PelletY = 0;
-        int numPellet = Mathf.CeilToInt(cont / 100 * PERCENTAGE); 
+        int numPellet = (int)Math.Ceiling((decimal)cont / 100 * PERCENTAGE); 
         for (int j = 0; j < numPellet; j++)
         {
             mean20PelletX += distancesFromPellet.ElementAt(j).Value.x - pacmanPosition.x;
@@ -419,6 +419,7 @@ public class PacmanAgent : Agent
         {
             pastState.suggestedDirection = Vector2.zero;
         }
+        // Debug.Log(pastState.suggestedDirection);
         sensor.AddObservation(pastState.suggestedDirection);
         
         // Ghost Blinky
