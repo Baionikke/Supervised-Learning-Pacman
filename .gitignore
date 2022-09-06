@@ -8,3 +8,6 @@ UserSettings/Layouts/default-2021.dwlt
 Assets/ML-Agents/Timers/Pacman_timers.json
 Logs/*
 *.pt
+Assets/ML-Agents/Timers/Pacman_timers.json
+obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
+Pacman_Data/ML-Agents/Timers/Pacman_timers.json

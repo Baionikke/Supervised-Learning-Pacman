@@ -90,7 +90,7 @@ public class PacmanAgent : Agent
         int PERCENTAGE = 10;
         float mean20PelletX = 0;
         float mean20PelletY = 0;
-        int numPellet = (int)Math.Ceiling((decimal)cont / 100 * PERCENTAGE); 
+        int numPellet = Mathf.CeilToInt(cont / 100 * PERCENTAGE); 
         for (int j = 0; j < numPellet; j++)
         {
             mean20PelletX += distancesFromPellet.ElementAt(j).Value.x - pacmanPosition.x;
@@ -245,9 +245,9 @@ public class PacmanAgent : Agent
         }
 
         // Se va nella direzione in cui ci sono più pellet
-        if (Math.Abs(pastState.suggestedDirection.x) > Math.Abs(pastState.suggestedDirection.y))
+        if (Mathf.Abs(pastState.suggestedDirection.x) > Mathf.Abs(pastState.suggestedDirection.y))
         {
-            if (newDirection.Equals(new Vector2(Math.Sign(pastState.suggestedDirection.x), 0f)))
+            if (newDirection.Equals(new Vector2(Mathf.Sign(pastState.suggestedDirection.x), 0f)))
             {
                 //Debug.Log("Direzione giusta");
                 AddReward(0.024f);
@@ -256,7 +256,7 @@ public class PacmanAgent : Agent
         }
         else
         {
-            if (newDirection.Equals(new Vector2(0f, Math.Sign(pastState.suggestedDirection.y))))
+            if (newDirection.Equals(new Vector2(0f, Mathf.Sign(pastState.suggestedDirection.y))))
             {
                 //Debug.Log("Direzione giusta");
                 AddReward(0.024f);
@@ -366,14 +366,14 @@ public class PacmanAgent : Agent
                 // se il fantasmino più vicino non si trova nei 4 assi di pacman ma comunque a distanza < 4f
             {
                 Vector2 distanceNearestGhostInSpace = GhostDistanceXY(GameManager.instance.ghosts[ghost].transform.localPosition);
-                Vector2 new1 = new Vector2(-Math.Sign(distanceNearestGhostInSpace.x), 0);
+                Vector2 new1 = new Vector2(-Mathf.Sign(distanceNearestGhostInSpace.x), 0);
                 if (!pacman.movement.Occupied(new1))
                 {
                     pacman.movement.SetDirection(new1);
                 }
                 else
                 {
-                    Vector2 new2 = new Vector2(0, -Math.Sign(distanceNearestGhostInSpace.y));
+                    Vector2 new2 = new Vector2(0, -Mathf.Sign(distanceNearestGhostInSpace.y));
                     pacman.movement.SetDirection(new2);
                 }
             }
