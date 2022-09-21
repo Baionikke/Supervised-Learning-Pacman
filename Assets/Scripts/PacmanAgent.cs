@@ -7,6 +7,7 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class PacmanAgent : Agent
 {
@@ -155,11 +156,11 @@ public class PacmanAgent : Agent
         return 4; // Nessun ghost
     }
 
-    private bool HittingWall(Vector2 direction)
+    /*private bool HittingWall(Vector2 direction)
     {
         RaycastHit2D hit = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
             Vector2.one * 0.3f, 0f, direction, 0.6f, obstacleLayer);
-        return hit.collider;
+        return hit.collider.CompareTag("Walls");
     }
 
     private bool HittingLateralWall(Vector2 directionOfMovement)
@@ -170,8 +171,8 @@ public class PacmanAgent : Agent
             Vector2.one * 0.2f, 0f, perpendicularClockwise, 0.6f, obstacleLayer);
         RaycastHit2D hit2 = Physics2D.BoxCast(GameManager.instance.pacman.movement.transform.position,
             Vector2.one * 0.2f, 0f, perpendicularCounterClockwise, 0.6f, obstacleLayer);
-        return hit1.collider && hit2.collider;
-    }
+        return hit1.collider.CompareTag("Walls") && hit2.collider.CompareTag("Walls");
+    }*/ //TODO: probabile rimozione
 
     public void PowerPelletEaten()
     {
@@ -210,7 +211,7 @@ public class PacmanAgent : Agent
         {
             //Debug.Log("Buona svolta");
             AddReward(0.012f); // Se gira correttamente ad un incrocio
-        }
+        } else {AddReward(-0.004f);}
         
         // Se svolta e ci sono pellet
         if (pastState.pacmanDirection != newDirection && pastState.pacmanDirection != oppositeDirection && PelletInSight(newDirection))
@@ -226,11 +227,11 @@ public class PacmanAgent : Agent
         }
 
         // Se va dritto verso un fantasma
-        if (!GameManager.instance.ghosts[0].frightened && GhostInSight(newDirection))
+        /*if (!GameManager.instance.ghosts[0].frightened && GhostInSight(newDirection))
         {
             AddReward(-0.2f); // Stai andando contro un fantasma
             //Debug.Log("Ghost in sight"); 
-        }
+        }*/ // Dovrebbe essere un caso coperto dalla funzione RewardFromGhosts()
         
         // Se si allontana da un fantasma con il fantasma alle sue spalle
         // oppure
@@ -265,6 +266,7 @@ public class PacmanAgent : Agent
         }
         
         // FleeFromGhosts(newDirection); // FUNZIONE CHE METTE LE ROTELLE ALLA BICICLETTA
+        RewardFromGhosts(newDirection);
         pacman.movement.SetDirection(newDirection);
     }
 
@@ -313,9 +315,12 @@ public class PacmanAgent : Agent
         return (nearestGhost, minDistance);
     }
     
-    public bool NearActiveGhost()
+    public bool NearActiveGhost(float distance)
     { 
-        return !GameManager.instance.ghosts[0].home.enabled && pastState.distanceBlinky < 4f || !GameManager.instance.ghosts[1].home.enabled && pastState.distanceInky < 4f || !GameManager.instance.ghosts[2].home.enabled && pastState.distancePinky < 4f || !GameManager.instance.ghosts[3].home.enabled && pastState.distanceClyde < 4f;
+        return !GameManager.instance.ghosts[0].home.enabled && pastState.distanceBlinky < distance || 
+               !GameManager.instance.ghosts[1].home.enabled && pastState.distanceInky < distance || 
+               !GameManager.instance.ghosts[2].home.enabled && pastState.distancePinky < distance || 
+               !GameManager.instance.ghosts[3].home.enabled && pastState.distanceClyde < distance;
     }
     
     private void FleeFromGhosts(Vector2 newDirection)
@@ -343,7 +348,7 @@ public class PacmanAgent : Agent
 
                 }
             }
-            else if (SuperGhostInSight(newDirection) == ghost)
+            else if (newDirection.Equals(-GameManager.instance.ghosts[ghost].movement.direction) && SuperGhostInSight(newDirection) == ghost)
             {
                 Vector2 direction = newDirection;
                 if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
@@ -383,6 +388,74 @@ public class PacmanAgent : Agent
             pacman.movement.SetDirection(newDirection);
         }
     } 
+    
+    private void RewardFromGhosts(Vector2 newDirection)
+    {
+        (int, float) nearestGhost = NearestGhost();
+        int ghost = nearestGhost.Item1;
+        float distance = nearestGhost.Item2;
+        if (!GameManager.instance.ghosts[ghost].frightened.enabled && distance < 4f)
+        {
+            if (SuperGhostInSight(-GameManager.instance.ghosts[ghost].movement.direction) == ghost) // Dovrebbe coprire il caso in cui il fantasmino gli va addosso
+            {
+                Vector2 direction = GameManager.instance.ghosts[ghost].movement.direction;
+                if (!pacman.movement.Occupied(direction))
+                {
+                    // pacman.movement.SetDirection(direction);
+                    if (newDirection.Equals(direction)) {AddReward(1.5f);} else {AddReward(-0.5f);}
+                    
+                }
+                else if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
+                {
+                    // pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
+                    if (newDirection.Equals(new Vector2(-direction.y, direction.x))) {AddReward(1.5f);} else {AddReward(-0.5f);}
+                
+                }
+                else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
+                {
+                    // pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
+                    if (newDirection.Equals(new Vector2(direction.y, -direction.x))) {AddReward(1.5f);} else {AddReward(-0.5f);}
+                }
+            }
+            else if (newDirection.Equals(-GameManager.instance.ghosts[ghost].movement.direction) && SuperGhostInSight(newDirection) == ghost)
+            {
+                Vector2 direction = newDirection;
+                if (!pacman.movement.Occupied(new Vector2(-direction.y, direction.x)))
+                {
+                    // pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
+                    AddReward(-0.5f);
+                }
+                else if (!pacman.movement.Occupied(new Vector2(direction.y, -direction.x)))
+                {
+                    // pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
+                    AddReward(-0.5f);
+                }
+                else
+                {
+                    // pacman.movement.SetDirection(-direction);
+                    AddReward(-0.5f);
+                }
+            }
+            else if (!GameManager.instance.ghosts[ghost].home.enabled && (SuperGhostInSight(Vector2.down) == 4 && SuperGhostInSight(Vector2.left) == 4 &&
+                      SuperGhostInSight(Vector2.right) == 4 && SuperGhostInSight(Vector2.up) == 4)) //TODO: check home
+                // se il fantasmino più vicino non si trova nei 4 assi di pacman ma comunque a distanza < 4f
+            {
+                Vector2 distanceNearestGhostInSpace = GhostDistanceXY(GameManager.instance.ghosts[ghost].transform.localPosition);
+                Vector2 new1 = new Vector2(-Mathf.Sign(distanceNearestGhostInSpace.x), 0);
+                if (!pacman.movement.Occupied(new1))
+                {
+                    // pacman.movement.SetDirection(new1);
+                    if (newDirection.Equals(new1)) AddReward(1.5f);
+                }
+                else
+                {
+                    Vector2 new2 = new Vector2(0, -Mathf.Sign(distanceNearestGhostInSpace.y));
+                    // pacman.movement.SetDirection(new2);
+                    if (newDirection.Equals(new2)) AddReward(1.5f);
+                }
+            }
+        }
+    }
     
     public override void CollectObservations(VectorSensor sensor) // -> 
     {
@@ -484,9 +557,14 @@ public class PacmanAgent : Agent
             AddReward(-0.8f); // Se fermo nello stesso punto
         }
 
-        if (NearActiveGhost())
+        if (NearActiveGhost(4f))
         {
             AddReward(-0.2f);
+        }
+        
+        if (NearActiveGhost(8f))
+        {
+            AddReward(-0.02f);
         }
 
         // Set the new direction based on the current input
@@ -495,11 +573,12 @@ public class PacmanAgent : Agent
             case 0:
                 occ = pacman.movement.Occupied(pacman.movement.direction);
                 if (!occ) AddReward(0.008f); // Se va dritto e non è occupato
-                if (GhostInSight(pacman.movement.direction) && !GameManager.instance.ghosts[0].frightened)
+                /*if (GhostInSight(pacman.movement.direction) && !GameManager.instance.ghosts[0].frightened)
                 {
                     AddReward(-0.1f); // Stai andando contro un fantasma
                     //Debug.Log("Ghost in sight");
-                }
+                }*/ // Dovrebbe essere un caso coperto dalla funzione successiva
+                RewardFromGhosts(pacman.movement.direction);
 
                 break;
             case 1:
