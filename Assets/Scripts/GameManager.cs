@@ -91,18 +91,30 @@ public class GameManager : MonoBehaviour
     public void PacmanEaten()
     {
         FindObjectOfType<PacmanAgent>().AddReward(-5f);
-        // tot_games += 1; // PER RUN SU SINGOLA VITA
-        // FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU SINGOLA VITA
+        
+        // Training type based on life: change next line
+        // --->
+        bool oneLifeOnly = false; // True for one life, false for 3 (standard game)
+        // <---
+        
+        if (oneLifeOnly)
+        {
+            tot_games += 1;
+            FindObjectOfType<PacmanAgent>().EndEpisode();
+        }
 
         pacman.DeathSequence();
-        SetLives(lives - 1); // PER RUN SU 3 VITE
+        if (!oneLifeOnly) SetLives(lives - 1);
 
         if (lives > 0) {
             Invoke(nameof(ResetState), 0f);
         } else {
             FindObjectOfType<PacmanAgent>().AddReward(-5f);
-            tot_games += 1; // PER RUN SU 3 VITE
-            FindObjectOfType<PacmanAgent>().EndEpisode(); // PER RUN SU 3 VITE
+            if (!oneLifeOnly)
+            {
+                tot_games += 1;
+                FindObjectOfType<PacmanAgent>().EndEpisode();
+            }
             //GameOver();
         }
     }

@@ -158,12 +158,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: NumStepsToRecord
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationName
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationDirectory
-      value: seq
+      value: Assets/Demonstrations/final
       objectReference: {fileID: 0}
     - target: {fileID: 5101139060006020132, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration

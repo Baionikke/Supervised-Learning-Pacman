@@ -1,25 +1,25 @@
 #!/bin/bash
 
 # 0 Fantasmi
-mlagents-learn configs/seq/MLA-training-IT_0.yaml --run-id seq_0G_1L_IL --env seq/Pacman0
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_0G_1L_F --init seq_0G_1L_IL --env seq/Pacman0
+mlagents-learn configs/final/MLA-training-IT_0.yaml --run-id seq2_0G_1L_IL --env Environments/0/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_0G_1L_F --init seq2_0G_1L_IL --env Environments/0/Pacman
 
 # 1 Fantasmini
-mlagents-learn configs/seq/MLA-training-IT_1.yaml --run-id seq_1G_1L_IL --init seq_0G_1L_F --env seq/Pacman1
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_1G_1L_F --init seq_1G_1L_IL --env seq/Pacman1
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_1G_3L_F --init seq_1G_1L_F --env seq/Pacman1_3
+mlagents-learn configs/final/MLA-training-IT_1.yaml --run-id seq2_1G_1L_IL --init seq2_0G_1L_F --env Environments/1/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_1G_1L_F --init seq2_1G_1L_IL --env Environments/1/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_1G_3L_F --init seq2_1G_1L_F --env Environments/1_3/Pacman
 
 # 2 Fantasmini
-mlagents-learn configs/seq/MLA-training-IT_2.yaml --run-id seq_2G_1L_IL --init seq_1G_3L_F --env seq/Pacman2
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_2G_1L_F --init seq_2G_1L_IL --env seq/Pacman2
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_2G_3L_F --init seq_2G_1L_F --env seq/Pacman2_3
+mlagents-learn configs/final/MLA-training-IT_2.yaml --run-id seq2_2G_1L_IL --init seq2_1G_3L_F --env Environments/2/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_2G_1L_F --init seq2_2G_1L_IL --env Environments/2/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_2G_3L_F --init seq2_2G_1L_F --env Environments/2_3/Pacman
 
 # 3 Fantasmini
-mlagents-learn configs/seq/MLA-training-IT_3.yaml --run-id seq_3G_1L_IL --init seq_2G_3L_F --env seq/Pacman3
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_3G_1L_F --init seq_3G_1L_IL --env seq/Pacman3
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_3G_3L_F --init seq_3G_1L_F --env seq/Pacman3_3
+mlagents-learn configs/final/MLA-training-IT_3.yaml --run-id seq2_3G_1L_IL --init seq2_2G_3L_F --env Environments/3/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_3G_1L_F --init seq2_3G_1L_IL --env Environments/3/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_3G_3L_F --init seq2_3G_1L_F --env Environments/3_3/Pacman
 
 # 4 Fantasmini
-mlagents-learn configs/seq/MLA-training-IT_4.yaml --run-id seq_4G_1L_IL --init seq_3G_3L_F --env seq/Pacman4
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_4G_1L_F --init seq_4G_1L_IL --env seq/Pacman4
-mlagents-learn configs/seq/MLA-training.yaml --run-id seq_4G_3L_F --init seq_4G_1L_F --env seq/Pacman4_3
+mlagents-learn configs/final/MLA-training-IT_4.yaml --run-id seq2_4G_1L_IL --init seq2_3G_3L_F --env Environments/4/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_4G_1L_F --init seq2_4G_1L_IL --env Environments/4/Pacman
+mlagents-learn configs/final/MLA-training.yaml --run-id seq2_4G_3L_F --init seq2_4G_1L_F --env Environments/4_4/Pacman
