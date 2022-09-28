@@ -1,0 +1,1178 @@
+
+            ┐  ╖
+        ╓╖╬│╡  ││╬╖╖
+    ╓╖╬│││││┘  ╬│││││╬╖
+ ╖╬│││││╬╜        ╙╬│││││╖╖                               ╗╗╗
+ ╬╬╬╬╖││╦╖        ╖╬││╗╣╣╣╬      ╟╣╣╬    ╟╣╣╣             ╜╜╜  ╟╣╣
+ ╬╬╬╬╬╬╬╬╖│╬╖╖╓╬╪│╓╣╣╣╣╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╒╣╣╖╗╣╣╣╗   ╣╣╣ ╣╣╣╣╣╣ ╟╣╣╖   ╣╣╣
+ ╬╬╬╬┐  ╙╬╬╬╬│╓╣╣╣╝╜  ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╣╙ ╙╣╣╣  ╣╣╣ ╙╟╣╣╜╙  ╫╣╣  ╟╣╣
+ ╬╬╬╬┐     ╙╬╬╣╣      ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣     ╣╣╣┌╣╣╜
+ ╬╬╬╜       ╬╬╣╣      ╙╝╣╣╬      ╙╣╣╣╗╖╓╗╣╣╣╜ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣╦╓    ╣╣╣╣╣
+ ╙   ╓╦╖    ╬╬╣╣   ╓╗╗╖            ╙╝╣╣╣╣╝╜   ╘╝╝╜   ╝╝╝  ╝╝╝   ╙╣╣╣    ╟╣╣╣
+   ╩╬╬╬╬╬╬╦╦╬╬╣╣╗╣╣╣╣╣╣╣╝                                             ╫╣╣╣╣
+      ╙╬╬╬╬╬╬╬╣╣╣╣╣╣╝╜
+          ╙╬╬╬╣╣╣╜
+             ╙
+        
+ Version information:
+  ml-agents: 0.29.0,
+  ml-agents-envs: 0.29.0,
+  Communicator API: 1.5.0,
+  PyTorch: 1.8.1+cu102
+[INFO] Connected to Unity environment with package version 2.3.0-exp.2 and communication version 1.5.0
+[INFO] Connected new brain: My Behavior?team=0
+[INFO] Hyperparameters for behavior name My Behavior: 
+	trainer_type:	ppo
+	hyperparameters:	
+	  batch_size:	32
+	  buffer_size:	4096
+	  learning_rate:	0.0001
+	  beta:	0.005
+	  epsilon:	0.23
+	  lambd:	0.94
+	  num_epoch:	4
+	  learning_rate_schedule:	linear
+	  beta_schedule:	linear
+	  epsilon_schedule:	linear
+	network_settings:	
+	  normalize:	True
+	  hidden_units:	256
+	  num_layers:	3
+	  vis_encode_type:	resnet
+	  memory:	
+	    sequence_length:	32
+	    memory_size:	512
+	  goal_conditioning_type:	hyper
+	  deterministic:	False
+	reward_signals:	
+	  extrinsic:	
+	    gamma:	0.995
+	    strength:	1.0
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	128
+	      num_layers:	2
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	  curiosity:	
+	    gamma:	0.99
+	    strength:	0.01
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	64
+	      num_layers:	3
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	    learning_rate:	0.0001
+	    encoding_size:	None
+	init_path:	None
+	keep_checkpoints:	5
+	checkpoint_interval:	500000
+	max_steps:	500000
+	time_horizon:	128
+	summary_freq:	1000
+	threaded:	False
+	self_play:	None
+	behavioral_cloning:	
+	  demo_path:	Assets/Demonstrations/fifth1ghost.demo
+	  steps:	500000
+	  strength:	0.5
+	  samples_per_update:	2048
+	  num_epoch:	4
+	  batch_size:	32
+[INFO] My Behavior. Step: 1000. Time Elapsed: 29.233 s. Mean Reward: -371.367. Std of Reward: 367.519. Training.
+[INFO] My Behavior. Step: 2000. Time Elapsed: 41.373 s. Mean Reward: -226.754. Std of Reward: 286.520. Training.
+[INFO] My Behavior. Step: 3000. Time Elapsed: 55.039 s. Mean Reward: -319.775. Std of Reward: 35.697. Training.
+[INFO] My Behavior. Step: 4000. Time Elapsed: 127.967 s. Mean Reward: -342.987. Std of Reward: 327.809. Training.
+[INFO] My Behavior. Step: 5000. Time Elapsed: 141.223 s. Mean Reward: -188.319. Std of Reward: 155.450. Training.
+[INFO] My Behavior. Step: 6000. Time Elapsed: 155.218 s. Mean Reward: -309.686. Std of Reward: 303.070. Training.
+[INFO] My Behavior. Step: 7000. Time Elapsed: 167.842 s. Mean Reward: -368.399. Std of Reward: 177.001. Training.
+[INFO] My Behavior. Step: 8000. Time Elapsed: 242.671 s. Mean Reward: -441.942. Std of Reward: 214.192. Training.
+[INFO] My Behavior. Step: 9000. Time Elapsed: 256.436 s. Mean Reward: -896.468. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 10000. Time Elapsed: 268.647 s. Mean Reward: -289.571. Std of Reward: 182.315. Training.
+[INFO] My Behavior. Step: 11000. Time Elapsed: 282.239 s. Mean Reward: -226.987. Std of Reward: 16.329. Training.
+[INFO] My Behavior. Step: 12000. Time Elapsed: 356.471 s. Mean Reward: -303.570. Std of Reward: 270.398. Training.
+[INFO] My Behavior. Step: 13000. Time Elapsed: 370.211 s. Mean Reward: -160.416. Std of Reward: 39.251. Training.
+[INFO] My Behavior. Step: 14000. Time Elapsed: 384.517 s. Mean Reward: -180.781. Std of Reward: 142.554. Training.
+[INFO] My Behavior. Step: 15000. Time Elapsed: 396.025 s. Mean Reward: -404.981. Std of Reward: 323.897. Training.
+[INFO] My Behavior. Step: 16000. Time Elapsed: 472.578 s. Mean Reward: -255.489. Std of Reward: 171.063. Training.
+[INFO] My Behavior. Step: 17000. Time Elapsed: 485.815 s. Mean Reward: -235.084. Std of Reward: 116.006. Training.
+[INFO] My Behavior. Step: 18000. Time Elapsed: 498.795 s. Mean Reward: -121.527. Std of Reward: 91.632. Training.
+[INFO] My Behavior. Step: 19000. Time Elapsed: 511.351 s. Mean Reward: -341.390. Std of Reward: 134.261. Training.
+[INFO] My Behavior. Step: 20000. Time Elapsed: 587.171 s. Mean Reward: -201.364. Std of Reward: 118.973. Training.
+[INFO] My Behavior. Step: 21000. Time Elapsed: 601.873 s. Mean Reward: -165.757. Std of Reward: 123.770. Training.
+[INFO] My Behavior. Step: 22000. Time Elapsed: 613.892 s. Mean Reward: -134.373. Std of Reward: 92.098. Training.
+[INFO] My Behavior. Step: 23000. Time Elapsed: 627.778 s. Mean Reward: -85.718. Std of Reward: 21.230. Training.
+[INFO] My Behavior. Step: 24000. Time Elapsed: 703.821 s. Mean Reward: -342.471. Std of Reward: 161.267. Training.
+[INFO] My Behavior. Step: 25000. Time Elapsed: 716.177 s. Mean Reward: -491.611. Std of Reward: 558.604. Training.
+[INFO] My Behavior. Step: 26000. Time Elapsed: 729.496 s. Mean Reward: -337.543. Std of Reward: 282.779. Training.
+[INFO] My Behavior. Step: 27000. Time Elapsed: 742.289 s. Mean Reward: -134.788. Std of Reward: 135.149. Training.
+[INFO] My Behavior. Step: 28000. Time Elapsed: 817.913 s. Mean Reward: -178.739. Std of Reward: 131.263. Training.
+[INFO] My Behavior. Step: 29000. Time Elapsed: 830.083 s. Mean Reward: -188.147. Std of Reward: 138.693. Training.
+[INFO] My Behavior. Step: 30000. Time Elapsed: 842.915 s. Mean Reward: -233.039. Std of Reward: 166.169. Training.
+[INFO] My Behavior. Step: 31000. Time Elapsed: 855.497 s. Mean Reward: -227.473. Std of Reward: 15.157. Training.
+[INFO] My Behavior. Step: 32000. Time Elapsed: 931.086 s. Mean Reward: -83.415. Std of Reward: 35.179. Training.
+[INFO] My Behavior. Step: 33000. Time Elapsed: 943.926 s. Mean Reward: -151.346. Std of Reward: 218.727. Training.
+[INFO] My Behavior. Step: 34000. Time Elapsed: 956.529 s. Mean Reward: -159.714. Std of Reward: 137.485. Training.
+[INFO] My Behavior. Step: 35000. Time Elapsed: 968.936 s. Mean Reward: -161.354. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 36000. Time Elapsed: 1044.702 s. Mean Reward: -128.633. Std of Reward: 133.251. Training.
+[INFO] My Behavior. Step: 37000. Time Elapsed: 1057.880 s. Mean Reward: -60.963. Std of Reward: 50.605. Training.
+[INFO] My Behavior. Step: 38000. Time Elapsed: 1070.703 s. Mean Reward: -74.296. Std of Reward: 65.386. Training.
+[INFO] My Behavior. Step: 39000. Time Elapsed: 1084.888 s. Mean Reward: -122.258. Std of Reward: 96.777. Training.
+[INFO] My Behavior. Step: 40000. Time Elapsed: 1159.917 s. Mean Reward: -240.376. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 41000. Time Elapsed: 1174.656 s. Mean Reward: -146.091. Std of Reward: 138.163. Training.
+[INFO] My Behavior. Step: 42000. Time Elapsed: 1187.295 s. Mean Reward: -188.761. Std of Reward: 188.757. Training.
+[INFO] My Behavior. Step: 43000. Time Elapsed: 1200.884 s. Mean Reward: -170.459. Std of Reward: 52.702. Training.
+[INFO] My Behavior. Step: 44000. Time Elapsed: 1275.944 s. Mean Reward: -55.518. Std of Reward: 21.980. Training.
+[INFO] My Behavior. Step: 45000. Time Elapsed: 1288.798 s. Mean Reward: -50.826. Std of Reward: 25.548. Training.
+[INFO] My Behavior. Step: 46000. Time Elapsed: 1300.399 s. Mean Reward: -347.544. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 47000. Time Elapsed: 1312.878 s. Mean Reward: -117.515. Std of Reward: 109.613. Training.
+[INFO] My Behavior. Step: 48000. Time Elapsed: 1387.828 s. Mean Reward: -116.065. Std of Reward: 121.468. Training.
+[INFO] My Behavior. Step: 49000. Time Elapsed: 1401.586 s. Mean Reward: -69.779. Std of Reward: 43.827. Training.
+[INFO] My Behavior. Step: 50000. Time Elapsed: 1414.530 s. Mean Reward: -201.881. Std of Reward: 230.848. Training.
+[INFO] My Behavior. Step: 51000. Time Elapsed: 1428.245 s. Mean Reward: -65.636. Std of Reward: 45.121. Training.
+[INFO] My Behavior. Step: 52000. Time Elapsed: 1502.893 s. Mean Reward: -69.861. Std of Reward: 64.399. Training.
+[INFO] My Behavior. Step: 53000. Time Elapsed: 1515.112 s. Mean Reward: -61.272. Std of Reward: 34.380. Training.
+[INFO] My Behavior. Step: 54000. Time Elapsed: 1529.168 s. Mean Reward: -69.911. Std of Reward: 15.020. Training.
+[INFO] My Behavior. Step: 55000. Time Elapsed: 1540.236 s. Mean Reward: -58.710. Std of Reward: 50.938. Training.
+[INFO] My Behavior. Step: 56000. Time Elapsed: 1616.371 s. Mean Reward: -57.677. Std of Reward: 32.185. Training.
+[INFO] My Behavior. Step: 57000. Time Elapsed: 1628.188 s. Mean Reward: -391.277. Std of Reward: 111.423. Training.
+[INFO] My Behavior. Step: 58000. Time Elapsed: 1642.159 s. Mean Reward: -65.378. Std of Reward: 69.977. Training.
+[INFO] My Behavior. Step: 59000. Time Elapsed: 1655.828 s. Mean Reward: -79.174. Std of Reward: 91.321. Training.
+[INFO] My Behavior. Step: 60000. Time Elapsed: 1730.502 s. Mean Reward: -30.730. Std of Reward: 40.329. Training.
+[INFO] My Behavior. Step: 61000. Time Elapsed: 1743.304 s. Mean Reward: -72.047. Std of Reward: 41.716. Training.
+[INFO] My Behavior. Step: 62000. Time Elapsed: 1757.647 s. Mean Reward: -66.790. Std of Reward: 78.285. Training.
+[INFO] My Behavior. Step: 63000. Time Elapsed: 1769.658 s. Mean Reward: -124.287. Std of Reward: 141.316. Training.
+[INFO] My Behavior. Step: 64000. Time Elapsed: 1844.842 s. Mean Reward: -115.191. Std of Reward: 233.622. Training.
+[INFO] My Behavior. Step: 65000. Time Elapsed: 1856.618 s. Mean Reward: -1163.370. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 66000. Time Elapsed: 1869.311 s. Mean Reward: -47.811. Std of Reward: 40.160. Training.
+[INFO] My Behavior. Step: 67000. Time Elapsed: 1882.572 s. Mean Reward: -51.739. Std of Reward: 51.821. Training.
+[INFO] My Behavior. Step: 68000. Time Elapsed: 1957.883 s. Mean Reward: -28.711. Std of Reward: 26.205. Training.
+[INFO] My Behavior. Step: 69000. Time Elapsed: 1970.416 s. Mean Reward: -88.484. Std of Reward: 171.183. Training.
+[INFO] My Behavior. Step: 70000. Time Elapsed: 1984.116 s. Mean Reward: -48.936. Std of Reward: 77.084. Training.
+[INFO] My Behavior. Step: 71000. Time Elapsed: 1997.071 s. Mean Reward: -369.048. Std of Reward: 422.496. Training.
+[INFO] My Behavior. Step: 72000. Time Elapsed: 2071.155 s. Mean Reward: -106.946. Std of Reward: 48.046. Training.
+[INFO] My Behavior. Step: 73000. Time Elapsed: 2085.602 s. Mean Reward: -77.235. Std of Reward: 48.219. Training.
+[INFO] My Behavior. Step: 74000. Time Elapsed: 2099.277 s. Mean Reward: -37.882. Std of Reward: 86.366. Training.
+[INFO] My Behavior. Step: 75000. Time Elapsed: 2111.122 s. Mean Reward: -8.201. Std of Reward: 21.054. Training.
+[INFO] My Behavior. Step: 76000. Time Elapsed: 2186.603 s. Mean Reward: -85.031. Std of Reward: 111.366. Training.
+[INFO] My Behavior. Step: 77000. Time Elapsed: 2199.510 s. Mean Reward: -78.498. Std of Reward: 51.060. Training.
+[INFO] My Behavior. Step: 78000. Time Elapsed: 2212.680 s. Mean Reward: -99.576. Std of Reward: 140.077. Training.
+[INFO] My Behavior. Step: 79000. Time Elapsed: 2225.846 s. Mean Reward: -67.284. Std of Reward: 67.571. Training.
+[INFO] My Behavior. Step: 80000. Time Elapsed: 2301.192 s. Mean Reward: -27.330. Std of Reward: 38.303. Training.
+[INFO] My Behavior. Step: 81000. Time Elapsed: 2314.492 s. Mean Reward: -17.774. Std of Reward: 17.243. Training.
+[INFO] My Behavior. Step: 82000. Time Elapsed: 2327.435 s. Mean Reward: -24.385. Std of Reward: 33.837. Training.
+[INFO] My Behavior. Step: 83000. Time Elapsed: 2340.557 s. Mean Reward: -9.826. Std of Reward: 20.900. Training.
+[INFO] My Behavior. Step: 84000. Time Elapsed: 2417.015 s. Mean Reward: -18.337. Std of Reward: 42.224. Training.
+[INFO] My Behavior. Step: 85000. Time Elapsed: 2430.729 s. Mean Reward: -41.983. Std of Reward: 48.497. Training.
+[INFO] My Behavior. Step: 86000. Time Elapsed: 2443.884 s. Mean Reward: -194.287. Std of Reward: 164.291. Training.
+[INFO] My Behavior. Step: 87000. Time Elapsed: 2518.411 s. Mean Reward: -13.248. Std of Reward: 14.817. Training.
+[INFO] My Behavior. Step: 88000. Time Elapsed: 2532.124 s. Mean Reward: -8.769. Std of Reward: 33.596. Training.
+[INFO] My Behavior. Step: 89000. Time Elapsed: 2545.771 s. Mean Reward: -7.810. Std of Reward: 20.652. Training.
+[INFO] My Behavior. Step: 90000. Time Elapsed: 2560.220 s. Mean Reward: -33.231. Std of Reward: 28.244. Training.
+[INFO] My Behavior. Step: 91000. Time Elapsed: 2633.649 s. Mean Reward: -26.551. Std of Reward: 21.019. Training.
+[INFO] My Behavior. Step: 92000. Time Elapsed: 2648.257 s. Mean Reward: -22.221. Std of Reward: 21.907. Training.
+[INFO] My Behavior. Step: 93000. Time Elapsed: 2661.197 s. Mean Reward: 2.266. Std of Reward: 10.535. Training.
+[INFO] My Behavior. Step: 94000. Time Elapsed: 2674.894 s. Mean Reward: -23.564. Std of Reward: 9.806. Training.
+[INFO] My Behavior. Step: 95000. Time Elapsed: 2750.070 s. Mean Reward: -13.989. Std of Reward: 27.989. Training.
+[INFO] My Behavior. Step: 96000. Time Elapsed: 2762.916 s. Mean Reward: -9.586. Std of Reward: 19.294. Training.
+[INFO] My Behavior. Step: 97000. Time Elapsed: 2775.382 s. Mean Reward: -175.778. Std of Reward: 184.601. Training.
+[INFO] My Behavior. Step: 98000. Time Elapsed: 2788.526 s. Mean Reward: 0.320. Std of Reward: 21.519. Training.
+[INFO] My Behavior. Step: 99000. Time Elapsed: 2862.989 s. Mean Reward: -10.292. Std of Reward: 16.334. Training.
+[INFO] My Behavior. Step: 100000. Time Elapsed: 2877.596 s. Mean Reward: -32.152. Std of Reward: 35.591. Training.
+[INFO] My Behavior. Step: 101000. Time Elapsed: 2890.163 s. Mean Reward: -78.080. Std of Reward: 129.182. Training.
+[INFO] My Behavior. Step: 102000. Time Elapsed: 2902.917 s. Mean Reward: -265.877. Std of Reward: 377.144. Training.
+[INFO] My Behavior. Step: 103000. Time Elapsed: 2979.157 s. Mean Reward: -11.480. Std of Reward: 34.924. Training.
+[INFO] My Behavior. Step: 104000. Time Elapsed: 2991.445 s. Mean Reward: -5.632. Std of Reward: 23.250. Training.
+[INFO] My Behavior. Step: 105000. Time Elapsed: 3005.462 s. Mean Reward: -26.375. Std of Reward: 52.522. Training.
+[INFO] My Behavior. Step: 106000. Time Elapsed: 3018.427 s. Mean Reward: -8.538. Std of Reward: 24.491. Training.
+[INFO] My Behavior. Step: 107000. Time Elapsed: 3092.478 s. Mean Reward: -67.980. Std of Reward: 174.359. Training.
+[INFO] My Behavior. Step: 108000. Time Elapsed: 3105.555 s. Mean Reward: 55.872. Std of Reward: 76.175. Training.
+[INFO] My Behavior. Step: 109000. Time Elapsed: 3119.477 s. Mean Reward: -2.729. Std of Reward: 11.519. Training.
+[INFO] My Behavior. Step: 110000. Time Elapsed: 3132.779 s. Mean Reward: -43.263. Std of Reward: 67.226. Training.
+[INFO] My Behavior. Step: 111000. Time Elapsed: 3208.095 s. Mean Reward: -70.740. Std of Reward: 160.787. Training.
+[INFO] My Behavior. Step: 112000. Time Elapsed: 3221.915 s. Mean Reward: -126.774. Std of Reward: 173.214. Training.
+[INFO] My Behavior. Step: 113000. Time Elapsed: 3234.980 s. Mean Reward: -28.489. Std of Reward: 22.503. Training.
+[INFO] My Behavior. Step: 114000. Time Elapsed: 3247.796 s. Mean Reward: -12.845. Std of Reward: 9.941. Training.
+[INFO] My Behavior. Step: 115000. Time Elapsed: 3322.523 s. Mean Reward: -16.297. Std of Reward: 19.186. Training.
+[INFO] My Behavior. Step: 116000. Time Elapsed: 3335.386 s. Mean Reward: -26.427. Std of Reward: 40.059. Training.
+[INFO] My Behavior. Step: 117000. Time Elapsed: 3348.278 s. Mean Reward: 14.073. Std of Reward: 21.646. Training.
+[INFO] My Behavior. Step: 118000. Time Elapsed: 3424.348 s. Mean Reward: 35.901. Std of Reward: 104.454. Training.
+[INFO] My Behavior. Step: 119000. Time Elapsed: 3437.722 s. Mean Reward: -12.545. Std of Reward: 30.751. Training.
+[INFO] My Behavior. Step: 120000. Time Elapsed: 3450.675 s. Mean Reward: 25.596. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 121000. Time Elapsed: 3462.269 s. Mean Reward: -3004.375. Std of Reward: 3034.539. Training.
+[INFO] My Behavior. Step: 122000. Time Elapsed: 3537.817 s. Mean Reward: -3.800. Std of Reward: 15.275. Training.
+[INFO] My Behavior. Step: 123000. Time Elapsed: 3550.025 s. Mean Reward: -185.427. Std of Reward: 172.331. Training.
+[INFO] My Behavior. Step: 124000. Time Elapsed: 3563.104 s. Mean Reward: -166.696. Std of Reward: 385.641. Training.
+[INFO] My Behavior. Step: 125000. Time Elapsed: 3576.387 s. Mean Reward: -75.745. Std of Reward: 161.460. Training.
+[INFO] My Behavior. Step: 126000. Time Elapsed: 3650.812 s. Mean Reward: -338.154. Std of Reward: 343.160. Training.
+[INFO] My Behavior. Step: 127000. Time Elapsed: 3664.713 s. Mean Reward: 4.924. Std of Reward: 27.647. Training.
+[INFO] My Behavior. Step: 128000. Time Elapsed: 3677.933 s. Mean Reward: -57.495. Std of Reward: 62.399. Training.
+[INFO] My Behavior. Step: 129000. Time Elapsed: 3691.414 s. Mean Reward: -99.534. Std of Reward: 209.557. Training.
+[INFO] My Behavior. Step: 130000. Time Elapsed: 3765.199 s. Mean Reward: 0.149. Std of Reward: 11.884. Training.
+[INFO] My Behavior. Step: 131000. Time Elapsed: 3779.652 s. Mean Reward: -1.845. Std of Reward: 18.171. Training.
+[INFO] My Behavior. Step: 132000. Time Elapsed: 3793.295 s. Mean Reward: -19.877. Std of Reward: 25.781. Training.
+[INFO] My Behavior. Step: 133000. Time Elapsed: 3805.712 s. Mean Reward: -15.378. Std of Reward: 23.902. Training.
+[INFO] My Behavior. Step: 134000. Time Elapsed: 3881.178 s. Mean Reward: -9.315. Std of Reward: 18.217. Training.
+[INFO] My Behavior. Step: 135000. Time Elapsed: 3894.322 s. Mean Reward: 6.656. Std of Reward: 21.636. Training.
+[INFO] My Behavior. Step: 136000. Time Elapsed: 3908.021 s. Mean Reward: -297.416. Std of Reward: 408.587. Training.
+[INFO] My Behavior. Step: 137000. Time Elapsed: 3920.053 s. Mean Reward: -92.242. Std of Reward: 174.096. Training.
+[INFO] My Behavior. Step: 138000. Time Elapsed: 3995.353 s. Mean Reward: -5.073. Std of Reward: 18.355. Training.
+[INFO] My Behavior. Step: 139000. Time Elapsed: 4008.214 s. Mean Reward: -24.828. Std of Reward: 44.863. Training.
+[INFO] My Behavior. Step: 140000. Time Elapsed: 4021.696 s. Mean Reward: -21.831. Std of Reward: 50.689. Training.
+[INFO] My Behavior. Step: 141000. Time Elapsed: 4034.640 s. Mean Reward: -86.423. Std of Reward: 203.152. Training.
+[INFO] My Behavior. Step: 142000. Time Elapsed: 4108.575 s. Mean Reward: -32.463. Std of Reward: 71.460. Training.
+[INFO] My Behavior. Step: 143000. Time Elapsed: 4122.673 s. Mean Reward: -5.355. Std of Reward: 19.768. Training.
+[INFO] My Behavior. Step: 144000. Time Elapsed: 4136.061 s. Mean Reward: 21.517. Std of Reward: 52.367. Training.
+[INFO] My Behavior. Step: 145000. Time Elapsed: 4149.033 s. Mean Reward: 2.283. Std of Reward: 35.864. Training.
+[INFO] My Behavior. Step: 146000. Time Elapsed: 4225.141 s. Mean Reward: 4.890. Std of Reward: 27.011. Training.
+[INFO] My Behavior. Step: 147000. Time Elapsed: 4238.169 s. Mean Reward: 6.157. Std of Reward: 10.426. Training.
+[INFO] My Behavior. Step: 148000. Time Elapsed: 4252.955 s. Mean Reward: -0.388. Std of Reward: 25.087. Training.
+[INFO] My Behavior. Step: 149000. Time Elapsed: 4266.319 s. Mean Reward: -15.016. Std of Reward: 87.115. Training.
+[INFO] My Behavior. Step: 150000. Time Elapsed: 4340.895 s. Mean Reward: -72.644. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 151000. Time Elapsed: 4354.066 s. Mean Reward: 20.596. Std of Reward: 28.386. Training.
+[INFO] My Behavior. Step: 152000. Time Elapsed: 4365.905 s. Mean Reward: 63.831. Std of Reward: 26.539. Training.
+[INFO] My Behavior. Step: 153000. Time Elapsed: 4379.573 s. Mean Reward: 48.796. Std of Reward: 56.920. Training.
+[INFO] My Behavior. Step: 154000. Time Elapsed: 4454.929 s. Mean Reward: 30.049. Std of Reward: 30.660. Training.
+[INFO] My Behavior. Step: 155000. Time Elapsed: 4467.697 s. Mean Reward: 16.333. Std of Reward: 47.776. Training.
+[INFO] My Behavior. Step: 156000. Time Elapsed: 4481.274 s. Mean Reward: -16.934. Std of Reward: 39.405. Training.
+[INFO] My Behavior. Step: 157000. Time Elapsed: 4494.153 s. Mean Reward: 18.474. Std of Reward: 29.975. Training.
+[INFO] My Behavior. Step: 158000. Time Elapsed: 4567.484 s. Mean Reward: 96.632. Std of Reward: 17.990. Training.
+[INFO] My Behavior. Step: 159000. Time Elapsed: 4579.263 s. Mean Reward: -53.774. Std of Reward: 63.992. Training.
+[INFO] My Behavior. Step: 160000. Time Elapsed: 4592.785 s. Mean Reward: 8.479. Std of Reward: 18.163. Training.
+[INFO] My Behavior. Step: 161000. Time Elapsed: 4604.986 s. Mean Reward: -30.126. Std of Reward: 92.281. Training.
+[INFO] My Behavior. Step: 162000. Time Elapsed: 4679.653 s. Mean Reward: 20.167. Std of Reward: 28.271. Training.
+[INFO] My Behavior. Step: 163000. Time Elapsed: 4694.500 s. Mean Reward: -18.636. Std of Reward: 113.066. Training.
+[INFO] My Behavior. Step: 164000. Time Elapsed: 4707.223 s. Mean Reward: 40.810. Std of Reward: 66.545. Training.
+[INFO] My Behavior. Step: 165000. Time Elapsed: 4719.923 s. Mean Reward: 35.605. Std of Reward: 16.526. Training.
+[INFO] My Behavior. Step: 166000. Time Elapsed: 4795.284 s. Mean Reward: -64.533. Std of Reward: 102.796. Training.
+[INFO] My Behavior. Step: 167000. Time Elapsed: 4807.992 s. Mean Reward: -15.343. Std of Reward: 87.549. Training.
+[INFO] My Behavior. Step: 168000. Time Elapsed: 4821.119 s. Mean Reward: 28.070. Std of Reward: 23.539. Training.
+[INFO] My Behavior. Step: 169000. Time Elapsed: 4896.472 s. Mean Reward: 45.305. Std of Reward: 14.336. Training.
+[INFO] My Behavior. Step: 170000. Time Elapsed: 4910.063 s. Mean Reward: 14.643. Std of Reward: 24.081. Training.
+[INFO] My Behavior. Step: 171000. Time Elapsed: 4922.053 s. Mean Reward: 8.725. Std of Reward: 14.366. Training.
+[INFO] My Behavior. Step: 172000. Time Elapsed: 4935.434 s. Mean Reward: 29.626. Std of Reward: 23.341. Training.
+[INFO] My Behavior. Step: 173000. Time Elapsed: 5008.846 s. Mean Reward: 49.162. Std of Reward: 10.412. Training.
+[INFO] My Behavior. Step: 174000. Time Elapsed: 5022.913 s. Mean Reward: 41.960. Std of Reward: 61.166. Training.
+[INFO] My Behavior. Step: 175000. Time Elapsed: 5035.617 s. Mean Reward: 18.040. Std of Reward: 18.219. Training.
+[INFO] My Behavior. Step: 176000. Time Elapsed: 5047.763 s. Mean Reward: 66.788. Std of Reward: 49.452. Training.
+[INFO] My Behavior. Step: 177000. Time Elapsed: 5123.285 s. Mean Reward: 68.039. Std of Reward: 43.965. Training.
+[INFO] My Behavior. Step: 178000. Time Elapsed: 5136.490 s. Mean Reward: 3.762. Std of Reward: 23.312. Training.
+[INFO] My Behavior. Step: 179000. Time Elapsed: 5150.045 s. Mean Reward: 20.679. Std of Reward: 43.097. Training.
+[INFO] My Behavior. Step: 180000. Time Elapsed: 5162.687 s. Mean Reward: 39.553. Std of Reward: 31.905. Training.
+[INFO] My Behavior. Step: 181000. Time Elapsed: 5237.985 s. Mean Reward: -25.712. Std of Reward: 116.991. Training.
+[INFO] My Behavior. Step: 182000. Time Elapsed: 5250.420 s. Mean Reward: 40.684. Std of Reward: 28.812. Training.
+[INFO] My Behavior. Step: 183000. Time Elapsed: 5263.669 s. Mean Reward: -5.899. Std of Reward: 28.705. Training.
+[INFO] My Behavior. Step: 184000. Time Elapsed: 5276.267 s. Mean Reward: 17.711. Std of Reward: 16.331. Training.
+[INFO] My Behavior. Step: 185000. Time Elapsed: 5351.748 s. Mean Reward: 110.932. Std of Reward: 39.930. Training.
+[INFO] My Behavior. Step: 186000. Time Elapsed: 5364.612 s. Mean Reward: 36.081. Std of Reward: 41.678. Training.
+[INFO] My Behavior. Step: 187000. Time Elapsed: 5377.298 s. Mean Reward: -107.902. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 188000. Time Elapsed: 5390.121 s. Mean Reward: -47.614. Std of Reward: 210.278. Training.
+[INFO] My Behavior. Step: 189000. Time Elapsed: 5464.911 s. Mean Reward: 51.165. Std of Reward: 3.465. Training.
+[INFO] My Behavior. Step: 190000. Time Elapsed: 5478.239 s. Mean Reward: 15.474. Std of Reward: 1.566. Training.
+[INFO] My Behavior. Step: 191000. Time Elapsed: 5491.312 s. Mean Reward: 43.357. Std of Reward: 41.926. Training.
+[INFO] My Behavior. Step: 192000. Time Elapsed: 5503.826 s. Mean Reward: 1.927. Std of Reward: 109.276. Training.
+[INFO] My Behavior. Step: 193000. Time Elapsed: 5577.872 s. Mean Reward: 56.663. Std of Reward: 24.632. Training.
+[INFO] My Behavior. Step: 194000. Time Elapsed: 5591.091 s. Mean Reward: 40.677. Std of Reward: 26.497. Training.
+[INFO] My Behavior. Step: 195000. Time Elapsed: 5604.992 s. Mean Reward: 27.590. Std of Reward: 23.030. Training.
+[INFO] My Behavior. Step: 196000. Time Elapsed: 5616.712 s. Mean Reward: 112.818. Std of Reward: 43.225. Training.
+[INFO] My Behavior. Step: 197000. Time Elapsed: 5691.591 s. Mean Reward: 81.549. Std of Reward: 48.256. Training.
+[INFO] My Behavior. Step: 198000. Time Elapsed: 5704.902 s. Mean Reward: 79.625. Std of Reward: 49.870. Training.
+[INFO] My Behavior. Step: 199000. Time Elapsed: 5719.175 s. Mean Reward: 31.736. Std of Reward: 22.027. Training.
+[INFO] My Behavior. Step: 200000. Time Elapsed: 5731.119 s. Mean Reward: 107.831. Std of Reward: 76.741. Training.
+[INFO] My Behavior. Step: 201000. Time Elapsed: 5806.540 s. Mean Reward: 43.468. Std of Reward: 32.142. Training.
+[INFO] My Behavior. Step: 202000. Time Elapsed: 5820.631 s. Mean Reward: 59.491. Std of Reward: 20.239. Training.
+[INFO] My Behavior. Step: 203000. Time Elapsed: 5833.289 s. Mean Reward: 47.450. Std of Reward: 73.492. Training.
+[INFO] My Behavior. Step: 204000. Time Elapsed: 5846.171 s. Mean Reward: 52.522. Std of Reward: 32.802. Training.
+[INFO] My Behavior. Step: 205000. Time Elapsed: 5921.484 s. Mean Reward: -12.518. Std of Reward: 61.236. Training.
+[INFO] My Behavior. Step: 206000. Time Elapsed: 5934.923 s. Mean Reward: 102.271. Std of Reward: 46.964. Training.
+[INFO] My Behavior. Step: 207000. Time Elapsed: 5948.142 s. Mean Reward: 47.864. Std of Reward: 13.102. Training.
+[INFO] My Behavior. Step: 208000. Time Elapsed: 5959.947 s. Mean Reward: 22.494. Std of Reward: 36.261. Training.
+[INFO] My Behavior. Step: 209000. Time Elapsed: 6035.020 s. Mean Reward: 94.836. Std of Reward: 12.734. Training.
+[INFO] My Behavior. Step: 210000. Time Elapsed: 6049.274 s. Mean Reward: 8.540. Std of Reward: 91.436. Training.
+[INFO] My Behavior. Step: 211000. Time Elapsed: 6061.849 s. Mean Reward: 95.415. Std of Reward: 22.881. Training.
+[INFO] My Behavior. Step: 212000. Time Elapsed: 6074.159 s. Mean Reward: 45.073. Std of Reward: 31.490. Training.
+[INFO] My Behavior. Step: 213000. Time Elapsed: 6150.035 s. Mean Reward: 35.664. Std of Reward: 28.898. Training.
+[INFO] My Behavior. Step: 214000. Time Elapsed: 6162.364 s. Mean Reward: 26.082. Std of Reward: 74.946. Training.
+[INFO] My Behavior. Step: 215000. Time Elapsed: 6176.844 s. Mean Reward: 63.309. Std of Reward: 36.622. Training.
+[INFO] My Behavior. Step: 216000. Time Elapsed: 6190.998 s. Mean Reward: 52.669. Std of Reward: 26.809. Training.
+[INFO] My Behavior. Step: 217000. Time Elapsed: 6264.818 s. Mean Reward: -129.375. Std of Reward: 241.181. Training.
+[INFO] My Behavior. Step: 218000. Time Elapsed: 6279.199 s. Mean Reward: 66.095. Std of Reward: 28.861. Training.
+[INFO] My Behavior. Step: 219000. Time Elapsed: 6291.042 s. Mean Reward: 34.272. Std of Reward: 59.809. Training.
+[INFO] My Behavior. Step: 220000. Time Elapsed: 6304.592 s. Mean Reward: 59.464. Std of Reward: 17.544. Training.
+[INFO] My Behavior. Step: 221000. Time Elapsed: 6379.631 s. Mean Reward: 73.883. Std of Reward: 11.540. Training.
+[INFO] My Behavior. Step: 222000. Time Elapsed: 6392.202 s. Mean Reward: 56.584. Std of Reward: 12.853. Training.
+[INFO] My Behavior. Step: 223000. Time Elapsed: 6405.488 s. Mean Reward: 60.879. Std of Reward: 38.552. Training.
+[INFO] My Behavior. Step: 224000. Time Elapsed: 6418.564 s. Mean Reward: 34.970. Std of Reward: 36.157. Training.
+[INFO] My Behavior. Step: 225000. Time Elapsed: 6493.623 s. Mean Reward: 67.868. Std of Reward: 18.485. Training.
+[INFO] My Behavior. Step: 226000. Time Elapsed: 6505.968 s. Mean Reward: 60.247. Std of Reward: 38.997. Training.
+[INFO] My Behavior. Step: 227000. Time Elapsed: 6517.514 s. Mean Reward: 75.508. Std of Reward: 13.187. Training.
+[INFO] My Behavior. Step: 228000. Time Elapsed: 6529.996 s. Mean Reward: 37.104. Std of Reward: 29.026. Training.
+[INFO] My Behavior. Step: 229000. Time Elapsed: 6605.265 s. Mean Reward: 74.386. Std of Reward: 76.683. Training.
+[INFO] My Behavior. Step: 230000. Time Elapsed: 6617.800 s. Mean Reward: 16.466. Std of Reward: 78.209. Training.
+[INFO] My Behavior. Step: 231000. Time Elapsed: 6630.908 s. Mean Reward: 182.660. Std of Reward: 53.630. Training.
+[INFO] My Behavior. Step: 232000. Time Elapsed: 6642.749 s. Mean Reward: 55.899. Std of Reward: 7.912. Training.
+[INFO] My Behavior. Step: 233000. Time Elapsed: 6718.589 s. Mean Reward: 44.082. Std of Reward: 28.506. Training.
+[INFO] My Behavior. Step: 234000. Time Elapsed: 6733.153 s. Mean Reward: -73.876. Std of Reward: 214.449. Training.
+[INFO] My Behavior. Step: 235000. Time Elapsed: 6746.405 s. Mean Reward: 117.143. Std of Reward: 26.429. Training.
+[INFO] My Behavior. Step: 236000. Time Elapsed: 6820.717 s. Mean Reward: 89.682. Std of Reward: 53.564. Training.
+[INFO] My Behavior. Step: 237000. Time Elapsed: 6833.248 s. Mean Reward: 46.838. Std of Reward: 14.099. Training.
+[INFO] My Behavior. Step: 238000. Time Elapsed: 6846.047 s. Mean Reward: 37.437. Std of Reward: 26.362. Training.
+[INFO] My Behavior. Step: 239000. Time Elapsed: 6860.400 s. Mean Reward: 83.266. Std of Reward: 81.573. Training.
+[INFO] My Behavior. Step: 240000. Time Elapsed: 6934.388 s. Mean Reward: 94.394. Std of Reward: 25.690. Training.
+[INFO] My Behavior. Step: 241000. Time Elapsed: 6947.582 s. Mean Reward: 42.355. Std of Reward: 25.948. Training.
+[INFO] My Behavior. Step: 242000. Time Elapsed: 6960.433 s. Mean Reward: 41.725. Std of Reward: 11.020. Training.
+[INFO] My Behavior. Step: 243000. Time Elapsed: 6974.894 s. Mean Reward: -5.301. Std of Reward: 170.451. Training.
+[INFO] My Behavior. Step: 244000. Time Elapsed: 7049.979 s. Mean Reward: 85.795. Std of Reward: 23.855. Training.
+[INFO] My Behavior. Step: 245000. Time Elapsed: 7062.887 s. Mean Reward: 39.091. Std of Reward: 5.991. Training.
+[INFO] My Behavior. Step: 246000. Time Elapsed: 7074.990 s. Mean Reward: 40.832. Std of Reward: 9.999. Training.
+[INFO] My Behavior. Step: 247000. Time Elapsed: 7088.156 s. Mean Reward: 80.085. Std of Reward: 18.769. Training.
+[INFO] My Behavior. Step: 248000. Time Elapsed: 7161.366 s. Mean Reward: 57.032. Std of Reward: 16.260. Training.
+[INFO] My Behavior. Step: 249000. Time Elapsed: 7174.665 s. Mean Reward: 38.708. Std of Reward: 35.463. Training.
+[INFO] My Behavior. Step: 250000. Time Elapsed: 7188.203 s. Mean Reward: 109.792. Std of Reward: 62.166. Training.
+[INFO] My Behavior. Step: 251000. Time Elapsed: 7200.608 s. Mean Reward: 74.592. Std of Reward: 46.104. Training.
+[INFO] My Behavior. Step: 252000. Time Elapsed: 7276.539 s. Mean Reward: 82.738. Std of Reward: 28.589. Training.
+[INFO] My Behavior. Step: 253000. Time Elapsed: 7289.594 s. Mean Reward: -72.433. Std of Reward: 201.259. Training.
+[INFO] My Behavior. Step: 254000. Time Elapsed: 7302.464 s. Mean Reward: -19.123. Std of Reward: 143.704. Training.
+[INFO] My Behavior. Step: 255000. Time Elapsed: 7316.615 s. Mean Reward: 51.170. Std of Reward: 36.843. Training.
+[INFO] My Behavior. Step: 256000. Time Elapsed: 7389.672 s. Mean Reward: 33.249. Std of Reward: 59.488. Training.
+[INFO] My Behavior. Step: 257000. Time Elapsed: 7402.722 s. Mean Reward: 87.449. Std of Reward: 12.855. Training.
+[INFO] My Behavior. Step: 258000. Time Elapsed: 7417.166 s. Mean Reward: 85.305. Std of Reward: 23.366. Training.
+[INFO] My Behavior. Step: 259000. Time Elapsed: 7429.143 s. Mean Reward: 135.019. Std of Reward: 81.053. Training.
+[INFO] My Behavior. Step: 260000. Time Elapsed: 7504.439 s. Mean Reward: 81.688. Std of Reward: 34.426. Training.
+[INFO] My Behavior. Step: 261000. Time Elapsed: 7517.150 s. Mean Reward: 57.343. Std of Reward: 16.629. Training.
+[INFO] My Behavior. Step: 262000. Time Elapsed: 7528.910 s. Mean Reward: 21.450. Std of Reward: 33.202. Training.
+[INFO] My Behavior. Step: 263000. Time Elapsed: 7542.289 s. Mean Reward: -8.921. Std of Reward: 90.707. Training.
+[INFO] My Behavior. Step: 264000. Time Elapsed: 7615.615 s. Mean Reward: -103.359. Std of Reward: 232.476. Training.
+[INFO] My Behavior. Step: 265000. Time Elapsed: 7629.627 s. Mean Reward: 91.955. Std of Reward: 35.184. Training.
+[INFO] My Behavior. Step: 266000. Time Elapsed: 7642.390 s. Mean Reward: 65.770. Std of Reward: 36.767. Training.
+[INFO] My Behavior. Step: 267000. Time Elapsed: 7655.668 s. Mean Reward: 89.939. Std of Reward: 28.347. Training.
+[INFO] My Behavior. Step: 268000. Time Elapsed: 7730.641 s. Mean Reward: 68.036. Std of Reward: 11.434. Training.
+[INFO] My Behavior. Step: 269000. Time Elapsed: 7743.164 s. Mean Reward: 188.375. Std of Reward: 41.385. Training.
+[INFO] My Behavior. Step: 270000. Time Elapsed: 7757.313 s. Mean Reward: 58.100. Std of Reward: 32.399. Training.
+[INFO] My Behavior. Step: 271000. Time Elapsed: 7769.280 s. Mean Reward: 106.068. Std of Reward: 55.785. Training.
+[INFO] My Behavior. Step: 272000. Time Elapsed: 7844.895 s. Mean Reward: 111.723. Std of Reward: 77.133. Training.
+[INFO] My Behavior. Step: 273000. Time Elapsed: 7857.545 s. Mean Reward: 78.098. Std of Reward: 20.914. Training.
+[INFO] My Behavior. Step: 274000. Time Elapsed: 7870.335 s. Mean Reward: 108.442. Std of Reward: 91.968. Training.
+[INFO] My Behavior. Step: 275000. Time Elapsed: 7883.947 s. Mean Reward: 177.585. Std of Reward: 72.310. Training.
+[INFO] My Behavior. Step: 276000. Time Elapsed: 7958.831 s. Mean Reward: 61.514. Std of Reward: 29.343. Training.
+[INFO] My Behavior. Step: 277000. Time Elapsed: 7971.928 s. Mean Reward: 93.799. Std of Reward: 69.342. Training.
+[INFO] My Behavior. Step: 278000. Time Elapsed: 7985.533 s. Mean Reward: 125.460. Std of Reward: 44.068. Training.
+[INFO] My Behavior. Step: 279000. Time Elapsed: 7997.645 s. Mean Reward: 55.623. Std of Reward: 9.797. Training.
+[INFO] My Behavior. Step: 280000. Time Elapsed: 8074.521 s. Mean Reward: 124.462. Std of Reward: 44.344. Training.
+[INFO] My Behavior. Step: 281000. Time Elapsed: 8086.725 s. Mean Reward: 82.397. Std of Reward: 6.605. Training.
+[INFO] My Behavior. Step: 282000. Time Elapsed: 8099.786 s. Mean Reward: 79.169. Std of Reward: 28.400. Training.
+[INFO] My Behavior. Step: 283000. Time Elapsed: 8114.112 s. Mean Reward: 71.531. Std of Reward: 65.085. Training.
+[INFO] My Behavior. Step: 284000. Time Elapsed: 8188.830 s. Mean Reward: 82.117. Std of Reward: 13.435. Training.
+[INFO] My Behavior. Step: 285000. Time Elapsed: 8202.095 s. Mean Reward: 81.149. Std of Reward: 15.408. Training.
+[INFO] My Behavior. Step: 286000. Time Elapsed: 8214.185 s. Mean Reward: 75.358. Std of Reward: 39.309. Training.
+[INFO] My Behavior. Step: 287000. Time Elapsed: 8227.372 s. Mean Reward: -39.356. Std of Reward: 94.874. Training.
+[INFO] My Behavior. Step: 288000. Time Elapsed: 8302.384 s. Mean Reward: 75.921. Std of Reward: 30.042. Training.
+[INFO] My Behavior. Step: 289000. Time Elapsed: 8315.739 s. Mean Reward: 132.273. Std of Reward: 55.280. Training.
+[INFO] My Behavior. Step: 290000. Time Elapsed: 8328.909 s. Mean Reward: 105.574. Std of Reward: 16.232. Training.
+[INFO] My Behavior. Step: 291000. Time Elapsed: 8341.823 s. Mean Reward: 116.419. Std of Reward: 36.291. Training.
+[INFO] My Behavior. Step: 292000. Time Elapsed: 8416.452 s. Mean Reward: 118.232. Std of Reward: 26.334. Training.
+[INFO] My Behavior. Step: 293000. Time Elapsed: 8429.495 s. Mean Reward: 69.585. Std of Reward: 48.405. Training.
+[INFO] My Behavior. Step: 294000. Time Elapsed: 8442.086 s. Mean Reward: 170.927. Std of Reward: 42.375. Training.
+[INFO] My Behavior. Step: 295000. Time Elapsed: 8454.570 s. Mean Reward: 98.904. Std of Reward: 19.993. Training.
+[INFO] My Behavior. Step: 296000. Time Elapsed: 8529.031 s. Mean Reward: 72.309. Std of Reward: 34.378. Training.
+[INFO] My Behavior. Step: 297000. Time Elapsed: 8543.853 s. Mean Reward: -42.296. Std of Reward: 208.416. Training.
+[INFO] My Behavior. Step: 298000. Time Elapsed: 8556.714 s. Mean Reward: 58.946. Std of Reward: 28.459. Training.
+[INFO] My Behavior. Step: 299000. Time Elapsed: 8568.148 s. Mean Reward: 123.036. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 300000. Time Elapsed: 8643.632 s. Mean Reward: 71.065. Std of Reward: 48.494. Training.
+[INFO] My Behavior. Step: 301000. Time Elapsed: 8656.525 s. Mean Reward: 207.128. Std of Reward: 1.822. Training.
+[INFO] My Behavior. Step: 302000. Time Elapsed: 8669.771 s. Mean Reward: 70.282. Std of Reward: 40.071. Training.
+[INFO] My Behavior. Step: 303000. Time Elapsed: 8682.410 s. Mean Reward: 86.311. Std of Reward: 16.981. Training.
+[INFO] My Behavior. Step: 304000. Time Elapsed: 8756.223 s. Mean Reward: 102.402. Std of Reward: 40.962. Training.
+[INFO] My Behavior. Step: 305000. Time Elapsed: 8769.292 s. Mean Reward: 160.793. Std of Reward: 150.951. Training.
+[INFO] My Behavior. Step: 306000. Time Elapsed: 8781.582 s. Mean Reward: 207.566. Std of Reward: 34.470. Training.
+[INFO] My Behavior. Step: 307000. Time Elapsed: 8793.586 s. Mean Reward: 103.741. Std of Reward: 81.487. Training.
+[INFO] My Behavior. Step: 308000. Time Elapsed: 8868.900 s. Mean Reward: 171.255. Std of Reward: 71.573. Training.
+[INFO] My Behavior. Step: 309000. Time Elapsed: 8882.847 s. Mean Reward: 83.018. Std of Reward: 90.441. Training.
+[INFO] My Behavior. Step: 310000. Time Elapsed: 8894.189 s. Mean Reward: 112.574. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 311000. Time Elapsed: 8907.128 s. Mean Reward: 109.988. Std of Reward: 86.688. Training.
+[INFO] My Behavior. Step: 312000. Time Elapsed: 8982.485 s. Mean Reward: 137.316. Std of Reward: 61.717. Training.
+[INFO] My Behavior. Step: 313000. Time Elapsed: 8995.663 s. Mean Reward: 96.765. Std of Reward: 70.725. Training.
+[INFO] My Behavior. Step: 314000. Time Elapsed: 9008.624 s. Mean Reward: 55.513. Std of Reward: 26.255. Training.
+[INFO] My Behavior. Step: 315000. Time Elapsed: 9022.232 s. Mean Reward: 142.862. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 316000. Time Elapsed: 9095.505 s. Mean Reward: -41.207. Std of Reward: 188.431. Training.
+[INFO] My Behavior. Step: 317000. Time Elapsed: 9108.715 s. Mean Reward: 252.553. Std of Reward: 144.803. Training.
+[INFO] My Behavior. Step: 318000. Time Elapsed: 9121.937 s. Mean Reward: 95.026. Std of Reward: 87.403. Training.
+[INFO] My Behavior. Step: 319000. Time Elapsed: 9134.341 s. Mean Reward: 127.320. Std of Reward: 86.102. Training.
+[INFO] My Behavior. Step: 320000. Time Elapsed: 9208.901 s. Mean Reward: 153.814. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 321000. Time Elapsed: 9222.111 s. Mean Reward: 222.784. Std of Reward: 175.017. Training.
+[INFO] My Behavior. Step: 322000. Time Elapsed: 9236.050 s. Mean Reward: 144.807. Std of Reward: 62.860. Training.
+[INFO] My Behavior. Step: 323000. Time Elapsed: 9248.314 s. Mean Reward: 105.786. Std of Reward: 28.609. Training.
+[INFO] My Behavior. Step: 324000. Time Elapsed: 9322.619 s. Mean Reward: 239.663. Std of Reward: 177.827. Training.
+[INFO] My Behavior. Step: 325000. Time Elapsed: 9334.751 s. Mean Reward: 189.138. Std of Reward: 5.100. Training.
+[INFO] My Behavior. Step: 326000. Time Elapsed: 9347.964 s. Mean Reward: 128.084. Std of Reward: 28.894. Training.
+[INFO] My Behavior. Step: 327000. Time Elapsed: 9361.291 s. Mean Reward: 141.905. Std of Reward: 67.453. Training.
+[INFO] My Behavior. Step: 328000. Time Elapsed: 9433.921 s. Mean Reward: 100.265. Std of Reward: 14.069. Training.
+[INFO] My Behavior. Step: 329000. Time Elapsed: 9447.396 s. Mean Reward: 41.150. Std of Reward: 42.523. Training.
+[INFO] My Behavior. Step: 330000. Time Elapsed: 9461.127 s. Mean Reward: 96.523. Std of Reward: 72.683. Training.
+[INFO] My Behavior. Step: 331000. Time Elapsed: 9473.212 s. Mean Reward: 187.869. Std of Reward: 88.345. Training.
+[INFO] My Behavior. Step: 332000. Time Elapsed: 9546.612 s. Mean Reward: 132.885. Std of Reward: 50.523. Training.
+[INFO] My Behavior. Step: 333000. Time Elapsed: 9559.915 s. Mean Reward: 156.791. Std of Reward: 66.966. Training.
+[INFO] My Behavior. Step: 334000. Time Elapsed: 9572.635 s. Mean Reward: -75.465. Std of Reward: 248.173. Training.
+[INFO] My Behavior. Step: 335000. Time Elapsed: 9584.942 s. Mean Reward: 164.302. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 336000. Time Elapsed: 9658.087 s. Mean Reward: 269.531. Std of Reward: 112.045. Training.
+[INFO] My Behavior. Step: 337000. Time Elapsed: 9671.350 s. Mean Reward: 90.247. Std of Reward: 49.759. Training.
+[INFO] My Behavior. Step: 338000. Time Elapsed: 9684.059 s. Mean Reward: 147.504. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 339000. Time Elapsed: 9697.454 s. Mean Reward: -206.587. Std of Reward: 304.487. Training.
+[INFO] My Behavior. Step: 340000. Time Elapsed: 9771.256 s. Mean Reward: 148.944. Std of Reward: 107.616. Training.
+[INFO] My Behavior. Step: 341000. Time Elapsed: 9785.518 s. Mean Reward: 140.015. Std of Reward: 7.465. Training.
+[INFO] My Behavior. Step: 342000. Time Elapsed: 9796.977 s. Mean Reward: 82.606. Std of Reward: 51.225. Training.
+[INFO] My Behavior. Step: 343000. Time Elapsed: 9810.377 s. Mean Reward: 123.967. Std of Reward: 46.515. Training.
+[INFO] My Behavior. Step: 344000. Time Elapsed: 9884.691 s. Mean Reward: 102.571. Std of Reward: 51.754. Training.
+[INFO] My Behavior. Step: 345000. Time Elapsed: 9897.683 s. Mean Reward: 228.122. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 346000. Time Elapsed: 9909.685 s. Mean Reward: 130.838. Std of Reward: 42.650. Training.
+[INFO] My Behavior. Step: 347000. Time Elapsed: 9921.738 s. Mean Reward: 213.798. Std of Reward: 41.578. Training.
+[INFO] My Behavior. Step: 348000. Time Elapsed: 9995.328 s. Mean Reward: 186.752. Std of Reward: 71.626. Training.
+[INFO] My Behavior. Step: 349000. Time Elapsed: 10008.141 s. Mean Reward: 142.026. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 350000. Time Elapsed: 10022.352 s. Mean Reward: 162.977. Std of Reward: 64.367. Training.
+[INFO] My Behavior. Step: 351000. Time Elapsed: 10033.405 s. Mean Reward: 572.966. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 352000. Time Elapsed: 10108.231 s. Mean Reward: 118.414. Std of Reward: 32.363. Training.
+[INFO] My Behavior. Step: 353000. Time Elapsed: 10120.256 s. Mean Reward: 181.879. Std of Reward: 22.361. Training.
+[INFO] My Behavior. Step: 354000. Time Elapsed: 10133.614 s. Mean Reward: 159.589. Std of Reward: 67.345. Training.
+[INFO] My Behavior. Step: 355000. Time Elapsed: 10147.208 s. Mean Reward: 88.180. Std of Reward: 60.052. Training.
+[INFO] My Behavior. Step: 356000. Time Elapsed: 10221.370 s. Mean Reward: 85.372. Std of Reward: 66.319. Training.
+[INFO] My Behavior. Step: 357000. Time Elapsed: 10234.036 s. Mean Reward: 181.183. Std of Reward: 132.027. Training.
+[INFO] My Behavior. Step: 358000. Time Elapsed: 10247.436 s. Mean Reward: 166.881. Std of Reward: 0.917. Training.
+[INFO] My Behavior. Step: 359000. Time Elapsed: 10260.498 s. Mean Reward: 268.278. Std of Reward: 17.842. Training.
+[INFO] My Behavior. Step: 360000. Time Elapsed: 10335.053 s. Mean Reward: 243.218. Std of Reward: 88.172. Training.
+[INFO] My Behavior. Step: 361000. Time Elapsed: 10347.749 s. Mean Reward: 122.482. Std of Reward: 95.545. Training.
+[INFO] My Behavior. Step: 362000. Time Elapsed: 10360.138 s. Mean Reward: 148.906. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 363000. Time Elapsed: 10372.940 s. Mean Reward: 153.864. Std of Reward: 174.718. Training.
+[INFO] My Behavior. Step: 364000. Time Elapsed: 10449.132 s. Mean Reward: 92.702. Std of Reward: 20.968. Training.
+[INFO] My Behavior. Step: 365000. Time Elapsed: 10462.891 s. Mean Reward: 312.399. Std of Reward: 45.689. Training.
+[INFO] My Behavior. Step: 366000. Time Elapsed: 10473.910 s. Mean Reward: 194.394. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 367000. Time Elapsed: 10486.392 s. Mean Reward: 286.954. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 368000. Time Elapsed: 10559.871 s. Mean Reward: 152.134. Std of Reward: 74.218. Training.
+[INFO] My Behavior. Step: 369000. Time Elapsed: 10573.403 s. Mean Reward: 166.191. Std of Reward: 52.875. Training.
+[INFO] My Behavior. Step: 370000. Time Elapsed: 10585.410 s. Mean Reward: 160.413. Std of Reward: 73.493. Training.
+[INFO] My Behavior. Step: 371000. Time Elapsed: 10598.892 s. Mean Reward: 435.296. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 372000. Time Elapsed: 10671.564 s. Mean Reward: 555.482. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 373000. Time Elapsed: 10684.810 s. Mean Reward: 274.694. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 374000. Time Elapsed: 10697.543 s. Mean Reward: 333.795. Std of Reward: 117.533. Training.
+[INFO] My Behavior. Step: 375000. Time Elapsed: 10709.347 s. Mean Reward: 130.191. Std of Reward: 45.399. Training.
+[INFO] My Behavior. Step: 376000. Time Elapsed: 10785.057 s. Mean Reward: 103.817. Std of Reward: 19.834. Training.
+[INFO] My Behavior. Step: 377000. Time Elapsed: 10798.008 s. Mean Reward: 181.448. Std of Reward: 100.665. Training.
+[INFO] My Behavior. Step: 378000. Time Elapsed: 10810.943 s. Mean Reward: 104.146. Std of Reward: 81.494. Training.
+[INFO] My Behavior. Step: 379000. Time Elapsed: 10822.926 s. Mean Reward: 238.985. Std of Reward: 220.287. Training.
+[INFO] My Behavior. Step: 380000. Time Elapsed: 10835.888 s. Mean Reward: 217.974. Std of Reward: 162.984. Training.
+[INFO] My Behavior. Step: 381000. Time Elapsed: 10910.953 s. Mean Reward: 82.459. Std of Reward: 37.405. Training.
+[INFO] My Behavior. Step: 382000. Time Elapsed: 10923.430 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 383000. Time Elapsed: 10935.889 s. Mean Reward: 128.749. Std of Reward: 99.172. Training.
+[INFO] My Behavior. Step: 384000. Time Elapsed: 10947.283 s. Mean Reward: 91.516. Std of Reward: 137.007. Training.
+[INFO] My Behavior. Step: 385000. Time Elapsed: 11020.896 s. Mean Reward: 66.551. Std of Reward: 82.512. Training.
+[INFO] My Behavior. Step: 386000. Time Elapsed: 11033.827 s. Mean Reward: 204.031. Std of Reward: 111.487. Training.
+[INFO] My Behavior. Step: 387000. Time Elapsed: 11047.488 s. Mean Reward: 167.528. Std of Reward: 44.282. Training.
+[INFO] My Behavior. Step: 388000. Time Elapsed: 11060.229 s. Mean Reward: 113.829. Std of Reward: 59.373. Training.
+[INFO] My Behavior. Step: 389000. Time Elapsed: 11135.413 s. Mean Reward: 240.638. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 390000. Time Elapsed: 11147.047 s. Mean Reward: 273.717. Std of Reward: 180.067. Training.
+[INFO] My Behavior. Step: 391000. Time Elapsed: 11161.736 s. Mean Reward: 114.992. Std of Reward: 96.709. Training.
+[INFO] My Behavior. Step: 392000. Time Elapsed: 11173.087 s. Mean Reward: 132.034. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 393000. Time Elapsed: 11248.688 s. Mean Reward: 333.738. Std of Reward: 59.314. Training.
+[INFO] My Behavior. Step: 394000. Time Elapsed: 11260.904 s. Mean Reward: 291.965. Std of Reward: 160.331. Training.
+[INFO] My Behavior. Step: 395000. Time Elapsed: 11273.069 s. Mean Reward: 111.119. Std of Reward: 39.447. Training.
+[INFO] My Behavior. Step: 396000. Time Elapsed: 11287.037 s. Mean Reward: 174.879. Std of Reward: 77.181. Training.
+[INFO] My Behavior. Step: 397000. Time Elapsed: 11360.565 s. Mean Reward: 183.553. Std of Reward: 146.985. Training.
+[INFO] My Behavior. Step: 398000. Time Elapsed: 11374.942 s. Mean Reward: 413.034. Std of Reward: 376.915. Training.
+[INFO] My Behavior. Step: 399000. Time Elapsed: 11385.931 s. Mean Reward: 155.340. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 400000. Time Elapsed: 11399.713 s. Mean Reward: 81.780. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 401000. Time Elapsed: 11474.041 s. Mean Reward: 157.894. Std of Reward: 9.844. Training.
+[INFO] My Behavior. Step: 402000. Time Elapsed: 11487.589 s. Mean Reward: 76.948. Std of Reward: 107.132. Training.
+[INFO] My Behavior. Step: 403000. Time Elapsed: 11499.240 s. Mean Reward: 110.205. Std of Reward: 31.579. Training.
+[INFO] My Behavior. Step: 404000. Time Elapsed: 11512.262 s. Mean Reward: 167.713. Std of Reward: 11.769. Training.
+[INFO] My Behavior. Step: 405000. Time Elapsed: 11586.068 s. Mean Reward: 97.872. Std of Reward: 110.491. Training.
+[INFO] My Behavior. Step: 406000. Time Elapsed: 11599.341 s. Mean Reward: 131.178. Std of Reward: 42.844. Training.
+[INFO] My Behavior. Step: 407000. Time Elapsed: 11613.740 s. Mean Reward: 80.906. Std of Reward: 51.625. Training.
+[INFO] My Behavior. Step: 408000. Time Elapsed: 11626.130 s. Mean Reward: 124.048. Std of Reward: 26.950. Training.
+[INFO] My Behavior. Step: 409000. Time Elapsed: 11701.694 s. Mean Reward: 83.279. Std of Reward: 19.866. Training.
+[INFO] My Behavior. Step: 410000. Time Elapsed: 11715.967 s. Mean Reward: 79.822. Std of Reward: 44.290. Training.
+[INFO] My Behavior. Step: 411000. Time Elapsed: 11727.837 s. Mean Reward: 234.237. Std of Reward: 142.762. Training.
+[INFO] My Behavior. Step: 412000. Time Elapsed: 11740.972 s. Mean Reward: 99.721. Std of Reward: 2.387. Training.
+[INFO] My Behavior. Step: 413000. Time Elapsed: 11816.032 s. Mean Reward: 121.046. Std of Reward: 119.256. Training.
+[INFO] My Behavior. Step: 414000. Time Elapsed: 11830.194 s. Mean Reward: 98.887. Std of Reward: 30.065. Training.
+[INFO] My Behavior. Step: 415000. Time Elapsed: 11842.347 s. Mean Reward: 221.363. Std of Reward: 179.308. Training.
+[INFO] My Behavior. Step: 416000. Time Elapsed: 11856.412 s. Mean Reward: 94.269. Std of Reward: 52.838. Training.
+[INFO] My Behavior. Step: 417000. Time Elapsed: 11929.359 s. Mean Reward: 91.286. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 418000. Time Elapsed: 11941.558 s. Mean Reward: 349.097. Std of Reward: 357.615. Training.
+[INFO] My Behavior. Step: 419000. Time Elapsed: 11954.217 s. Mean Reward: 93.021. Std of Reward: 9.303. Training.
+[INFO] My Behavior. Step: 420000. Time Elapsed: 11967.487 s. Mean Reward: 135.969. Std of Reward: 74.184. Training.
+[INFO] My Behavior. Step: 421000. Time Elapsed: 12042.651 s. Mean Reward: -240.820. Std of Reward: 303.112. Training.
+[INFO] My Behavior. Step: 422000. Time Elapsed: 12054.976 s. Mean Reward: 154.174. Std of Reward: 105.494. Training.
+[INFO] My Behavior. Step: 423000. Time Elapsed: 12068.227 s. Mean Reward: 85.816. Std of Reward: 50.351. Training.
+[INFO] My Behavior. Step: 424000. Time Elapsed: 12081.251 s. Mean Reward: 67.096. Std of Reward: 94.416. Training.
+[INFO] My Behavior. Step: 425000. Time Elapsed: 12155.437 s. Mean Reward: 97.973. Std of Reward: 16.106. Training.
+[INFO] My Behavior. Step: 426000. Time Elapsed: 12167.585 s. Mean Reward: 154.478. Std of Reward: 55.727. Training.
+[INFO] My Behavior. Step: 427000. Time Elapsed: 12180.643 s. Mean Reward: 117.521. Std of Reward: 48.521. Training.
+[INFO] My Behavior. Step: 428000. Time Elapsed: 12193.534 s. Mean Reward: 160.630. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 429000. Time Elapsed: 12267.432 s. Mean Reward: 687.281. Std of Reward: 285.839. Training.
+[INFO] My Behavior. Step: 430000. Time Elapsed: 12279.838 s. Mean Reward: 123.287. Std of Reward: 38.132. Training.
+[INFO] My Behavior. Step: 431000. Time Elapsed: 12292.357 s. Mean Reward: 99.671. Std of Reward: 4.997. Training.
+[INFO] My Behavior. Step: 432000. Time Elapsed: 12305.378 s. Mean Reward: 489.410. Std of Reward: 413.234. Training.
+[INFO] My Behavior. Step: 433000. Time Elapsed: 12378.769 s. Mean Reward: 260.919. Std of Reward: 65.187. Training.
+[INFO] My Behavior. Step: 434000. Time Elapsed: 12391.685 s. Mean Reward: 274.256. Std of Reward: 123.420. Training.
+[INFO] My Behavior. Step: 435000. Time Elapsed: 12404.362 s. Mean Reward: 108.697. Std of Reward: 16.367. Training.
+[INFO] My Behavior. Step: 436000. Time Elapsed: 12416.731 s. Mean Reward: 167.187. Std of Reward: 146.813. Training.
+[INFO] My Behavior. Step: 437000. Time Elapsed: 12490.636 s. Mean Reward: 153.853. Std of Reward: 87.389. Training.
+[INFO] My Behavior. Step: 438000. Time Elapsed: 12504.076 s. Mean Reward: 160.231. Std of Reward: 151.298. Training.
+[INFO] My Behavior. Step: 439000. Time Elapsed: 12516.683 s. Mean Reward: 135.913. Std of Reward: 37.551. Training.
+[INFO] My Behavior. Step: 440000. Time Elapsed: 12529.754 s. Mean Reward: 62.473. Std of Reward: 38.507. Training.
+[INFO] My Behavior. Step: 441000. Time Elapsed: 12603.183 s. Mean Reward: 129.051. Std of Reward: 42.269. Training.
+[INFO] My Behavior. Step: 442000. Time Elapsed: 12615.929 s. Mean Reward: 101.598. Std of Reward: 114.692. Training.
+[INFO] My Behavior. Step: 443000. Time Elapsed: 12627.466 s. Mean Reward: 223.984. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 444000. Time Elapsed: 12641.717 s. Mean Reward: 272.938. Std of Reward: 223.314. Training.
+[INFO] My Behavior. Step: 445000. Time Elapsed: 12715.285 s. Mean Reward: 72.039. Std of Reward: 32.894. Training.
+[INFO] My Behavior. Step: 446000. Time Elapsed: 12728.405 s. Mean Reward: 141.519. Std of Reward: 79.003. Training.
+[INFO] My Behavior. Step: 447000. Time Elapsed: 12741.386 s. Mean Reward: 89.987. Std of Reward: 26.098. Training.
+[INFO] My Behavior. Step: 448000. Time Elapsed: 12752.943 s. Mean Reward: 130.446. Std of Reward: 46.850. Training.
+[INFO] My Behavior. Step: 449000. Time Elapsed: 12826.863 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 450000. Time Elapsed: 12839.930 s. Mean Reward: 262.076. Std of Reward: 238.031. Training.
+[INFO] My Behavior. Step: 451000. Time Elapsed: 12853.639 s. Mean Reward: 116.896. Std of Reward: 46.983. Training.
+[INFO] My Behavior. Step: 452000. Time Elapsed: 12866.516 s. Mean Reward: 402.365. Std of Reward: 105.103. Training.
+[INFO] My Behavior. Step: 453000. Time Elapsed: 12938.808 s. Mean Reward: 453.916. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 454000. Time Elapsed: 12952.261 s. Mean Reward: 158.983. Std of Reward: 79.605. Training.
+[INFO] My Behavior. Step: 455000. Time Elapsed: 12965.200 s. Mean Reward: 513.708. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 456000. Time Elapsed: 12978.122 s. Mean Reward: 169.193. Std of Reward: 112.571. Training.
+[INFO] My Behavior. Step: 457000. Time Elapsed: 13052.572 s. Mean Reward: 813.652. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 458000. Time Elapsed: 13064.550 s. Mean Reward: 151.252. Std of Reward: 40.156. Training.
+[INFO] My Behavior. Step: 459000. Time Elapsed: 13078.914 s. Mean Reward: 95.054. Std of Reward: 79.002. Training.
+[INFO] My Behavior. Step: 460000. Time Elapsed: 13090.715 s. Mean Reward: 188.860. Std of Reward: 74.194. Training.
+[INFO] My Behavior. Step: 461000. Time Elapsed: 13165.258 s. Mean Reward: 188.917. Std of Reward: 2.297. Training.
+[INFO] My Behavior. Step: 462000. Time Elapsed: 13178.713 s. Mean Reward: 233.020. Std of Reward: 205.268. Training.
+[INFO] My Behavior. Step: 463000. Time Elapsed: 13191.647 s. Mean Reward: 264.432. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 464000. Time Elapsed: 13204.419 s. Mean Reward: 139.179. Std of Reward: 78.804. Training.
+[INFO] My Behavior. Step: 465000. Time Elapsed: 13279.172 s. Mean Reward: 216.206. Std of Reward: 42.488. Training.
+[INFO] My Behavior. Step: 466000. Time Elapsed: 13291.551 s. Mean Reward: 92.926. Std of Reward: 9.274. Training.
+[INFO] My Behavior. Step: 467000. Time Elapsed: 13304.937 s. Mean Reward: 376.081. Std of Reward: 248.485. Training.
+[INFO] My Behavior. Step: 468000. Time Elapsed: 13318.417 s. Mean Reward: 90.759. Std of Reward: 7.740. Training.
+[INFO] My Behavior. Step: 469000. Time Elapsed: 13393.224 s. Mean Reward: 158.161. Std of Reward: 30.162. Training.
+[INFO] My Behavior. Step: 470000. Time Elapsed: 13405.781 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 471000. Time Elapsed: 13418.233 s. Mean Reward: 795.078. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 472000. Time Elapsed: 13430.936 s. Mean Reward: 266.673. Std of Reward: 195.793. Training.
+[INFO] My Behavior. Step: 473000. Time Elapsed: 13507.090 s. Mean Reward: 424.673. Std of Reward: 142.225. Training.
+[INFO] My Behavior. Step: 474000. Time Elapsed: 13521.032 s. Mean Reward: 384.398. Std of Reward: 272.914. Training.
+[INFO] My Behavior. Step: 475000. Time Elapsed: 13532.556 s. Mean Reward: 314.889. Std of Reward: 230.629. Training.
+[INFO] My Behavior. Step: 476000. Time Elapsed: 13546.469 s. Mean Reward: 168.134. Std of Reward: 248.619. Training.
+[INFO] My Behavior. Step: 477000. Time Elapsed: 13620.644 s. Mean Reward: 101.051. Std of Reward: 13.069. Training.
+[INFO] My Behavior. Step: 478000. Time Elapsed: 13635.214 s. Mean Reward: 176.110. Std of Reward: 71.585. Training.
+[INFO] My Behavior. Step: 479000. Time Elapsed: 13647.171 s. Mean Reward: 85.176. Std of Reward: 8.821. Training.
+[INFO] My Behavior. Step: 480000. Time Elapsed: 13658.498 s. Mean Reward: 223.871. Std of Reward: 105.277. Training.
+[INFO] My Behavior. Step: 481000. Time Elapsed: 13733.999 s. Mean Reward: 263.920. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 482000. Time Elapsed: 13746.625 s. Mean Reward: 202.991. Std of Reward: 136.829. Training.
+[INFO] My Behavior. Step: 483000. Time Elapsed: 13759.047 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 484000. Time Elapsed: 13771.173 s. Mean Reward: 346.681. Std of Reward: 504.062. Training.
+[INFO] My Behavior. Step: 485000. Time Elapsed: 13846.047 s. Mean Reward: 244.254. Std of Reward: 207.953. Training.
+[INFO] My Behavior. Step: 486000. Time Elapsed: 13859.389 s. Mean Reward: 148.725. Std of Reward: 74.198. Training.
+[INFO] My Behavior. Step: 487000. Time Elapsed: 13871.867 s. Mean Reward: 118.830. Std of Reward: 62.704. Training.
+[INFO] My Behavior. Step: 488000. Time Elapsed: 13884.025 s. Mean Reward: 286.710. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 489000. Time Elapsed: 13959.285 s. Mean Reward: 817.488. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 490000. Time Elapsed: 13972.349 s. Mean Reward: 331.498. Std of Reward: 5.168. Training.
+[INFO] My Behavior. Step: 491000. Time Elapsed: 13986.302 s. Mean Reward: 250.738. Std of Reward: 71.254. Training.
+[INFO] My Behavior. Step: 492000. Time Elapsed: 13998.222 s. Mean Reward: 86.584. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 493000. Time Elapsed: 14071.448 s. Mean Reward: 119.966. Std of Reward: 70.804. Training.
+[INFO] My Behavior. Step: 494000. Time Elapsed: 14085.975 s. Mean Reward: 89.402. Std of Reward: 64.093. Training.
+[INFO] My Behavior. Step: 495000. Time Elapsed: 14098.496 s. Mean Reward: 158.510. Std of Reward: 47.656. Training.
+[INFO] My Behavior. Step: 496000. Time Elapsed: 14111.817 s. Mean Reward: 235.862. Std of Reward: 65.076. Training.
+[INFO] My Behavior. Step: 497000. Time Elapsed: 14185.224 s. Mean Reward: 125.231. Std of Reward: 41.850. Training.
+[INFO] My Behavior. Step: 498000. Time Elapsed: 14198.317 s. Mean Reward: 259.110. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 499000. Time Elapsed: 14212.517 s. Mean Reward: 147.757. Std of Reward: 44.564. Training.
+[INFO] My Behavior. Step: 500000. Time Elapsed: 14224.266 s. Mean Reward: 115.120. Std of Reward: 49.460. Training.
+[INFO] Exported results/CompareA/My Behavior/My Behavior-499889.onnx
+[INFO] Exported results/CompareA/My Behavior/My Behavior-500017.onnx
+[INFO] Copied results/CompareA/My Behavior/My Behavior-500017.onnx to results/CompareA/My Behavior.onnx.
+
+            ┐  ╖
+        ╓╖╬│╡  ││╬╖╖
+    ╓╖╬│││││┘  ╬│││││╬╖
+ ╖╬│││││╬╜        ╙╬│││││╖╖                               ╗╗╗
+ ╬╬╬╬╖││╦╖        ╖╬││╗╣╣╣╬      ╟╣╣╬    ╟╣╣╣             ╜╜╜  ╟╣╣
+ ╬╬╬╬╬╬╬╬╖│╬╖╖╓╬╪│╓╣╣╣╣╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╒╣╣╖╗╣╣╣╗   ╣╣╣ ╣╣╣╣╣╣ ╟╣╣╖   ╣╣╣
+ ╬╬╬╬┐  ╙╬╬╬╬│╓╣╣╣╝╜  ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╣╙ ╙╣╣╣  ╣╣╣ ╙╟╣╣╜╙  ╫╣╣  ╟╣╣
+ ╬╬╬╬┐     ╙╬╬╣╣      ╫╣╣╣╬      ╟╣╣╬    ╟╣╣╣ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣     ╣╣╣┌╣╣╜
+ ╬╬╬╜       ╬╬╣╣      ╙╝╣╣╬      ╙╣╣╣╗╖╓╗╣╣╣╜ ╟╣╣╬   ╣╣╣  ╣╣╣  ╟╣╣╦╓    ╣╣╣╣╣
+ ╙   ╓╦╖    ╬╬╣╣   ╓╗╗╖            ╙╝╣╣╣╣╝╜   ╘╝╝╜   ╝╝╝  ╝╝╝   ╙╣╣╣    ╟╣╣╣
+   ╩╬╬╬╬╬╬╦╦╬╬╣╣╗╣╣╣╣╣╣╣╝                                             ╫╣╣╣╣
+      ╙╬╬╬╬╬╬╬╣╣╣╣╣╣╝╜
+          ╙╬╬╬╣╣╣╜
+             ╙
+        
+ Version information:
+  ml-agents: 0.29.0,
+  ml-agents-envs: 0.29.0,
+  Communicator API: 1.5.0,
+  PyTorch: 1.8.1+cu102
+[INFO] Connected to Unity environment with package version 2.3.0-exp.2 and communication version 1.5.0
+[INFO] Connected new brain: My Behavior?team=0
+[INFO] Hyperparameters for behavior name My Behavior: 
+	trainer_type:	ppo
+	hyperparameters:	
+	  batch_size:	32
+	  buffer_size:	4096
+	  learning_rate:	0.0001
+	  beta:	0.005
+	  epsilon:	0.23
+	  lambd:	0.94
+	  num_epoch:	4
+	  learning_rate_schedule:	linear
+	  beta_schedule:	linear
+	  epsilon_schedule:	linear
+	network_settings:	
+	  normalize:	True
+	  hidden_units:	256
+	  num_layers:	5
+	  vis_encode_type:	resnet
+	  memory:	
+	    sequence_length:	32
+	    memory_size:	512
+	  goal_conditioning_type:	hyper
+	  deterministic:	False
+	reward_signals:	
+	  extrinsic:	
+	    gamma:	0.995
+	    strength:	1.0
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	128
+	      num_layers:	2
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	  curiosity:	
+	    gamma:	0.99
+	    strength:	0.01
+	    network_settings:	
+	      normalize:	False
+	      hidden_units:	64
+	      num_layers:	5
+	      vis_encode_type:	simple
+	      memory:	None
+	      goal_conditioning_type:	hyper
+	      deterministic:	False
+	    learning_rate:	0.0001
+	    encoding_size:	None
+	init_path:	None
+	keep_checkpoints:	2
+	checkpoint_interval:	500000
+	max_steps:	500000
+	time_horizon:	128
+	summary_freq:	1000
+	threaded:	False
+	self_play:	None
+	behavioral_cloning:	
+	  demo_path:	seq/1.demo
+	  steps:	500000
+	  strength:	0.5
+	  samples_per_update:	2048
+	  num_epoch:	4
+	  batch_size:	32
+[INFO] My Behavior. Step: 1000. Time Elapsed: 28.033 s. Mean Reward: -233.938. Std of Reward: 176.910. Training.
+[INFO] My Behavior. Step: 2000. Time Elapsed: 40.620 s. Mean Reward: -219.949. Std of Reward: 170.241. Training.
+[INFO] My Behavior. Step: 3000. Time Elapsed: 54.035 s. Mean Reward: -223.653. Std of Reward: 154.258. Training.
+[INFO] My Behavior. Step: 4000. Time Elapsed: 130.572 s. Mean Reward: -281.838. Std of Reward: 206.550. Training.
+[INFO] My Behavior. Step: 5000. Time Elapsed: 143.920 s. Mean Reward: -232.925. Std of Reward: 166.142. Training.
+[INFO] My Behavior. Step: 6000. Time Elapsed: 157.788 s. Mean Reward: -166.197. Std of Reward: 136.238. Training.
+[INFO] My Behavior. Step: 7000. Time Elapsed: 171.668 s. Mean Reward: -267.394. Std of Reward: 119.260. Training.
+[INFO] My Behavior. Step: 8000. Time Elapsed: 245.709 s. Mean Reward: -285.633. Std of Reward: 245.789. Training.
+[INFO] My Behavior. Step: 9000. Time Elapsed: 259.880 s. Mean Reward: -432.103. Std of Reward: 366.400. Training.
+[INFO] My Behavior. Step: 10000. Time Elapsed: 272.597 s. Mean Reward: -130.883. Std of Reward: 143.786. Training.
+[INFO] My Behavior. Step: 11000. Time Elapsed: 285.190 s. Mean Reward: -117.287. Std of Reward: 146.045. Training.
+[INFO] My Behavior. Step: 12000. Time Elapsed: 361.677 s. Mean Reward: -424.595. Std of Reward: 208.840. Training.
+[INFO] My Behavior. Step: 13000. Time Elapsed: 374.966 s. Mean Reward: -412.964. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 14000. Time Elapsed: 388.969 s. Mean Reward: -228.263. Std of Reward: 203.743. Training.
+[INFO] My Behavior. Step: 15000. Time Elapsed: 401.447 s. Mean Reward: -285.028. Std of Reward: 152.581. Training.
+[INFO] My Behavior. Step: 16000. Time Elapsed: 478.155 s. Mean Reward: -194.343. Std of Reward: 103.396. Training.
+[INFO] My Behavior. Step: 17000. Time Elapsed: 491.845 s. Mean Reward: -117.696. Std of Reward: 73.133. Training.
+[INFO] My Behavior. Step: 18000. Time Elapsed: 503.691 s. Mean Reward: -129.080. Std of Reward: 93.079. Training.
+[INFO] My Behavior. Step: 19000. Time Elapsed: 516.857 s. Mean Reward: -172.982. Std of Reward: 123.137. Training.
+[INFO] My Behavior. Step: 20000. Time Elapsed: 592.713 s. Mean Reward: -330.644. Std of Reward: 204.967. Training.
+[INFO] My Behavior. Step: 21000. Time Elapsed: 606.981 s. Mean Reward: -96.355. Std of Reward: 53.150. Training.
+[INFO] My Behavior. Step: 22000. Time Elapsed: 619.982 s. Mean Reward: -558.964. Std of Reward: 171.331. Training.
+[INFO] My Behavior. Step: 23000. Time Elapsed: 632.597 s. Mean Reward: -100.777. Std of Reward: 42.213. Training.
+[INFO] My Behavior. Step: 24000. Time Elapsed: 709.478 s. Mean Reward: -169.597. Std of Reward: 110.750. Training.
+[INFO] My Behavior. Step: 25000. Time Elapsed: 724.230 s. Mean Reward: -109.211. Std of Reward: 86.939. Training.
+[INFO] My Behavior. Step: 26000. Time Elapsed: 736.906 s. Mean Reward: -54.514. Std of Reward: 59.844. Training.
+[INFO] My Behavior. Step: 27000. Time Elapsed: 750.510 s. Mean Reward: -440.118. Std of Reward: 163.176. Training.
+[INFO] My Behavior. Step: 28000. Time Elapsed: 826.053 s. Mean Reward: -163.892. Std of Reward: 125.311. Training.
+[INFO] My Behavior. Step: 29000. Time Elapsed: 839.369 s. Mean Reward: -82.592. Std of Reward: 46.399. Training.
+[INFO] My Behavior. Step: 30000. Time Elapsed: 852.978 s. Mean Reward: -119.759. Std of Reward: 93.086. Training.
+[INFO] My Behavior. Step: 31000. Time Elapsed: 866.694 s. Mean Reward: -314.768. Std of Reward: 172.007. Training.
+[INFO] My Behavior. Step: 32000. Time Elapsed: 941.618 s. Mean Reward: -230.118. Std of Reward: 144.896. Training.
+[INFO] My Behavior. Step: 33000. Time Elapsed: 954.940 s. Mean Reward: -158.738. Std of Reward: 144.058. Training.
+[INFO] My Behavior. Step: 34000. Time Elapsed: 967.770 s. Mean Reward: -211.820. Std of Reward: 245.970. Training.
+[INFO] My Behavior. Step: 35000. Time Elapsed: 982.251 s. Mean Reward: -96.522. Std of Reward: 76.819. Training.
+[INFO] My Behavior. Step: 36000. Time Elapsed: 1055.925 s. Mean Reward: -537.448. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 37000. Time Elapsed: 1069.041 s. Mean Reward: -268.667. Std of Reward: 186.476. Training.
+[INFO] My Behavior. Step: 38000. Time Elapsed: 1082.104 s. Mean Reward: -103.588. Std of Reward: 58.675. Training.
+[INFO] My Behavior. Step: 39000. Time Elapsed: 1096.208 s. Mean Reward: -374.297. Std of Reward: 311.075. Training.
+[INFO] My Behavior. Step: 40000. Time Elapsed: 1171.534 s. Mean Reward: -109.505. Std of Reward: 78.253. Training.
+[INFO] My Behavior. Step: 41000. Time Elapsed: 1184.696 s. Mean Reward: -59.027. Std of Reward: 44.250. Training.
+[INFO] My Behavior. Step: 42000. Time Elapsed: 1197.844 s. Mean Reward: -135.076. Std of Reward: 81.228. Training.
+[INFO] My Behavior. Step: 43000. Time Elapsed: 1210.800 s. Mean Reward: -71.479. Std of Reward: 65.253. Training.
+[INFO] My Behavior. Step: 44000. Time Elapsed: 1288.104 s. Mean Reward: -53.194. Std of Reward: 43.473. Training.
+[INFO] My Behavior. Step: 45000. Time Elapsed: 1302.197 s. Mean Reward: -99.818. Std of Reward: 63.898. Training.
+[INFO] My Behavior. Step: 46000. Time Elapsed: 1313.581 s. Mean Reward: -34.732. Std of Reward: 44.104. Training.
+[INFO] My Behavior. Step: 47000. Time Elapsed: 1327.425 s. Mean Reward: -65.315. Std of Reward: 12.483. Training.
+[INFO] My Behavior. Step: 48000. Time Elapsed: 1401.916 s. Mean Reward: -217.684. Std of Reward: 115.386. Training.
+[INFO] My Behavior. Step: 49000. Time Elapsed: 1415.717 s. Mean Reward: -146.156. Std of Reward: 87.270. Training.
+[INFO] My Behavior. Step: 50000. Time Elapsed: 1428.663 s. Mean Reward: -160.079. Std of Reward: 9.507. Training.
+[INFO] My Behavior. Step: 51000. Time Elapsed: 1504.850 s. Mean Reward: -33.706. Std of Reward: 58.092. Training.
+[INFO] My Behavior. Step: 52000. Time Elapsed: 1518.166 s. Mean Reward: -110.024. Std of Reward: 79.779. Training.
+[INFO] My Behavior. Step: 53000. Time Elapsed: 1531.894 s. Mean Reward: -36.953. Std of Reward: 12.643. Training.
+[INFO] My Behavior. Step: 54000. Time Elapsed: 1544.839 s. Mean Reward: -158.946. Std of Reward: 122.992. Training.
+[INFO] My Behavior. Step: 55000. Time Elapsed: 1621.364 s. Mean Reward: -145.739. Std of Reward: 124.387. Training.
+[INFO] My Behavior. Step: 56000. Time Elapsed: 1634.227 s. Mean Reward: -97.028. Std of Reward: 69.354. Training.
+[INFO] My Behavior. Step: 57000. Time Elapsed: 1647.038 s. Mean Reward: -96.409. Std of Reward: 63.639. Training.
+[INFO] My Behavior. Step: 58000. Time Elapsed: 1660.877 s. Mean Reward: -178.389. Std of Reward: 311.732. Training.
+[INFO] My Behavior. Step: 59000. Time Elapsed: 1736.776 s. Mean Reward: -43.355. Std of Reward: 42.798. Training.
+[INFO] My Behavior. Step: 60000. Time Elapsed: 1750.294 s. Mean Reward: -65.689. Std of Reward: 62.172. Training.
+[INFO] My Behavior. Step: 61000. Time Elapsed: 1763.041 s. Mean Reward: -335.761. Std of Reward: 415.678. Training.
+[INFO] My Behavior. Step: 62000. Time Elapsed: 1775.598 s. Mean Reward: -53.183. Std of Reward: 71.232. Training.
+[INFO] My Behavior. Step: 63000. Time Elapsed: 1851.380 s. Mean Reward: -84.696. Std of Reward: 45.071. Training.
+[INFO] My Behavior. Step: 64000. Time Elapsed: 1865.052 s. Mean Reward: -227.139. Std of Reward: 234.977. Training.
+[INFO] My Behavior. Step: 65000. Time Elapsed: 1879.325 s. Mean Reward: -583.523. Std of Reward: 685.164. Training.
+[INFO] My Behavior. Step: 66000. Time Elapsed: 1891.975 s. Mean Reward: -151.006. Std of Reward: 74.002. Training.
+[INFO] My Behavior. Step: 67000. Time Elapsed: 1965.223 s. Mean Reward: -59.842. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 68000. Time Elapsed: 1979.156 s. Mean Reward: -174.008. Std of Reward: 278.316. Training.
+[INFO] My Behavior. Step: 69000. Time Elapsed: 1992.316 s. Mean Reward: -136.651. Std of Reward: 55.785. Training.
+[INFO] My Behavior. Step: 70000. Time Elapsed: 2005.086 s. Mean Reward: -23.530. Std of Reward: 73.669. Training.
+[INFO] My Behavior. Step: 71000. Time Elapsed: 2080.532 s. Mean Reward: -114.531. Std of Reward: 74.047. Training.
+[INFO] My Behavior. Step: 72000. Time Elapsed: 2093.174 s. Mean Reward: -190.511. Std of Reward: 182.871. Training.
+[INFO] My Behavior. Step: 73000. Time Elapsed: 2107.006 s. Mean Reward: -271.932. Std of Reward: 296.990. Training.
+[INFO] My Behavior. Step: 74000. Time Elapsed: 2118.897 s. Mean Reward: -58.476. Std of Reward: 69.757. Training.
+[INFO] My Behavior. Step: 75000. Time Elapsed: 2194.881 s. Mean Reward: -208.139. Std of Reward: 296.934. Training.
+[INFO] My Behavior. Step: 76000. Time Elapsed: 2208.558 s. Mean Reward: -60.990. Std of Reward: 28.876. Training.
+[INFO] My Behavior. Step: 77000. Time Elapsed: 2221.555 s. Mean Reward: -389.870. Std of Reward: 609.305. Training.
+[INFO] My Behavior. Step: 78000. Time Elapsed: 2236.097 s. Mean Reward: -64.916. Std of Reward: 42.926. Training.
+[INFO] My Behavior. Step: 79000. Time Elapsed: 2310.805 s. Mean Reward: -61.953. Std of Reward: 29.900. Training.
+[INFO] My Behavior. Step: 80000. Time Elapsed: 2323.151 s. Mean Reward: -71.638. Std of Reward: 13.866. Training.
+[INFO] My Behavior. Step: 81000. Time Elapsed: 2336.844 s. Mean Reward: -11.755. Std of Reward: 10.512. Training.
+[INFO] My Behavior. Step: 82000. Time Elapsed: 2349.043 s. Mean Reward: -32.902. Std of Reward: 26.227. Training.
+[INFO] My Behavior. Step: 83000. Time Elapsed: 2426.104 s. Mean Reward: -136.289. Std of Reward: 141.312. Training.
+[INFO] My Behavior. Step: 84000. Time Elapsed: 2440.459 s. Mean Reward: -58.780. Std of Reward: 43.062. Training.
+[INFO] My Behavior. Step: 85000. Time Elapsed: 2454.183 s. Mean Reward: -55.054. Std of Reward: 47.901. Training.
+[INFO] My Behavior. Step: 86000. Time Elapsed: 2466.051 s. Mean Reward: -547.056. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 87000. Time Elapsed: 2543.371 s. Mean Reward: -40.175. Std of Reward: 16.027. Training.
+[INFO] My Behavior. Step: 88000. Time Elapsed: 2556.095 s. Mean Reward: -25.818. Std of Reward: 46.715. Training.
+[INFO] My Behavior. Step: 89000. Time Elapsed: 2569.300 s. Mean Reward: -51.587. Std of Reward: 20.527. Training.
+[INFO] My Behavior. Step: 90000. Time Elapsed: 2583.901 s. Mean Reward: -62.865. Std of Reward: 33.249. Training.
+[INFO] My Behavior. Step: 91000. Time Elapsed: 2659.927 s. Mean Reward: -179.694. Std of Reward: 229.634. Training.
+[INFO] My Behavior. Step: 92000. Time Elapsed: 2673.417 s. Mean Reward: -40.129. Std of Reward: 18.830. Training.
+[INFO] My Behavior. Step: 93000. Time Elapsed: 2688.033 s. Mean Reward: -31.186. Std of Reward: 34.379. Training.
+[INFO] My Behavior. Step: 94000. Time Elapsed: 2700.855 s. Mean Reward: -196.595. Std of Reward: 218.262. Training.
+[INFO] My Behavior. Step: 95000. Time Elapsed: 2778.693 s. Mean Reward: -47.834. Std of Reward: 94.012. Training.
+[INFO] My Behavior. Step: 96000. Time Elapsed: 2792.634 s. Mean Reward: -74.950. Std of Reward: 91.735. Training.
+[INFO] My Behavior. Step: 97000. Time Elapsed: 2804.987 s. Mean Reward: -23.665. Std of Reward: 30.249. Training.
+[INFO] My Behavior. Step: 98000. Time Elapsed: 2818.931 s. Mean Reward: -195.916. Std of Reward: 292.832. Training.
+[INFO] My Behavior. Step: 99000. Time Elapsed: 2895.829 s. Mean Reward: -40.791. Std of Reward: 29.107. Training.
+[INFO] My Behavior. Step: 100000. Time Elapsed: 2909.325 s. Mean Reward: -32.824. Std of Reward: 25.321. Training.
+[INFO] My Behavior. Step: 101000. Time Elapsed: 2923.909 s. Mean Reward: -17.640. Std of Reward: 34.923. Training.
+[INFO] My Behavior. Step: 102000. Time Elapsed: 2937.625 s. Mean Reward: -16.956. Std of Reward: 32.406. Training.
+[INFO] My Behavior. Step: 103000. Time Elapsed: 3012.927 s. Mean Reward: -84.911. Std of Reward: 152.528. Training.
+[INFO] My Behavior. Step: 104000. Time Elapsed: 3024.840 s. Mean Reward: -288.008. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 105000. Time Elapsed: 3038.974 s. Mean Reward: -114.624. Std of Reward: 253.227. Training.
+[INFO] My Behavior. Step: 106000. Time Elapsed: 3052.000 s. Mean Reward: -34.977. Std of Reward: 75.121. Training.
+[INFO] My Behavior. Step: 107000. Time Elapsed: 3127.109 s. Mean Reward: -43.891. Std of Reward: 83.250. Training.
+[INFO] My Behavior. Step: 108000. Time Elapsed: 3141.263 s. Mean Reward: -145.863. Std of Reward: 97.363. Training.
+[INFO] My Behavior. Step: 109000. Time Elapsed: 3154.765 s. Mean Reward: -25.959. Std of Reward: 58.287. Training.
+[INFO] My Behavior. Step: 110000. Time Elapsed: 3167.027 s. Mean Reward: -557.622. Std of Reward: 941.282. Training.
+[INFO] My Behavior. Step: 111000. Time Elapsed: 3243.592 s. Mean Reward: -10.092. Std of Reward: 13.442. Training.
+[INFO] My Behavior. Step: 112000. Time Elapsed: 3257.554 s. Mean Reward: -42.694. Std of Reward: 61.912. Training.
+[INFO] My Behavior. Step: 113000. Time Elapsed: 3270.167 s. Mean Reward: -44.626. Std of Reward: 47.612. Training.
+[INFO] My Behavior. Step: 114000. Time Elapsed: 3284.004 s. Mean Reward: -69.953. Std of Reward: 78.615. Training.
+[INFO] My Behavior. Step: 115000. Time Elapsed: 3360.417 s. Mean Reward: -181.174. Std of Reward: 164.579. Training.
+[INFO] My Behavior. Step: 116000. Time Elapsed: 3372.882 s. Mean Reward: -107.678. Std of Reward: 185.228. Training.
+[INFO] My Behavior. Step: 117000. Time Elapsed: 3385.924 s. Mean Reward: -31.968. Std of Reward: 95.622. Training.
+[INFO] My Behavior. Step: 118000. Time Elapsed: 3463.105 s. Mean Reward: -35.224. Std of Reward: 37.881. Training.
+[INFO] My Behavior. Step: 119000. Time Elapsed: 3476.377 s. Mean Reward: -90.061. Std of Reward: 130.385. Training.
+[INFO] My Behavior. Step: 120000. Time Elapsed: 3489.040 s. Mean Reward: -24.250. Std of Reward: 42.403. Training.
+[INFO] My Behavior. Step: 121000. Time Elapsed: 3503.297 s. Mean Reward: -49.078. Std of Reward: 73.613. Training.
+[INFO] My Behavior. Step: 122000. Time Elapsed: 3577.714 s. Mean Reward: -3.523. Std of Reward: 19.264. Training.
+[INFO] My Behavior. Step: 123000. Time Elapsed: 3591.531 s. Mean Reward: -24.421. Std of Reward: 43.773. Training.
+[INFO] My Behavior. Step: 124000. Time Elapsed: 3604.172 s. Mean Reward: -26.661. Std of Reward: 83.839. Training.
+[INFO] My Behavior. Step: 125000. Time Elapsed: 3617.999 s. Mean Reward: -46.832. Std of Reward: 49.095. Training.
+[INFO] My Behavior. Step: 126000. Time Elapsed: 3694.637 s. Mean Reward: -3.276. Std of Reward: 10.126. Training.
+[INFO] My Behavior. Step: 127000. Time Elapsed: 3707.028 s. Mean Reward: -14.174. Std of Reward: 28.619. Training.
+[INFO] My Behavior. Step: 128000. Time Elapsed: 3720.997 s. Mean Reward: -44.289. Std of Reward: 66.229. Training.
+[INFO] My Behavior. Step: 129000. Time Elapsed: 3734.660 s. Mean Reward: -36.911. Std of Reward: 62.927. Training.
+[INFO] My Behavior. Step: 130000. Time Elapsed: 3809.893 s. Mean Reward: -4.567. Std of Reward: 32.333. Training.
+[INFO] My Behavior. Step: 131000. Time Elapsed: 3824.555 s. Mean Reward: 2.965. Std of Reward: 13.986. Training.
+[INFO] My Behavior. Step: 132000. Time Elapsed: 3837.131 s. Mean Reward: -57.634. Std of Reward: 92.352. Training.
+[INFO] My Behavior. Step: 133000. Time Elapsed: 3850.467 s. Mean Reward: 24.831. Std of Reward: 22.963. Training.
+[INFO] My Behavior. Step: 134000. Time Elapsed: 3926.665 s. Mean Reward: -5.504. Std of Reward: 12.369. Training.
+[INFO] My Behavior. Step: 135000. Time Elapsed: 3940.496 s. Mean Reward: 7.302. Std of Reward: 18.400. Training.
+[INFO] My Behavior. Step: 136000. Time Elapsed: 3954.188 s. Mean Reward: -11.953. Std of Reward: 26.321. Training.
+[INFO] My Behavior. Step: 137000. Time Elapsed: 3967.206 s. Mean Reward: -1.468. Std of Reward: 32.305. Training.
+[INFO] My Behavior. Step: 138000. Time Elapsed: 4044.625 s. Mean Reward: -7.562. Std of Reward: 15.035. Training.
+[INFO] My Behavior. Step: 139000. Time Elapsed: 4057.452 s. Mean Reward: -31.375. Std of Reward: 76.263. Training.
+[INFO] My Behavior. Step: 140000. Time Elapsed: 4072.232 s. Mean Reward: -8.643. Std of Reward: 31.453. Training.
+[INFO] My Behavior. Step: 141000. Time Elapsed: 4084.324 s. Mean Reward: 0.807. Std of Reward: 12.922. Training.
+[INFO] My Behavior. Step: 142000. Time Elapsed: 4160.152 s. Mean Reward: -11.164. Std of Reward: 21.902. Training.
+[INFO] My Behavior. Step: 143000. Time Elapsed: 4174.181 s. Mean Reward: -58.565. Std of Reward: 154.575. Training.
+[INFO] My Behavior. Step: 144000. Time Elapsed: 4187.421 s. Mean Reward: -4.249. Std of Reward: 32.737. Training.
+[INFO] My Behavior. Step: 145000. Time Elapsed: 4201.117 s. Mean Reward: 9.594. Std of Reward: 16.322. Training.
+[INFO] My Behavior. Step: 146000. Time Elapsed: 4278.136 s. Mean Reward: -39.418. Std of Reward: 49.954. Training.
+[INFO] My Behavior. Step: 147000. Time Elapsed: 4290.599 s. Mean Reward: 47.080. Std of Reward: 17.793. Training.
+[INFO] My Behavior. Step: 148000. Time Elapsed: 4304.964 s. Mean Reward: -10.379. Std of Reward: 39.300. Training.
+[INFO] My Behavior. Step: 149000. Time Elapsed: 4318.782 s. Mean Reward: 1.834. Std of Reward: 24.336. Training.
+[INFO] My Behavior. Step: 150000. Time Elapsed: 4395.682 s. Mean Reward: 1.886. Std of Reward: 11.174. Training.
+[INFO] My Behavior. Step: 151000. Time Elapsed: 4410.791 s. Mean Reward: -10.690. Std of Reward: 75.765. Training.
+[INFO] My Behavior. Step: 152000. Time Elapsed: 4423.609 s. Mean Reward: 6.469. Std of Reward: 21.623. Training.
+[INFO] My Behavior. Step: 153000. Time Elapsed: 4499.787 s. Mean Reward: 22.090. Std of Reward: 26.398. Training.
+[INFO] My Behavior. Step: 154000. Time Elapsed: 4515.166 s. Mean Reward: -0.786. Std of Reward: 9.127. Training.
+[INFO] My Behavior. Step: 155000. Time Elapsed: 4528.186 s. Mean Reward: 12.148. Std of Reward: 28.218. Training.
+[INFO] My Behavior. Step: 156000. Time Elapsed: 4541.992 s. Mean Reward: -43.177. Std of Reward: 119.110. Training.
+[INFO] My Behavior. Step: 157000. Time Elapsed: 4619.458 s. Mean Reward: -28.684. Std of Reward: 50.403. Training.
+[INFO] My Behavior. Step: 158000. Time Elapsed: 4633.084 s. Mean Reward: 16.724. Std of Reward: 25.784. Training.
+[INFO] My Behavior. Step: 159000. Time Elapsed: 4646.748 s. Mean Reward: 15.196. Std of Reward: 22.480. Training.
+[INFO] My Behavior. Step: 160000. Time Elapsed: 4660.447 s. Mean Reward: 1.242. Std of Reward: 33.983. Training.
+[INFO] My Behavior. Step: 161000. Time Elapsed: 4737.484 s. Mean Reward: 21.246. Std of Reward: 43.068. Training.
+[INFO] My Behavior. Step: 162000. Time Elapsed: 4752.679 s. Mean Reward: 3.895. Std of Reward: 56.399. Training.
+[INFO] My Behavior. Step: 163000. Time Elapsed: 4766.924 s. Mean Reward: -2.203. Std of Reward: 54.527. Training.
+[INFO] My Behavior. Step: 164000. Time Elapsed: 4781.408 s. Mean Reward: 11.749. Std of Reward: 18.836. Training.
+[INFO] My Behavior. Step: 165000. Time Elapsed: 4857.945 s. Mean Reward: 28.304. Std of Reward: 33.292. Training.
+[INFO] My Behavior. Step: 166000. Time Elapsed: 4871.667 s. Mean Reward: -77.970. Std of Reward: 162.159. Training.
+[INFO] My Behavior. Step: 167000. Time Elapsed: 4885.200 s. Mean Reward: 16.698. Std of Reward: 27.799. Training.
+[INFO] My Behavior. Step: 168000. Time Elapsed: 4897.595 s. Mean Reward: -47.983. Std of Reward: 51.367. Training.
+[INFO] My Behavior. Step: 169000. Time Elapsed: 4974.282 s. Mean Reward: 17.055. Std of Reward: 21.193. Training.
+[INFO] My Behavior. Step: 170000. Time Elapsed: 4987.317 s. Mean Reward: 24.674. Std of Reward: 32.513. Training.
+[INFO] My Behavior. Step: 171000. Time Elapsed: 5001.413 s. Mean Reward: 19.537. Std of Reward: 24.746. Training.
+[INFO] My Behavior. Step: 172000. Time Elapsed: 5014.647 s. Mean Reward: -17.633. Std of Reward: 60.659. Training.
+[INFO] My Behavior. Step: 173000. Time Elapsed: 5092.073 s. Mean Reward: 34.715. Std of Reward: 37.110. Training.
+[INFO] My Behavior. Step: 174000. Time Elapsed: 5106.694 s. Mean Reward: 0.094. Std of Reward: 7.701. Training.
+[INFO] My Behavior. Step: 175000. Time Elapsed: 5118.843 s. Mean Reward: -15.301. Std of Reward: 28.691. Training.
+[INFO] My Behavior. Step: 176000. Time Elapsed: 5131.828 s. Mean Reward: -39.025. Std of Reward: 70.307. Training.
+[INFO] My Behavior. Step: 177000. Time Elapsed: 5206.766 s. Mean Reward: 16.734. Std of Reward: 38.099. Training.
+[INFO] My Behavior. Step: 178000. Time Elapsed: 5219.814 s. Mean Reward: 7.878. Std of Reward: 28.902. Training.
+[INFO] My Behavior. Step: 179000. Time Elapsed: 5233.387 s. Mean Reward: 43.966. Std of Reward: 51.061. Training.
+[INFO] My Behavior. Step: 180000. Time Elapsed: 5245.977 s. Mean Reward: 38.820. Std of Reward: 15.853. Training.
+[INFO] My Behavior. Step: 181000. Time Elapsed: 5320.085 s. Mean Reward: 92.878. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 182000. Time Elapsed: 5333.383 s. Mean Reward: -44.249. Std of Reward: 36.184. Training.
+[INFO] My Behavior. Step: 183000. Time Elapsed: 5346.012 s. Mean Reward: -8.521. Std of Reward: 7.650. Training.
+[INFO] My Behavior. Step: 184000. Time Elapsed: 5359.124 s. Mean Reward: 16.579. Std of Reward: 32.969. Training.
+[INFO] My Behavior. Step: 185000. Time Elapsed: 5434.181 s. Mean Reward: 14.400. Std of Reward: 53.767. Training.
+[INFO] My Behavior. Step: 186000. Time Elapsed: 5446.575 s. Mean Reward: 16.731. Std of Reward: 50.429. Training.
+[INFO] My Behavior. Step: 187000. Time Elapsed: 5459.282 s. Mean Reward: 13.320. Std of Reward: 11.309. Training.
+[INFO] My Behavior. Step: 188000. Time Elapsed: 5535.371 s. Mean Reward: -6.770. Std of Reward: 45.626. Training.
+[INFO] My Behavior. Step: 189000. Time Elapsed: 5549.152 s. Mean Reward: 3.140. Std of Reward: 23.164. Training.
+[INFO] My Behavior. Step: 190000. Time Elapsed: 5562.416 s. Mean Reward: 53.924. Std of Reward: 18.907. Training.
+[INFO] My Behavior. Step: 191000. Time Elapsed: 5575.556 s. Mean Reward: 10.186. Std of Reward: 22.765. Training.
+[INFO] My Behavior. Step: 192000. Time Elapsed: 5650.508 s. Mean Reward: 17.516. Std of Reward: 25.221. Training.
+[INFO] My Behavior. Step: 193000. Time Elapsed: 5663.143 s. Mean Reward: 22.718. Std of Reward: 26.920. Training.
+[INFO] My Behavior. Step: 194000. Time Elapsed: 5676.235 s. Mean Reward: 46.572. Std of Reward: 32.148. Training.
+[INFO] My Behavior. Step: 195000. Time Elapsed: 5689.381 s. Mean Reward: 10.725. Std of Reward: 21.797. Training.
+[INFO] My Behavior. Step: 196000. Time Elapsed: 5765.688 s. Mean Reward: 3.653. Std of Reward: 52.586. Training.
+[INFO] My Behavior. Step: 197000. Time Elapsed: 5779.023 s. Mean Reward: -5.034. Std of Reward: 42.342. Training.
+[INFO] My Behavior. Step: 198000. Time Elapsed: 5792.571 s. Mean Reward: -52.035. Std of Reward: 141.791. Training.
+[INFO] My Behavior. Step: 199000. Time Elapsed: 5805.283 s. Mean Reward: 10.843. Std of Reward: 18.274. Training.
+[INFO] My Behavior. Step: 200000. Time Elapsed: 5880.891 s. Mean Reward: 4.735. Std of Reward: 23.185. Training.
+[INFO] My Behavior. Step: 201000. Time Elapsed: 5894.201 s. Mean Reward: 13.762. Std of Reward: 26.078. Training.
+[INFO] My Behavior. Step: 202000. Time Elapsed: 5907.620 s. Mean Reward: 27.382. Std of Reward: 28.838. Training.
+[INFO] My Behavior. Step: 203000. Time Elapsed: 5921.370 s. Mean Reward: 16.715. Std of Reward: 30.041. Training.
+[INFO] My Behavior. Step: 204000. Time Elapsed: 5996.269 s. Mean Reward: -31.944. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 205000. Time Elapsed: 6009.975 s. Mean Reward: 7.950. Std of Reward: 16.159. Training.
+[INFO] My Behavior. Step: 206000. Time Elapsed: 6022.214 s. Mean Reward: -78.189. Std of Reward: 133.005. Training.
+[INFO] My Behavior. Step: 207000. Time Elapsed: 6036.476 s. Mean Reward: -128.972. Std of Reward: 299.230. Training.
+[INFO] My Behavior. Step: 208000. Time Elapsed: 6112.398 s. Mean Reward: -27.406. Std of Reward: 57.885. Training.
+[INFO] My Behavior. Step: 209000. Time Elapsed: 6125.082 s. Mean Reward: -22.631. Std of Reward: 36.651. Training.
+[INFO] My Behavior. Step: 210000. Time Elapsed: 6138.723 s. Mean Reward: 17.442. Std of Reward: 25.187. Training.
+[INFO] My Behavior. Step: 211000. Time Elapsed: 6152.281 s. Mean Reward: -5.253. Std of Reward: 43.655. Training.
+[INFO] My Behavior. Step: 212000. Time Elapsed: 6229.255 s. Mean Reward: 12.195. Std of Reward: 20.766. Training.
+[INFO] My Behavior. Step: 213000. Time Elapsed: 6242.962 s. Mean Reward: 34.827. Std of Reward: 23.913. Training.
+[INFO] My Behavior. Step: 214000. Time Elapsed: 6257.690 s. Mean Reward: 47.613. Std of Reward: 31.064. Training.
+[INFO] My Behavior. Step: 215000. Time Elapsed: 6335.157 s. Mean Reward: 7.355. Std of Reward: 12.993. Training.
+[INFO] My Behavior. Step: 216000. Time Elapsed: 6350.823 s. Mean Reward: 12.248. Std of Reward: 7.568. Training.
+[INFO] My Behavior. Step: 217000. Time Elapsed: 6363.482 s. Mean Reward: -7.449. Std of Reward: 29.912. Training.
+[INFO] My Behavior. Step: 218000. Time Elapsed: 6378.496 s. Mean Reward: 14.514. Std of Reward: 32.427. Training.
+[INFO] My Behavior. Step: 219000. Time Elapsed: 6453.787 s. Mean Reward: 9.724. Std of Reward: 7.172. Training.
+[INFO] My Behavior. Step: 220000. Time Elapsed: 6469.252 s. Mean Reward: -37.876. Std of Reward: 40.712. Training.
+[INFO] My Behavior. Step: 221000. Time Elapsed: 6482.022 s. Mean Reward: 19.329. Std of Reward: 20.534. Training.
+[INFO] My Behavior. Step: 222000. Time Elapsed: 6496.256 s. Mean Reward: 8.461. Std of Reward: 35.902. Training.
+[INFO] My Behavior. Step: 223000. Time Elapsed: 6571.922 s. Mean Reward: 21.213. Std of Reward: 17.419. Training.
+[INFO] My Behavior. Step: 224000. Time Elapsed: 6586.840 s. Mean Reward: 11.996. Std of Reward: 20.585. Training.
+[INFO] My Behavior. Step: 225000. Time Elapsed: 6598.874 s. Mean Reward: 50.025. Std of Reward: 26.036. Training.
+[INFO] My Behavior. Step: 226000. Time Elapsed: 6612.500 s. Mean Reward: 26.728. Std of Reward: 39.500. Training.
+[INFO] My Behavior. Step: 227000. Time Elapsed: 6694.628 s. Mean Reward: 41.246. Std of Reward: 44.615. Training.
+[INFO] My Behavior. Step: 228000. Time Elapsed: 6715.055 s. Mean Reward: 35.452. Std of Reward: 33.953. Training.
+[INFO] My Behavior. Step: 229000. Time Elapsed: 6732.539 s. Mean Reward: -23.091. Std of Reward: 14.156. Training.
+[INFO] My Behavior. Step: 230000. Time Elapsed: 6747.419 s. Mean Reward: 26.662. Std of Reward: 70.332. Training.
+[INFO] My Behavior. Step: 231000. Time Elapsed: 6831.339 s. Mean Reward: 24.902. Std of Reward: 22.630. Training.
+[INFO] My Behavior. Step: 232000. Time Elapsed: 6848.141 s. Mean Reward: 29.066. Std of Reward: 27.990. Training.
+[INFO] My Behavior. Step: 233000. Time Elapsed: 6863.469 s. Mean Reward: 52.041. Std of Reward: 54.175. Training.
+[INFO] My Behavior. Step: 234000. Time Elapsed: 6947.745 s. Mean Reward: 7.690. Std of Reward: 19.024. Training.
+[INFO] My Behavior. Step: 235000. Time Elapsed: 6963.861 s. Mean Reward: 16.609. Std of Reward: 24.303. Training.
+[INFO] My Behavior. Step: 236000. Time Elapsed: 6979.481 s. Mean Reward: -30.855. Std of Reward: 79.315. Training.
+[INFO] My Behavior. Step: 237000. Time Elapsed: 6994.456 s. Mean Reward: -7.251. Std of Reward: 52.365. Training.
+[INFO] My Behavior. Step: 238000. Time Elapsed: 7071.876 s. Mean Reward: 35.634. Std of Reward: 28.936. Training.
+[INFO] My Behavior. Step: 239000. Time Elapsed: 7087.808 s. Mean Reward: 16.674. Std of Reward: 41.267. Training.
+[INFO] My Behavior. Step: 240000. Time Elapsed: 7100.494 s. Mean Reward: -4.029. Std of Reward: 22.368. Training.
+[INFO] My Behavior. Step: 241000. Time Elapsed: 7115.151 s. Mean Reward: 19.595. Std of Reward: 134.353. Training.
+[INFO] My Behavior. Step: 242000. Time Elapsed: 7194.459 s. Mean Reward: 30.466. Std of Reward: 32.845. Training.
+[INFO] My Behavior. Step: 243000. Time Elapsed: 7208.997 s. Mean Reward: 15.835. Std of Reward: 39.019. Training.
+[INFO] My Behavior. Step: 244000. Time Elapsed: 7222.774 s. Mean Reward: 17.197. Std of Reward: 25.258. Training.
+[INFO] My Behavior. Step: 245000. Time Elapsed: 7236.624 s. Mean Reward: 19.080. Std of Reward: 39.441. Training.
+[INFO] My Behavior. Step: 246000. Time Elapsed: 7314.421 s. Mean Reward: 24.610. Std of Reward: 14.941. Training.
+[INFO] My Behavior. Step: 247000. Time Elapsed: 7328.903 s. Mean Reward: 91.170. Std of Reward: 11.086. Training.
+[INFO] My Behavior. Step: 248000. Time Elapsed: 7343.243 s. Mean Reward: -31.200. Std of Reward: 194.106. Training.
+[INFO] My Behavior. Step: 249000. Time Elapsed: 7357.058 s. Mean Reward: 81.695. Std of Reward: 42.682. Training.
+[INFO] My Behavior. Step: 250000. Time Elapsed: 7436.331 s. Mean Reward: 17.443. Std of Reward: 35.310. Training.
+[INFO] My Behavior. Step: 251000. Time Elapsed: 7451.359 s. Mean Reward: 15.562. Std of Reward: 13.548. Training.
+[INFO] My Behavior. Step: 252000. Time Elapsed: 7464.497 s. Mean Reward: 45.225. Std of Reward: 34.370. Training.
+[INFO] My Behavior. Step: 253000. Time Elapsed: 7478.608 s. Mean Reward: 36.959. Std of Reward: 37.037. Training.
+[INFO] My Behavior. Step: 254000. Time Elapsed: 7556.283 s. Mean Reward: 19.203. Std of Reward: 36.967. Training.
+[INFO] My Behavior. Step: 255000. Time Elapsed: 7571.694 s. Mean Reward: 8.235. Std of Reward: 30.381. Training.
+[INFO] My Behavior. Step: 256000. Time Elapsed: 7585.845 s. Mean Reward: -148.595. Std of Reward: 312.808. Training.
+[INFO] My Behavior. Step: 257000. Time Elapsed: 7598.819 s. Mean Reward: 63.987. Std of Reward: 34.049. Training.
+[INFO] My Behavior. Step: 258000. Time Elapsed: 7676.028 s. Mean Reward: -12.840. Std of Reward: 45.062. Training.
+[INFO] My Behavior. Step: 259000. Time Elapsed: 7691.364 s. Mean Reward: 19.973. Std of Reward: 21.422. Training.
+[INFO] My Behavior. Step: 260000. Time Elapsed: 7704.660 s. Mean Reward: 170.276. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 261000. Time Elapsed: 7782.203 s. Mean Reward: 7.268. Std of Reward: 10.082. Training.
+[INFO] My Behavior. Step: 262000. Time Elapsed: 7796.121 s. Mean Reward: 11.771. Std of Reward: 10.822. Training.
+[INFO] My Behavior. Step: 263000. Time Elapsed: 7810.206 s. Mean Reward: 30.337. Std of Reward: 30.706. Training.
+[INFO] My Behavior. Step: 264000. Time Elapsed: 7824.424 s. Mean Reward: 17.215. Std of Reward: 13.716. Training.
+[INFO] My Behavior. Step: 265000. Time Elapsed: 7903.117 s. Mean Reward: 18.845. Std of Reward: 23.379. Training.
+[INFO] My Behavior. Step: 266000. Time Elapsed: 7917.231 s. Mean Reward: -31.606. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 267000. Time Elapsed: 7933.778 s. Mean Reward: 15.871. Std of Reward: 33.384. Training.
+[INFO] My Behavior. Step: 268000. Time Elapsed: 7949.813 s. Mean Reward: 43.856. Std of Reward: 42.577. Training.
+[INFO] My Behavior. Step: 269000. Time Elapsed: 8031.045 s. Mean Reward: 69.210. Std of Reward: 26.564. Training.
+[INFO] My Behavior. Step: 270000. Time Elapsed: 8045.305 s. Mean Reward: -15.872. Std of Reward: 54.661. Training.
+[INFO] My Behavior. Step: 271000. Time Elapsed: 8060.174 s. Mean Reward: -0.392. Std of Reward: 19.757. Training.
+[INFO] My Behavior. Step: 272000. Time Elapsed: 8074.043 s. Mean Reward: 59.984. Std of Reward: 44.954. Training.
+[INFO] My Behavior. Step: 273000. Time Elapsed: 8153.983 s. Mean Reward: 39.044. Std of Reward: 32.430. Training.
+[INFO] My Behavior. Step: 274000. Time Elapsed: 8169.811 s. Mean Reward: 41.747. Std of Reward: 42.572. Training.
+[INFO] My Behavior. Step: 275000. Time Elapsed: 8183.940 s. Mean Reward: 41.612. Std of Reward: 11.744. Training.
+[INFO] My Behavior. Step: 276000. Time Elapsed: 8198.483 s. Mean Reward: -26.407. Std of Reward: 57.455. Training.
+[INFO] My Behavior. Step: 277000. Time Elapsed: 8273.687 s. Mean Reward: 74.092. Std of Reward: 54.383. Training.
+[INFO] My Behavior. Step: 278000. Time Elapsed: 8287.660 s. Mean Reward: 73.721. Std of Reward: 46.231. Training.
+[INFO] My Behavior. Step: 279000. Time Elapsed: 8299.584 s. Mean Reward: 20.738. Std of Reward: 18.076. Training.
+[INFO] My Behavior. Step: 280000. Time Elapsed: 8313.233 s. Mean Reward: 40.249. Std of Reward: 31.380. Training.
+[INFO] My Behavior. Step: 281000. Time Elapsed: 8389.150 s. Mean Reward: 42.650. Std of Reward: 58.386. Training.
+[INFO] My Behavior. Step: 282000. Time Elapsed: 8402.151 s. Mean Reward: 35.988. Std of Reward: 61.504. Training.
+[INFO] My Behavior. Step: 283000. Time Elapsed: 8414.680 s. Mean Reward: 31.460. Std of Reward: 31.566. Training.
+[INFO] My Behavior. Step: 284000. Time Elapsed: 8427.285 s. Mean Reward: 56.894. Std of Reward: 49.957. Training.
+[INFO] My Behavior. Step: 285000. Time Elapsed: 8503.546 s. Mean Reward: 41.758. Std of Reward: 43.889. Training.
+[INFO] My Behavior. Step: 286000. Time Elapsed: 8515.678 s. Mean Reward: 18.412. Std of Reward: 11.507. Training.
+[INFO] My Behavior. Step: 287000. Time Elapsed: 8530.638 s. Mean Reward: 15.718. Std of Reward: 15.992. Training.
+[INFO] My Behavior. Step: 288000. Time Elapsed: 8542.231 s. Mean Reward: 65.366. Std of Reward: 48.484. Training.
+[INFO] My Behavior. Step: 289000. Time Elapsed: 8618.922 s. Mean Reward: -44.937. Std of Reward: 43.809. Training.
+[INFO] My Behavior. Step: 290000. Time Elapsed: 8630.402 s. Mean Reward: 147.916. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 291000. Time Elapsed: 8642.770 s. Mean Reward: -314.366. Std of Reward: 842.355. Training.
+[INFO] My Behavior. Step: 292000. Time Elapsed: 8657.164 s. Mean Reward: 27.486. Std of Reward: 50.231. Training.
+[INFO] My Behavior. Step: 293000. Time Elapsed: 8732.180 s. Mean Reward: 38.823. Std of Reward: 26.360. Training.
+[INFO] My Behavior. Step: 294000. Time Elapsed: 8745.951 s. Mean Reward: 50.395. Std of Reward: 65.269. Training.
+[INFO] My Behavior. Step: 295000. Time Elapsed: 8757.425 s. Mean Reward: 64.712. Std of Reward: 34.740. Training.
+[INFO] My Behavior. Step: 296000. Time Elapsed: 8832.099 s. Mean Reward: 41.115. Std of Reward: 53.701. Training.
+[INFO] My Behavior. Step: 297000. Time Elapsed: 8845.722 s. Mean Reward: 43.999. Std of Reward: 42.557. Training.
+[INFO] My Behavior. Step: 298000. Time Elapsed: 8858.124 s. Mean Reward: 11.003. Std of Reward: 38.696. Training.
+[INFO] My Behavior. Step: 299000. Time Elapsed: 8871.656 s. Mean Reward: 22.126. Std of Reward: 52.507. Training.
+[INFO] My Behavior. Step: 300000. Time Elapsed: 8947.600 s. Mean Reward: 28.734. Std of Reward: 23.889. Training.
+[INFO] My Behavior. Step: 301000. Time Elapsed: 8961.698 s. Mean Reward: 31.209. Std of Reward: 31.156. Training.
+[INFO] My Behavior. Step: 302000. Time Elapsed: 8975.348 s. Mean Reward: 27.875. Std of Reward: 34.337. Training.
+[INFO] My Behavior. Step: 303000. Time Elapsed: 8988.431 s. Mean Reward: 14.771. Std of Reward: 22.141. Training.
+[INFO] My Behavior. Step: 304000. Time Elapsed: 9063.083 s. Mean Reward: 60.724. Std of Reward: 93.039. Training.
+[INFO] My Behavior. Step: 305000. Time Elapsed: 9076.273 s. Mean Reward: 31.327. Std of Reward: 28.693. Training.
+[INFO] My Behavior. Step: 306000. Time Elapsed: 9088.565 s. Mean Reward: 50.919. Std of Reward: 22.941. Training.
+[INFO] My Behavior. Step: 307000. Time Elapsed: 9101.803 s. Mean Reward: 14.174. Std of Reward: 26.352. Training.
+[INFO] My Behavior. Step: 308000. Time Elapsed: 9176.450 s. Mean Reward: 12.089. Std of Reward: 35.008. Training.
+[INFO] My Behavior. Step: 309000. Time Elapsed: 9189.725 s. Mean Reward: 44.334. Std of Reward: 36.867. Training.
+[INFO] My Behavior. Step: 310000. Time Elapsed: 9203.285 s. Mean Reward: 5.353. Std of Reward: 17.252. Training.
+[INFO] My Behavior. Step: 311000. Time Elapsed: 9217.160 s. Mean Reward: 22.713. Std of Reward: 9.199. Training.
+[INFO] My Behavior. Step: 312000. Time Elapsed: 9292.487 s. Mean Reward: 22.699. Std of Reward: 26.505. Training.
+[INFO] My Behavior. Step: 313000. Time Elapsed: 9304.505 s. Mean Reward: 9.496. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 314000. Time Elapsed: 9318.086 s. Mean Reward: 28.263. Std of Reward: 33.282. Training.
+[INFO] My Behavior. Step: 315000. Time Elapsed: 9330.911 s. Mean Reward: 43.222. Std of Reward: 50.319. Training.
+[INFO] My Behavior. Step: 316000. Time Elapsed: 9408.813 s. Mean Reward: -19.674. Std of Reward: 174.961. Training.
+[INFO] My Behavior. Step: 317000. Time Elapsed: 9421.495 s. Mean Reward: 67.094. Std of Reward: 68.093. Training.
+[INFO] My Behavior. Step: 318000. Time Elapsed: 9434.547 s. Mean Reward: 25.331. Std of Reward: 65.788. Training.
+[INFO] My Behavior. Step: 319000. Time Elapsed: 9446.990 s. Mean Reward: 20.729. Std of Reward: 25.182. Training.
+[INFO] My Behavior. Step: 320000. Time Elapsed: 9522.607 s. Mean Reward: 55.478. Std of Reward: 31.200. Training.
+[INFO] My Behavior. Step: 321000. Time Elapsed: 9536.608 s. Mean Reward: 18.489. Std of Reward: 17.347. Training.
+[INFO] My Behavior. Step: 322000. Time Elapsed: 9548.702 s. Mean Reward: 38.190. Std of Reward: 34.595. Training.
+[INFO] My Behavior. Step: 323000. Time Elapsed: 9623.664 s. Mean Reward: 22.479. Std of Reward: 5.832. Training.
+[INFO] My Behavior. Step: 324000. Time Elapsed: 9637.813 s. Mean Reward: 26.723. Std of Reward: 60.652. Training.
+[INFO] My Behavior. Step: 325000. Time Elapsed: 9650.096 s. Mean Reward: 1.957. Std of Reward: 17.125. Training.
+[INFO] My Behavior. Step: 326000. Time Elapsed: 9661.995 s. Mean Reward: 71.571. Std of Reward: 7.893. Training.
+[INFO] My Behavior. Step: 327000. Time Elapsed: 9737.150 s. Mean Reward: 131.872. Std of Reward: 76.151. Training.
+[INFO] My Behavior. Step: 328000. Time Elapsed: 9750.703 s. Mean Reward: 20.312. Std of Reward: 16.646. Training.
+[INFO] My Behavior. Step: 329000. Time Elapsed: 9763.536 s. Mean Reward: 106.458. Std of Reward: 150.862. Training.
+[INFO] My Behavior. Step: 330000. Time Elapsed: 9776.570 s. Mean Reward: 57.317. Std of Reward: 79.300. Training.
+[INFO] My Behavior. Step: 331000. Time Elapsed: 9852.719 s. Mean Reward: 103.322. Std of Reward: 69.684. Training.
+[INFO] My Behavior. Step: 332000. Time Elapsed: 9865.857 s. Mean Reward: 43.230. Std of Reward: 51.606. Training.
+[INFO] My Behavior. Step: 333000. Time Elapsed: 9879.917 s. Mean Reward: 144.179. Std of Reward: 49.459. Training.
+[INFO] My Behavior. Step: 334000. Time Elapsed: 9892.655 s. Mean Reward: 45.562. Std of Reward: 65.737. Training.
+[INFO] My Behavior. Step: 335000. Time Elapsed: 9967.745 s. Mean Reward: 56.244. Std of Reward: 77.517. Training.
+[INFO] My Behavior. Step: 336000. Time Elapsed: 9981.704 s. Mean Reward: 90.712. Std of Reward: 56.241. Training.
+[INFO] My Behavior. Step: 337000. Time Elapsed: 9995.554 s. Mean Reward: 140.660. Std of Reward: 100.482. Training.
+[INFO] My Behavior. Step: 338000. Time Elapsed: 10009.498 s. Mean Reward: -37.508. Std of Reward: 72.746. Training.
+[INFO] My Behavior. Step: 339000. Time Elapsed: 10084.751 s. Mean Reward: 77.206. Std of Reward: 25.267. Training.
+[INFO] My Behavior. Step: 340000. Time Elapsed: 10097.243 s. Mean Reward: 75.024. Std of Reward: 100.629. Training.
+[INFO] My Behavior. Step: 341000. Time Elapsed: 10110.037 s. Mean Reward: 45.925. Std of Reward: 79.991. Training.
+[INFO] My Behavior. Step: 342000. Time Elapsed: 10123.898 s. Mean Reward: 66.354. Std of Reward: 117.195. Training.
+[INFO] My Behavior. Step: 343000. Time Elapsed: 10201.139 s. Mean Reward: 56.189. Std of Reward: 75.733. Training.
+[INFO] My Behavior. Step: 344000. Time Elapsed: 10213.196 s. Mean Reward: 131.869. Std of Reward: 68.743. Training.
+[INFO] My Behavior. Step: 345000. Time Elapsed: 10225.917 s. Mean Reward: 64.070. Std of Reward: 30.878. Training.
+[INFO] My Behavior. Step: 346000. Time Elapsed: 10241.110 s. Mean Reward: 88.773. Std of Reward: 72.190. Training.
+[INFO] My Behavior. Step: 347000. Time Elapsed: 10317.273 s. Mean Reward: 70.092. Std of Reward: 53.366. Training.
+[INFO] My Behavior. Step: 348000. Time Elapsed: 10330.079 s. Mean Reward: 110.850. Std of Reward: 17.872. Training.
+[INFO] My Behavior. Step: 349000. Time Elapsed: 10344.374 s. Mean Reward: 78.641. Std of Reward: 24.136. Training.
+[INFO] My Behavior. Step: 350000. Time Elapsed: 10357.724 s. Mean Reward: -83.268. Std of Reward: 307.024. Training.
+[INFO] My Behavior. Step: 351000. Time Elapsed: 10433.803 s. Mean Reward: 40.536. Std of Reward: 67.958. Training.
+[INFO] My Behavior. Step: 352000. Time Elapsed: 10447.621 s. Mean Reward: 109.719. Std of Reward: 135.829. Training.
+[INFO] My Behavior. Step: 353000. Time Elapsed: 10461.849 s. Mean Reward: 54.090. Std of Reward: 60.995. Training.
+[INFO] My Behavior. Step: 354000. Time Elapsed: 10476.084 s. Mean Reward: 55.476. Std of Reward: 89.272. Training.
+[INFO] My Behavior. Step: 355000. Time Elapsed: 10552.168 s. Mean Reward: 121.763. Std of Reward: 68.179. Training.
+[INFO] My Behavior. Step: 356000. Time Elapsed: 10567.047 s. Mean Reward: 81.012. Std of Reward: 92.344. Training.
+[INFO] My Behavior. Step: 357000. Time Elapsed: 10579.605 s. Mean Reward: 113.377. Std of Reward: 117.075. Training.
+[INFO] My Behavior. Step: 358000. Time Elapsed: 10656.155 s. Mean Reward: 133.928. Std of Reward: 64.952. Training.
+[INFO] My Behavior. Step: 359000. Time Elapsed: 10668.938 s. Mean Reward: 76.573. Std of Reward: 45.500. Training.
+[INFO] My Behavior. Step: 360000. Time Elapsed: 10683.301 s. Mean Reward: 122.298. Std of Reward: 85.834. Training.
+[INFO] My Behavior. Step: 361000. Time Elapsed: 10696.444 s. Mean Reward: 76.157. Std of Reward: 73.855. Training.
+[INFO] My Behavior. Step: 362000. Time Elapsed: 10771.795 s. Mean Reward: 9.056. Std of Reward: 33.025. Training.
+[INFO] My Behavior. Step: 363000. Time Elapsed: 10785.121 s. Mean Reward: 113.633. Std of Reward: 87.760. Training.
+[INFO] My Behavior. Step: 364000. Time Elapsed: 10799.040 s. Mean Reward: -170.073. Std of Reward: 173.576. Training.
+[INFO] My Behavior. Step: 365000. Time Elapsed: 10813.780 s. Mean Reward: -2.135. Std of Reward: 15.843. Training.
+[INFO] My Behavior. Step: 366000. Time Elapsed: 10888.647 s. Mean Reward: 112.823. Std of Reward: 122.840. Training.
+[INFO] My Behavior. Step: 367000. Time Elapsed: 10901.913 s. Mean Reward: 45.743. Std of Reward: 18.925. Training.
+[INFO] My Behavior. Step: 368000. Time Elapsed: 10915.099 s. Mean Reward: 146.528. Std of Reward: 87.389. Training.
+[INFO] My Behavior. Step: 369000. Time Elapsed: 10929.060 s. Mean Reward: 84.926. Std of Reward: 75.614. Training.
+[INFO] My Behavior. Step: 370000. Time Elapsed: 11004.107 s. Mean Reward: 54.786. Std of Reward: 62.847. Training.
+[INFO] My Behavior. Step: 371000. Time Elapsed: 11017.183 s. Mean Reward: 162.433. Std of Reward: 5.112. Training.
+[INFO] My Behavior. Step: 372000. Time Elapsed: 11030.604 s. Mean Reward: 174.430. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 373000. Time Elapsed: 11043.224 s. Mean Reward: 119.865. Std of Reward: 126.881. Training.
+[INFO] My Behavior. Step: 374000. Time Elapsed: 11118.298 s. Mean Reward: 161.498. Std of Reward: 109.830. Training.
+[INFO] My Behavior. Step: 375000. Time Elapsed: 11132.758 s. Mean Reward: 102.127. Std of Reward: 80.900. Training.
+[INFO] My Behavior. Step: 376000. Time Elapsed: 11146.720 s. Mean Reward: 121.084. Std of Reward: 77.181. Training.
+[INFO] My Behavior. Step: 377000. Time Elapsed: 11161.775 s. Mean Reward: 67.247. Std of Reward: 104.715. Training.
+[INFO] My Behavior. Step: 378000. Time Elapsed: 11236.348 s. Mean Reward: 85.671. Std of Reward: 52.213. Training.
+[INFO] My Behavior. Step: 379000. Time Elapsed: 11251.093 s. Mean Reward: 82.258. Std of Reward: 100.392. Training.
+[INFO] My Behavior. Step: 380000. Time Elapsed: 11265.250 s. Mean Reward: -28.917. Std of Reward: 65.240. Training.
+[INFO] My Behavior. Step: 381000. Time Elapsed: 11278.165 s. Mean Reward: 75.223. Std of Reward: 73.019. Training.
+[INFO] My Behavior. Step: 382000. Time Elapsed: 11353.959 s. Mean Reward: 43.415. Std of Reward: 45.814. Training.
+[INFO] My Behavior. Step: 383000. Time Elapsed: 11367.467 s. Mean Reward: 39.797. Std of Reward: 90.957. Training.
+[INFO] My Behavior. Step: 384000. Time Elapsed: 11381.246 s. Mean Reward: 110.514. Std of Reward: 107.089. Training.
+[INFO] My Behavior. Step: 385000. Time Elapsed: 11394.679 s. Mean Reward: 60.366. Std of Reward: 68.748. Training.
+[INFO] My Behavior. Step: 386000. Time Elapsed: 11470.641 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 387000. Time Elapsed: 11483.619 s. Mean Reward: 61.307. Std of Reward: 80.885. Training.
+[INFO] My Behavior. Step: 388000. Time Elapsed: 11497.560 s. Mean Reward: 165.145. Std of Reward: 86.147. Training.
+[INFO] My Behavior. Step: 389000. Time Elapsed: 11512.003 s. Mean Reward: 34.457. Std of Reward: 69.359. Training.
+[INFO] My Behavior. Step: 390000. Time Elapsed: 11587.983 s. Mean Reward: 126.603. Std of Reward: 106.892. Training.
+[INFO] My Behavior. Step: 391000. Time Elapsed: 11601.183 s. Mean Reward: 216.441. Std of Reward: 61.969. Training.
+[INFO] My Behavior. Step: 392000. Time Elapsed: 11615.493 s. Mean Reward: 84.998. Std of Reward: 89.725. Training.
+[INFO] My Behavior. Step: 393000. Time Elapsed: 11629.529 s. Mean Reward: 89.055. Std of Reward: 96.405. Training.
+[INFO] My Behavior. Step: 394000. Time Elapsed: 11705.949 s. Mean Reward: 35.943. Std of Reward: 32.893. Training.
+[INFO] My Behavior. Step: 395000. Time Elapsed: 11719.285 s. Mean Reward: 271.694. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 396000. Time Elapsed: 11733.332 s. Mean Reward: 15.298. Std of Reward: 57.627. Training.
+[INFO] My Behavior. Step: 397000. Time Elapsed: 11745.295 s. Mean Reward: 161.778. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 398000. Time Elapsed: 11822.130 s. Mean Reward: 208.722. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 399000. Time Elapsed: 11834.221 s. Mean Reward: 142.315. Std of Reward: 89.289. Training.
+[INFO] My Behavior. Step: 400000. Time Elapsed: 11848.410 s. Mean Reward: 130.485. Std of Reward: 76.797. Training.
+[INFO] My Behavior. Step: 401000. Time Elapsed: 11862.087 s. Mean Reward: 159.882. Std of Reward: 93.251. Training.
+[INFO] My Behavior. Step: 402000. Time Elapsed: 11938.172 s. Mean Reward: 49.145. Std of Reward: 59.501. Training.
+[INFO] My Behavior. Step: 403000. Time Elapsed: 11952.573 s. Mean Reward: 80.838. Std of Reward: 88.943. Training.
+[INFO] My Behavior. Step: 404000. Time Elapsed: 11966.820 s. Mean Reward: 180.125. Std of Reward: 121.621. Training.
+[INFO] My Behavior. Step: 405000. Time Elapsed: 12042.277 s. Mean Reward: 129.942. Std of Reward: 134.958. Training.
+[INFO] My Behavior. Step: 406000. Time Elapsed: 12056.507 s. Mean Reward: 135.785. Std of Reward: 163.403. Training.
+[INFO] My Behavior. Step: 407000. Time Elapsed: 12069.396 s. Mean Reward: 115.102. Std of Reward: 102.646. Training.
+[INFO] My Behavior. Step: 408000. Time Elapsed: 12082.430 s. Mean Reward: 156.572. Std of Reward: 164.032. Training.
+[INFO] My Behavior. Step: 409000. Time Elapsed: 12160.671 s. Mean Reward: 71.504. Std of Reward: 103.848. Training.
+[INFO] My Behavior. Step: 410000. Time Elapsed: 12173.861 s. Mean Reward: 86.913. Std of Reward: 105.386. Training.
+[INFO] My Behavior. Step: 411000. Time Elapsed: 12188.767 s. Mean Reward: 119.782. Std of Reward: 132.785. Training.
+[INFO] My Behavior. Step: 412000. Time Elapsed: 12201.432 s. Mean Reward: 201.416. Std of Reward: 40.326. Training.
+[INFO] My Behavior. Step: 413000. Time Elapsed: 12276.547 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 414000. Time Elapsed: 12289.954 s. Mean Reward: 113.902. Std of Reward: 174.928. Training.
+[INFO] My Behavior. Step: 415000. Time Elapsed: 12303.732 s. Mean Reward: 48.641. Std of Reward: 59.465. Training.
+[INFO] My Behavior. Step: 416000. Time Elapsed: 12317.418 s. Mean Reward: 143.129. Std of Reward: 32.605. Training.
+[INFO] My Behavior. Step: 417000. Time Elapsed: 12393.546 s. Mean Reward: 19.288. Std of Reward: 32.126. Training.
+[INFO] My Behavior. Step: 418000. Time Elapsed: 12405.620 s. Mean Reward: 292.700. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 419000. Time Elapsed: 12418.327 s. Mean Reward: 102.381. Std of Reward: 82.572. Training.
+[INFO] My Behavior. Step: 420000. Time Elapsed: 12432.694 s. Mean Reward: 176.005. Std of Reward: 35.244. Training.
+[INFO] My Behavior. Step: 421000. Time Elapsed: 12508.797 s. Mean Reward: 42.520. Std of Reward: 46.801. Training.
+[INFO] My Behavior. Step: 422000. Time Elapsed: 12523.788 s. Mean Reward: -175.800. Std of Reward: 500.858. Training.
+[INFO] My Behavior. Step: 423000. Time Elapsed: 12535.694 s. Mean Reward: 139.493. Std of Reward: 129.153. Training.
+[INFO] My Behavior. Step: 424000. Time Elapsed: 12549.520 s. Mean Reward: 34.035. Std of Reward: 46.498. Training.
+[INFO] My Behavior. Step: 425000. Time Elapsed: 12626.221 s. Mean Reward: 187.201. Std of Reward: 250.939. Training.
+[INFO] My Behavior. Step: 426000. Time Elapsed: 12639.790 s. Mean Reward: 83.743. Std of Reward: 75.448. Training.
+[INFO] My Behavior. Step: 427000. Time Elapsed: 12653.885 s. Mean Reward: 195.116. Std of Reward: 7.722. Training.
+[INFO] My Behavior. Step: 428000. Time Elapsed: 12666.632 s. Mean Reward: 9.483. Std of Reward: 24.783. Training.
+[INFO] My Behavior. Step: 429000. Time Elapsed: 12742.145 s. Mean Reward: 123.232. Std of Reward: 90.346. Training.
+[INFO] My Behavior. Step: 430000. Time Elapsed: 12756.587 s. Mean Reward: 216.472. Std of Reward: 83.780. Training.
+[INFO] My Behavior. Step: 431000. Time Elapsed: 12770.471 s. Mean Reward: 83.251. Std of Reward: 93.396. Training.
+[INFO] My Behavior. Step: 432000. Time Elapsed: 12785.027 s. Mean Reward: 130.269. Std of Reward: 83.639. Training.
+[INFO] My Behavior. Step: 433000. Time Elapsed: 12860.702 s. Mean Reward: 145.775. Std of Reward: 12.997. Training.
+[INFO] My Behavior. Step: 434000. Time Elapsed: 12874.550 s. Mean Reward: 103.280. Std of Reward: 59.115. Training.
+[INFO] My Behavior. Step: 435000. Time Elapsed: 12888.462 s. Mean Reward: 206.256. Std of Reward: 76.854. Training.
+[INFO] My Behavior. Step: 436000. Time Elapsed: 12900.674 s. Mean Reward: 22.792. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 437000. Time Elapsed: 12977.408 s. Mean Reward: 87.351. Std of Reward: 150.992. Training.
+[INFO] My Behavior. Step: 438000. Time Elapsed: 12991.455 s. Mean Reward: 147.640. Std of Reward: 34.882. Training.
+[INFO] My Behavior. Step: 439000. Time Elapsed: 13003.760 s. Mean Reward: 108.744. Std of Reward: 4.654. Training.
+[INFO] My Behavior. Step: 440000. Time Elapsed: 13016.244 s. Mean Reward: 5.828. Std of Reward: 10.510. Training.
+[INFO] My Behavior. Step: 441000. Time Elapsed: 13094.465 s. Mean Reward: 74.335. Std of Reward: 117.803. Training.
+[INFO] My Behavior. Step: 442000. Time Elapsed: 13106.937 s. Mean Reward: 156.912. Std of Reward: 87.588. Training.
+[INFO] My Behavior. Step: 443000. Time Elapsed: 13120.866 s. Mean Reward: 219.413. Std of Reward: 55.445. Training.
+[INFO] My Behavior. Step: 444000. Time Elapsed: 13134.300 s. Mean Reward: 101.378. Std of Reward: 144.363. Training.
+[INFO] My Behavior. Step: 445000. Time Elapsed: 13209.892 s. Mean Reward: -10.874. Std of Reward: 262.986. Training.
+[INFO] My Behavior. Step: 446000. Time Elapsed: 13224.141 s. Mean Reward: 229.511. Std of Reward: 53.931. Training.
+[INFO] My Behavior. Step: 447000. Time Elapsed: 13237.685 s. Mean Reward: 60.063. Std of Reward: 84.660. Training.
+[INFO] My Behavior. Step: 448000. Time Elapsed: 13250.547 s. Mean Reward: 146.550. Std of Reward: 179.935. Training.
+[INFO] My Behavior. Step: 449000. Time Elapsed: 13326.491 s. Mean Reward: 42.163. Std of Reward: 132.625. Training.
+[INFO] My Behavior. Step: 450000. Time Elapsed: 13340.562 s. Mean Reward: 110.991. Std of Reward: 49.465. Training.
+[INFO] My Behavior. Step: 451000. Time Elapsed: 13353.427 s. Mean Reward: 194.879. Std of Reward: 140.372. Training.
+[INFO] My Behavior. Step: 452000. Time Elapsed: 13366.796 s. Mean Reward: 148.777. Std of Reward: 101.417. Training.
+[INFO] My Behavior. Step: 453000. Time Elapsed: 13444.026 s. Mean Reward: 157.238. Std of Reward: 98.401. Training.
+[INFO] My Behavior. Step: 454000. Time Elapsed: 13456.754 s. Mean Reward: 180.100. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 455000. Time Elapsed: 13469.887 s. Mean Reward: 201.684. Std of Reward: 145.766. Training.
+[INFO] My Behavior. Step: 456000. Time Elapsed: 13483.181 s. Mean Reward: 86.790. Std of Reward: 44.588. Training.
+[INFO] My Behavior. Step: 457000. Time Elapsed: 13560.494 s. Mean Reward: 291.183. Std of Reward: 86.895. Training.
+[INFO] My Behavior. Step: 458000. Time Elapsed: 13572.203 s. Mean Reward: 114.098. Std of Reward: 60.890. Training.
+[INFO] My Behavior. Step: 459000. Time Elapsed: 13586.012 s. Mean Reward: 221.677. Std of Reward: 130.517. Training.
+[INFO] My Behavior. Step: 460000. Time Elapsed: 13598.258 s. Mean Reward: 331.926. Std of Reward: 56.514. Training.
+[INFO] My Behavior. Step: 461000. Time Elapsed: 13676.015 s. Mean Reward: 71.913. Std of Reward: 110.090. Training.
+[INFO] My Behavior. Step: 462000. Time Elapsed: 13689.300 s. Mean Reward: 157.499. Std of Reward: 31.061. Training.
+[INFO] My Behavior. Step: 463000. Time Elapsed: 13702.566 s. Mean Reward: 180.395. Std of Reward: 85.635. Training.
+[INFO] My Behavior. Step: 464000. Time Elapsed: 13715.721 s. Mean Reward: 213.719. Std of Reward: 163.727. Training.
+[INFO] My Behavior. Step: 465000. Time Elapsed: 13792.001 s. Mean Reward: 82.396. Std of Reward: 65.171. Training.
+[INFO] My Behavior. Step: 466000. Time Elapsed: 13806.445 s. Mean Reward: 248.103. Std of Reward: 152.953. Training.
+[INFO] My Behavior. Step: 467000. Time Elapsed: 13818.968 s. Mean Reward: 243.818. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 468000. Time Elapsed: 13833.744 s. Mean Reward: 122.337. Std of Reward: 55.815. Training.
+[INFO] My Behavior. Step: 469000. Time Elapsed: 13907.289 s. Mean Reward: 370.482. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 470000. Time Elapsed: 13922.314 s. Mean Reward: 105.304. Std of Reward: 94.837. Training.
+[INFO] My Behavior. Step: 471000. Time Elapsed: 13935.281 s. Mean Reward: 90.573. Std of Reward: 120.350. Training.
+[INFO] My Behavior. Step: 472000. Time Elapsed: 13947.782 s. Mean Reward: 173.083. Std of Reward: 138.813. Training.
+[INFO] My Behavior. Step: 473000. Time Elapsed: 14023.990 s. Mean Reward: 182.167. Std of Reward: 109.164. Training.
+[INFO] My Behavior. Step: 474000. Time Elapsed: 14038.587 s. Mean Reward: 111.325. Std of Reward: 69.737. Training.
+[INFO] My Behavior. Step: 475000. Time Elapsed: 14050.986 s. Mean Reward: 176.233. Std of Reward: 153.107. Training.
+[INFO] My Behavior. Step: 476000. Time Elapsed: 14062.880 s. Mean Reward: 114.713. Std of Reward: 60.390. Training.
+[INFO] My Behavior. Step: 477000. Time Elapsed: 14139.782 s. Mean Reward: 110.084. Std of Reward: 121.766. Training.
+[INFO] My Behavior. Step: 478000. Time Elapsed: 14152.709 s. Mean Reward: 103.270. Std of Reward: 96.605. Training.
+[INFO] My Behavior. Step: 479000. Time Elapsed: 14166.417 s. Mean Reward: 109.369. Std of Reward: 116.922. Training.
+[INFO] My Behavior. Step: 480000. Time Elapsed: 14180.409 s. Mean Reward: 99.650. Std of Reward: 50.204. Training.
+[INFO] My Behavior. Step: 481000. Time Elapsed: 14257.776 s. Mean Reward: 234.870. Std of Reward: 90.426. Training.
+[INFO] My Behavior. Step: 482000. Time Elapsed: 14269.625 s. Mean Reward: 143.958. Std of Reward: 112.376. Training.
+[INFO] My Behavior. Step: 483000. Time Elapsed: 14284.421 s. Mean Reward: 183.678. Std of Reward: 67.629. Training.
+[INFO] My Behavior. Step: 484000. Time Elapsed: 14297.257 s. Mean Reward: 167.744. Std of Reward: 101.911. Training.
+[INFO] My Behavior. Step: 485000. Time Elapsed: 14372.393 s. Mean Reward: 138.604. Std of Reward: 56.617. Training.
+[INFO] My Behavior. Step: 486000. Time Elapsed: 14385.372 s. Mean Reward: 192.024. Std of Reward: 113.574. Training.
+[INFO] My Behavior. Step: 487000. Time Elapsed: 14398.646 s. Mean Reward: 168.984. Std of Reward: 177.250. Training.
+[INFO] My Behavior. Step: 488000. Time Elapsed: 14413.319 s. Mean Reward: 176.898. Std of Reward: 96.967. Training.
+[INFO] My Behavior. Step: 489000. Time Elapsed: 14489.018 s. Mean Reward: 134.274. Std of Reward: 61.570. Training.
+[INFO] My Behavior. Step: 490000. Time Elapsed: 14502.380 s. Mean Reward: 58.527. Std of Reward: 10.874. Training.
+[INFO] My Behavior. Step: 491000. Time Elapsed: 14516.013 s. Mean Reward: 165.419. Std of Reward: 102.852. Training.
+[INFO] My Behavior. Step: 492000. Time Elapsed: 14528.632 s. Mean Reward: 89.077. Std of Reward: 88.216. Training.
+[INFO] My Behavior. Step: 493000. Time Elapsed: 14604.986 s. Mean Reward: 175.877. Std of Reward: 110.574. Training.
+[INFO] My Behavior. Step: 494000. Time Elapsed: 14618.713 s. Mean Reward: 279.714. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 495000. Time Elapsed: 14630.661 s. Mean Reward: 154.324. Std of Reward: 46.534. Training.
+[INFO] My Behavior. Step: 496000. Time Elapsed: 14708.460 s. Mean Reward: 174.386. Std of Reward: 166.791. Training.
+[INFO] My Behavior. Step: 497000. Time Elapsed: 14721.927 s. Mean Reward: 250.172. Std of Reward: 58.256. Training.
+[INFO] My Behavior. Step: 498000. Time Elapsed: 14736.064 s. Mean Reward: 369.656. Std of Reward: 0.000. Training.
+[INFO] My Behavior. Step: 499000. Time Elapsed: 14748.990 s. Mean Reward: 72.617. Std of Reward: 76.884. Training.
+[INFO] My Behavior. Step: 500000. Time Elapsed: 14824.457 s. Mean Reward: 340.906. Std of Reward: 0.000. Training.
+[INFO] Exported results/CompareB/My Behavior/My Behavior-499937.onnx
+[INFO] Exported results/CompareB/My Behavior/My Behavior-500065.onnx
+[INFO] Copied results/CompareB/My Behavior/My Behavior-500065.onnx to results/CompareB/My Behavior.onnx.

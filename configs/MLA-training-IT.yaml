@@ -1,11 +1,11 @@
 default_settings: null
 behaviors:
-  My Behavior:
+  Final:
     trainer_type: ppo
     hyperparameters:
       batch_size: 32
       buffer_size: 4096
-      learning_rate: 1e-4
+      learning_rate: 3e-4
       beta: 0.005
       epsilon: 0.23
       lambd: 0.94
@@ -16,7 +16,7 @@ behaviors:
     network_settings:
       normalize: true
       hidden_units: 256
-      num_layers: 3
+      num_layers: 5
       vis_encode_type: resnet
       use_recurrent: true
       memory:
@@ -33,10 +33,10 @@ behaviors:
         gamma: 0.99
         network_settings:
           hidden_units: 64
-          num_layers: 3
+          num_layers: 5
         learning_rate: 1e-4
     init_path: null
-    keep_checkpoints: 5
+    keep_checkpoints: 2
     checkpoint_interval: 500000
     max_steps: 5e5
     time_horizon: 128
@@ -44,14 +44,14 @@ behaviors:
     threaded: false
     self_play: null
     behavioral_cloning:
-      demo_path: Assets/Demonstrations/fifth1ghost.demo
+      demo_path: seq/1.demo
       strength: 0.5
       steps: 500000
       samples_per_update: 2048
       num_epoch: 4
       batch_size: 32
 env_settings:
-  env_path: null
+  env_path: Pacman
   env_args: null
   base_port: 5005
   num_envs: 1

@@ -145,13 +145,21 @@ PrefabInstance:
       propertyPath: duration
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2322545518354156443, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322545518354156443, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_DeterministicInference
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: Record
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationName
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationDirectory
