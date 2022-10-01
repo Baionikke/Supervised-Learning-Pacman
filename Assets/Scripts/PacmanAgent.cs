@@ -377,7 +377,7 @@ public class PacmanAgent : Agent
             if (SuperGhostInSight(-GameManager.instance.ghosts[ghost].movement.direction) == ghost) // Dovrebbe coprire il caso in cui il fantasmino gli va addosso
             {
                 Vector2 ghostDirection = GameManager.instance.ghosts[ghost].movement.direction;
-                if (!pacman.movement.Occupied(ghostDirection)) // Se non la direzione di fuga diretta dal fantasma non è occupata...
+                if (!pacman.movement.Occupied(ghostDirection)) // Se la direzione di fuga diretta dal fantasma non è occupata...
                 {
                     // pacman.movement.SetDirection(direction);
                     if (newDirection.Equals(ghostDirection)) {AddReward(1.5f);} else {AddReward(-0.5f);} // e coincide con quella scelta
@@ -386,13 +386,13 @@ public class PacmanAgent : Agent
                 else if (!pacman.movement.Occupied(new Vector2(-ghostDirection.y, ghostDirection.x))) // Se è disponibile una via di fuga perpendicolare
                 {
                     // pacman.movement.SetDirection(new Vector2(-direction.y, direction.x));
-                    if (newDirection.Equals(new Vector2(-ghostDirection.y, ghostDirection.x))) {AddReward(1.5f);} else {AddReward(-0.5f);}
+                    if (newDirection.Equals(new Vector2(-ghostDirection.y, ghostDirection.x))) {AddReward(1.5f);}
                 
                 }
                 else if (!pacman.movement.Occupied(new Vector2(ghostDirection.y, -ghostDirection.x)))
                 {
                     // pacman.movement.SetDirection(new Vector2(direction.y, -direction.x));
-                    if (newDirection.Equals(new Vector2(ghostDirection.y, -ghostDirection.x))) {AddReward(1.5f);} else {AddReward(-0.5f);}
+                    if (newDirection.Equals(new Vector2(ghostDirection.y, -ghostDirection.x))) {AddReward(1.5f);}
                 }
             }
             else if (newDirection.Equals(-GameManager.instance.ghosts[ghost].movement.direction) && SuperGhostInSight(newDirection) == ghost) // Se va verso un fantasma

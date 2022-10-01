@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
         
-        FindObjectOfType<PacmanAgent>().AddReward(0.5f);
+        FindObjectOfType<PacmanAgent>().AddReward(6f);
 
         ghostMultiplier++;
     }
