@@ -10,4 +10,6 @@ Logs/*
 *.pt
 Assets/ML-Agents/Timers/Pacman_timers.json
 obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache
-Pacman_Data/ML-Agents/Timers/Pacman_timers.json
+Pacman_Data/*
+Pacman_BurstDebugInformation_DoNotShip/Data/Plugins/lib_burst_generated.txt
+Environments/*
