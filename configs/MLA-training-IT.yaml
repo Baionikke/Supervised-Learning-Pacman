@@ -28,23 +28,23 @@ behaviors:
       extrinsic:
         gamma: 0.995
         strength: 1.0
-      curiosity:
-        strength: 0.01
-        gamma: 0.99
-        network_settings:
-          hidden_units: 64
-          num_layers: 5
-        learning_rate: 1e-4
+#      curiosity:
+#        strength: 0.01
+#        gamma: 0.99
+#        network_settings:
+#          hidden_units: 64
+#          num_layers: 5
+#        learning_rate: 1e-4
     init_path: null
     keep_checkpoints: 2
     checkpoint_interval: 500000
     max_steps: 5e5
-    time_horizon: 128
+    time_horizon: 512
     summary_freq: 1000
     threaded: false
     self_play: null
     behavioral_cloning:
-      demo_path: seq/1.demo
+      demo_path: Assets/Demonstrations/final/1.demo
       strength: 0.5
       steps: 500000
       samples_per_update: 2048

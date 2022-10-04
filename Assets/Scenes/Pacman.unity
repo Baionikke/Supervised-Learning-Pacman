@@ -153,9 +153,17 @@ PrefabInstance:
       propertyPath: m_DeterministicInference
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: DecisionPeriod
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: TakeActionsBetweenDecisions
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: Record
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: NumStepsToRecord
@@ -163,7 +171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationName
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationDirectory
@@ -180,6 +188,14 @@ PrefabInstance:
     - target: {fileID: 5499867146152147046, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705961659141521079, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: m_Compression
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178323732844311030, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: MaxStep
+      value: 10240
       objectReference: {fileID: 0}
     - target: {fileID: 6498081349831923700, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: initialBehavior
@@ -479,4 +495,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6609892908983622860, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+    - {fileID: 3151248687556604097, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+    - {fileID: 3151248687556604096, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}

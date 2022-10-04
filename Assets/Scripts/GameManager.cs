@@ -90,11 +90,11 @@ public class GameManager : MonoBehaviour
 
     public void PacmanEaten()
     {
-        FindObjectOfType<PacmanAgent>().AddReward(-5f);
+        FindObjectOfType<PacmanAgent>().AddReward(-50f);
         
         // Training type based on life: change next line
         // --->
-        bool oneLifeOnly = false; // True for one life, false for 3 (standard game)
+        bool oneLifeOnly = true; // True for one life, false for 3 (standard game)
         // <---
         
         if (oneLifeOnly)
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
         
-        FindObjectOfType<PacmanAgent>().AddReward(0.5f);
+        FindObjectOfType<PacmanAgent>().AddReward(6f);
 
         ghostMultiplier++;
     }
