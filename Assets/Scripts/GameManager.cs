@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         
         // Training type based on life: change next line
         // --->
-        bool oneLifeOnly = false; // True for one life, false for 3 (standard game)
+        bool oneLifeOnly = true; // True for one life, false for 3 (standard game)
         // <---
         
         if (oneLifeOnly)
@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
         if (!HasRemainingPellets())
         {
             win_games += 1;
+            tot_games += 1;
             FindObjectOfType<PacmanAgent>().AddReward(300f);
             //Debug.Log("HA VINTO!");
             Debug.Log("Win/Tot Games: " + win_games + " / " + tot_games);

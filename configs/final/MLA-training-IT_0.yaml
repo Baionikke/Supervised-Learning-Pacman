@@ -44,14 +44,14 @@ behaviors:
     threaded: false
     self_play: null
     behavioral_cloning:
-      demo_path: Assets/Demonstrarions/final/0.demo
+      demo_path: Assets/Demonstrations/final/0.demo
       strength: 0.5
       steps: 500000
       samples_per_update: 2048
       num_epoch: 4
       batch_size: 32
 env_settings:
-  env_path: Pacman
+  env_path: null
   env_args: null
   base_port: 5005
   num_envs: 1

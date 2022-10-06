@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1103970047 stripped
+--- !u!114 &1103970053 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3151248686727954016, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
   m_PrefabInstance: {fileID: 6609892907564111061}
@@ -175,7 +175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationName
-      value: 1
+      value: 4-3
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationDirectory
@@ -200,7 +200,7 @@ PrefabInstance:
     - target: {fileID: 6498081349831923700, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: initialBehavior
       value: 
-      objectReference: {fileID: 1103970047}
+      objectReference: {fileID: 1103970053}
     - target: {fileID: 6609892907428663123, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_TagString
       value: Walls

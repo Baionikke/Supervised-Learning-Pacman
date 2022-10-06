@@ -44,7 +44,7 @@ behaviors:
     threaded: false
     self_play: null
     behavioral_cloning:
-      demo_path: Assets/Demonstrarions/final/2.demo
+      demo_path: Assets/Demonstrations/final/2.demo
       strength: 0.5
       steps: 500000
       samples_per_update: 2048
