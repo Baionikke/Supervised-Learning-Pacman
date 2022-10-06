@@ -13,7 +13,7 @@ public class PacmanAgent : Agent
     public LayerMask ghostAndWallLayer;
     public LayerMask pelletAndWallLayer;
     public LayerMask obstacleLayer;
-    
+
     public struct State
     {
         public Vector2 pacmanDirection { get; set; }

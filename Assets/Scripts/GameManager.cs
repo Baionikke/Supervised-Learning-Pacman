@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public Text gameOverText;
     public Text scoreText;
     public Text livesText;
-
+    public bool oneLife;
+    
     public static GameManager instance { get; private set; }
     private int pelletCount;
     private int tot_games = 0;
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
         
         // Training type based on life: change next line
         // --->
-        bool oneLifeOnly = true; // True for one life, false for 3 (standard game)
+        bool oneLifeOnly = oneLife; // True for one life, false for 3 (standard game)
         // <---
         
         if (oneLifeOnly)
