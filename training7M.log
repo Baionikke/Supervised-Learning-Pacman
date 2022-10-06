@@ -73,7 +73,7 @@
 	keep_checkpoints:	2
 	checkpoint_interval:	500000
 	max_steps:	500000
-	time_horizon:	512
+	time_horizon:	2560
 	summary_freq:	1000
 	threaded:	False
 	self_play:	None
@@ -81,14 +81,10 @@
 	  demo_path:	Assets/Demonstrations/final/0.demo
 	  steps:	500000
 	  strength:	0.5
-	  samples_per_update:	2048
+	  samples_per_update:	10240
 	  num_epoch:	4
 	  batch_size:	32
-[INFO] My Behavior. Step: 1000. Time Elapsed: 22.324 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 2000. Time Elapsed: 33.842 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 3000. Time Elapsed: 45.568 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 4000. Time Elapsed: 57.479 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 5000. Time Elapsed: 135.122 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 6000. Time Elapsed: 146.999 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 7000. Time Elapsed: 158.864 s. No episode was completed since last summary. Training.
-[INFO] My Behavior. Step: 8000. Time Elapsed: 170.747 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 3000. Time Elapsed: 98.487 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 6000. Time Elapsed: 245.771 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 8000. Time Elapsed: 273.198 s. No episode was completed since last summary. Training.
+[INFO] My Behavior. Step: 11000. Time Elapsed: 415.741 s. No episode was completed since last summary. Training.
