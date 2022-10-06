@@ -153,6 +153,14 @@ PrefabInstance:
       propertyPath: m_DeterministicInference
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: DecisionPeriod
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+      propertyPath: TakeActionsBetweenDecisions
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: Record
       value: 0

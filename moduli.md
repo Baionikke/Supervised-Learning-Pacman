@@ -31,7 +31,7 @@
 - PPO
 - Network principale:
   - 256 neuroni per layer
-  - 5 layer
+  - 3 layer
   - [x] Visual encoder: Resnet (Camera Sensor)
   - [x] Recurrent
   - [x] Memory (LSTM):
@@ -41,7 +41,7 @@
   - [x] Extrinsic
   - [x] Curiosity:
     - 64 neuroni per layer
-    - 5 layer
+    - 3 layer
 - [x] Behavioral Cloning
 
 ### Unity

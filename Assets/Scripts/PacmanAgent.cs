@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Android;
 
 public class PacmanAgent : Agent
 {
@@ -187,11 +184,7 @@ public class PacmanAgent : Agent
         bool occ = pacman.movement.Occupied(newDirection);
         Vector2 oppositeDirection = -newDirection;
 
-        // Se la nuova direzione è occupata
-        if (occ)
-        {
-            AddReward(-0.5f);
-        } else if (pastState.pacmanDirection != newDirection && pastState.pacmanDirection != oppositeDirection) // Se gira in una direzione in cui può andare
+        if (pastState.pacmanDirection != newDirection && pastState.pacmanDirection != oppositeDirection) // Se gira in una direzione in cui può andare
         {
             //Debug.Log("Buona svolta");
             AddReward(0.012f);
@@ -301,7 +294,7 @@ public class PacmanAgent : Agent
                !GameManager.instance.ghosts[3].home.enabled && pastState.distanceClyde < distance;
     }
     
-    private void FleeFromGhosts(Vector2 newDirection)
+    /*private void FleeFromGhosts(Vector2 newDirection)
     {
         (int, float) nearestGhost = NearestGhost();
         int ghost = nearestGhost.Item1;
@@ -365,7 +358,7 @@ public class PacmanAgent : Agent
         {
             pacman.movement.SetDirection(newDirection);
         }
-    } 
+    } */
     
     private void RewardFromGhosts(Vector2 newDirection)
     {
@@ -535,12 +528,12 @@ public class PacmanAgent : Agent
             AddReward(-1f); // Se fermo nello stesso punto
         }
 
-        if (NearActiveGhost(3f))
+        if (NearActiveGhost(3f) && !GameManager.instance.ghosts[0].frightened)
         {
             AddReward(-0.2f);
         }
         
-        if (NearActiveGhost(8f))
+        if (NearActiveGhost(8f) && !GameManager.instance.ghosts[0].frightened)
         {
             AddReward(-0.02f);
         }

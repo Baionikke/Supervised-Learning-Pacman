@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void PacmanEaten()
     {
-        FindObjectOfType<PacmanAgent>().AddReward(-5f);
+        FindObjectOfType<PacmanAgent>().AddReward(-50f);
         
         // Training type based on life: change next line
         // --->
