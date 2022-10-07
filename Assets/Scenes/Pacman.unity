@@ -123,15 +123,15 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1103970053 stripped
+--- !u!114 &1103970057 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3151248686727954016, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1848629265619346007, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
   m_PrefabInstance: {fileID: 6609892907564111061}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90e4b56b62e12c4dab1ac724d70d134, type: 3}
+  m_Script: {fileID: 11500000, guid: e56e93f9a85f2174dadd6fdb859d8f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6609892907564111061
@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1848629265619346007, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 4
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 2322545518354156443, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_Model
@@ -163,11 +163,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DecisionPeriod
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: TakeActionsBetweenDecisions
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: Record
@@ -187,24 +187,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5101139060006020132, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 24
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 5301385696804511099, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 16
+      value: 14000
       objectReference: {fileID: 0}
     - target: {fileID: 5499867146152147046, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5705961659141521079, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_Grayscale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6498081349831923700, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: initialBehavior
       value: 
-      objectReference: {fileID: 1103970053}
+      objectReference: {fileID: 1103970057}
     - target: {fileID: 6609892907428663123, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: m_TagString
       value: Walls
@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7199232711376751009, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: duration
-      value: 8
+      value: 14000
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6609892908983622860, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
