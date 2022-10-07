@@ -163,11 +163,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DecisionPeriod
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604124, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: TakeActionsBetweenDecisions
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: Record
@@ -175,11 +175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: NumStepsToRecord
-      value: 2048
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationName
-      value: 4-3
+      value: 4-4
       objectReference: {fileID: 0}
     - target: {fileID: 3151248687556604127, guid: 0080ca5b1d7cd3585870447edd273be0, type: 3}
       propertyPath: DemonstrationDirectory
