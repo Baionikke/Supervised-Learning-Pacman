@@ -1,0 +1,38 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 499792,
+                "file_path": "results/seq4_3G_3L_IL/My Behavior/My Behavior-499792.onnx",
+                "reward": -29.556404495239256,
+                "creation_time": 1665338907.8225477,
+                "auxillary_file_paths": [
+                    "results/seq4_3G_3L_IL/My Behavior/My Behavior-499792.pt"
+                ]
+            },
+            {
+                "steps": 500338,
+                "file_path": "results/seq4_3G_3L_IL/My Behavior/My Behavior-500338.onnx",
+                "reward": -1.5640020370483398,
+                "creation_time": 1665338910.3757575,
+                "auxillary_file_paths": [
+                    "results/seq4_3G_3L_IL/My Behavior/My Behavior-500338.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500338,
+            "file_path": "results/seq4_3G_3L_IL/My Behavior.onnx",
+            "reward": -1.5640020370483398,
+            "creation_time": 1665338910.3757575,
+            "auxillary_file_paths": [
+                "results/seq4_3G_3L_IL/My Behavior/My Behavior-500338.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.29.0",
+        "torch_version": "1.8.1+cu102"
+    }
+}
