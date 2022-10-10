@@ -1,0 +1,65 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 435559,
+                "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-435559.onnx",
+                "reward": 32.3089861869812,
+                "creation_time": 1662633528.7769554,
+                "auxillary_file_paths": [
+                    "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-435559.pt"
+                ]
+            },
+            {
+                "steps": 499904,
+                "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-499904.onnx",
+                "reward": 161.00399523973465,
+                "creation_time": 1662635773.7352896,
+                "auxillary_file_paths": [
+                    "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-499904.pt"
+                ]
+            },
+            {
+                "steps": 746155,
+                "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-746155.onnx",
+                "reward": null,
+                "creation_time": 1662643469.222942,
+                "auxillary_file_paths": [
+                    "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-746155.pt"
+                ]
+            },
+            {
+                "steps": 999935,
+                "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-999935.onnx",
+                "reward": 225.6140022277832,
+                "creation_time": 1662651019.3202124,
+                "auxillary_file_paths": [
+                    "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-999935.pt"
+                ]
+            },
+            {
+                "steps": 1000063,
+                "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-1000063.onnx",
+                "reward": 225.6140022277832,
+                "creation_time": 1662651031.7190337,
+                "auxillary_file_paths": [
+                    "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-1000063.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000063,
+            "file_path": "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior.onnx",
+            "reward": 225.6140022277832,
+            "creation_time": 1662651031.7190337,
+            "auxillary_file_paths": [
+                "results\\i-WithIncGhost-E+2.1_4x3v\\My Behavior\\My Behavior-1000063.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
