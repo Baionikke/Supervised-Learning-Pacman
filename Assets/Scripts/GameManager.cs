@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         NewGame();
     }
 
-    private void Update()
+    private void Update() // Interfaccia "NewGame" rimossa
     {
         /*if (lives <= 0 && Input.anyKeyDown) {
             NewGame();
@@ -91,11 +91,11 @@ public class GameManager : MonoBehaviour
 
     public void PacmanEaten()
     {
-        FindObjectOfType<PacmanAgent>().AddReward(-50f);
+        FindObjectOfType<PacmanAgent>().AddReward(-50f); // Reward negativo per perdita vita
         
-        // Training type based on life: change next line
+        // Per comoda definizione di quante vite concedere a Pacman nel training. Modificabile da interfaccia Unity
         // --->
-        bool oneLifeOnly = oneLife; // True for one life, false for 3 (standard game)
+        bool oneLifeOnly = oneLife;
         // <---
         
         if (oneLifeOnly)
@@ -110,13 +110,11 @@ public class GameManager : MonoBehaviour
         if (lives > 0) {
             Invoke(nameof(ResetState), 0f);
         } else {
-            FindObjectOfType<PacmanAgent>().AddReward(-5f);
             if (!oneLifeOnly)
             {
                 tot_games += 1;
                 FindObjectOfType<PacmanAgent>().EndEpisode();
             }
-            //GameOver();
         }
     }
 
@@ -125,7 +123,7 @@ public class GameManager : MonoBehaviour
         int points = ghost.points * ghostMultiplier;
         SetScore(score + points);
         
-        FindObjectOfType<PacmanAgent>().AddReward(6f);
+        FindObjectOfType<PacmanAgent>().AddReward(6f); // Reward positivo per aver mangiato un fantasma
 
         ghostMultiplier++;
     }
@@ -135,19 +133,17 @@ public class GameManager : MonoBehaviour
         pellet.gameObject.SetActive(false);
         pelletCount++;
         double increment = 0.006 * pelletCount;
-        FindObjectOfType<PacmanAgent>().AddReward((float)increment);
+        FindObjectOfType<PacmanAgent>().AddReward((float)increment); // Reward sommatorio per aver mangiato un pellet (aumenta linearmente con il numero di pellet mangiati)
         SetScore(score + pellet.points);
 
         if (!HasRemainingPellets())
         {
             win_games += 1;
             tot_games += 1;
-            FindObjectOfType<PacmanAgent>().AddReward(300f);
-            //Debug.Log("HA VINTO!");
+            FindObjectOfType<PacmanAgent>().AddReward(300f); // Reward positivo per aver vinto
             Debug.Log("Win/Tot Games: " + win_games + " / " + tot_games);
             FindObjectOfType<PacmanAgent>().EndEpisode();
-            //pacman.gameObject.SetActive(false);
-            //Invoke(nameof(NewRound), 3f);
+
         }
     }
 
@@ -159,7 +155,7 @@ public class GameManager : MonoBehaviour
 
         PelletEaten(pellet);
         
-        FindObjectOfType<PacmanAgent>().PowerPelletEaten();
+        FindObjectOfType<PacmanAgent>().PowerPelletEaten(); // Chiamata alla funzione che assegna i reward in base alla posizione dei fantasmi
         
         CancelInvoke(nameof(ResetGhostMultiplier));
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);

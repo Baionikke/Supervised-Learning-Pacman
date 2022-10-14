@@ -29,7 +29,7 @@ public class Pacman : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             movement.SetDirection(Vector2.right);
-        }*/
+        }*/ // OVERRIDE IN EURISTIC
 
         // Rotate pacman to face the movement direction
         float angle = Mathf.Atan2(movement.direction.y, movement.direction.x);
