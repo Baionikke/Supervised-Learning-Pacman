@@ -1,0 +1,20 @@
+Training:
+
+    mlagents-learn configs/MLA-training.yaml --seed 2 --run-id RUN_NAME
+
+
+Training from previous run:
+
+    mlagents-learn configs/MLA-training.yaml --seed 2 --run-id RUN_NAME --init OLD_RUN_NAME
+
+
+For results replication on a GNU/linux machine: (takes over 3 days on a RTX2060)
+
+    bash training7Mb.sh | tee training7Mb.log
+
+On windows you have to overwrite the Environments with new .exe files that we do not provide.
+
+
+Results data access:
+
+    tensorboard --logdir results --port 6006

@@ -1,8 +1,0 @@
-Training:
-mlagents-learn configs/MLA-training.yaml --seed 2 --run-id NOMERUN
-
-Training a partire da run già chiusa:
-mlagents-learn configs/MLA-training.yaml --seed 2 --run-id NOMERUN --init NOMEVECCHIARUN
-
-Per visualizzare risultati:
-tensorboard --logdir results --port 6006
